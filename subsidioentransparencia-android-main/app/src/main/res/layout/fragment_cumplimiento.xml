@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ministracion_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ministracion_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/ministracionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ministracionTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/tablero_cumplimiento"
+        android:textAlignment="center"
+        android:textColor="@color/gob_wine"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/ministracion_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/ministracionBackButton"
+        app:layout_constraintTop_toBottomOf="@id/ministracionHeader" />
+
+    <ImageButton
+        android:id="@+id/ministracionBackButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/back_button_description"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/ministracionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ministracionTitle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/ministracion_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/ministracion_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/ministracionTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="200dp"
+            android:orientation="vertical">
+
+            <sep.dgesui.subsidioentransparencia.components.ComponenteTrimestreProfexce
+                android:id="@+id/cumplimientoTrimestre1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <sep.dgesui.subsidioentransparencia.components.ComponenteTrimestreProfexce
+                android:id="@+id/cumplimientoTrimestre2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <sep.dgesui.subsidioentransparencia.components.ComponenteTrimestreProfexce
+                android:id="@+id/cumplimientoTrimestre3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <sep.dgesui.subsidioentransparencia.components.ComponenteTrimestreProfexce
+                android:id="@+id/cumplimientoTrimestre4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/cumplimientoReporteFinal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                custom:dgesui_linkLabel="Entrega del reporte final académico y financiero\u2074" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/comprobacionRecursos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                custom:dgesui_linkLabel="Comprobación de la totalidad de los recursos asignados\u2075" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/finiquitoSubcuenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                custom:dgesui_linkLabel="Finiquito de la subcuenta del fideicomiso PROFEXCE\u2076" />
+
+            <TextView
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha_entrega"
+                android:textColor="@color/gob_wine" />
+
+            <TextView
+                android:id="@+id/cumplimientoFechaEntrega"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="1 enero 2000" />
+
+            <TextView
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aprobacion"
+                android:textColor="@color/gob_wine" />
+
+            <TextView
+                android:id="@+id/cumplimientoAprobacion"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Aprobación" />
+
+            <TextView
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_observaciones"
+                android:textColor="@color/gob_wine" />
+
+            <TextView
+                android:id="@+id/cumplimientoObservaciones"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/gob_dark"
+                tools:text="Aprobación" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/cTitleYearMinEst"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/gob_wine"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/TitleYearMinEstFort"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginBottom="10dp"-->
+    <!--            android:text="Fortalecimiento a la Excelencia Educativa 2020"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textColor="#ffffff"-->
+    <!--            android:textSize="18sp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.5"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/constraintLayoutEst"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/gob_pink"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/cTitleYearMinEst"-->
+    <!--        app:layout_constraintVertical_bias="0.0">-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/titleUniEstatalFort"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="5dp"-->
+    <!--            android:padding="5sp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textColor="#ffffff"-->
+    <!--            android:textSize="18sp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            tools:text="Universidad Autonoma de Puebla" />-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    <ScrollView-->
+    <!--        android:id="@+id/scrollViewEst"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0.0dp"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:scrollbars="none"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutEst"-->
+    <!--        app:layout_constraintVertical_bias="0.0"-->
+    <!--        tools:context=".fragments.MinEstatalFragment">-->
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content">-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/encabezadoMinEstatal"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintHorizontal_bias="0.0"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                <ImageButton-->
+    <!--                    android:id="@+id/buttonBackDetalleEstatalCumplimiento"-->
+    <!--                    android:layout_width="35dp"-->
+    <!--                    android:layout_height="35dp"-->
+    <!--                    android:layout_margin="10dp"-->
+    <!--                    android:background="@android:color/transparent"-->
+    <!--                    android:src="@drawable/ic_arrow_left"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintHorizontal_bias="0.0"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/titleUniversidadAcronimoEstatal"-->
+    <!--                    android:layout_width="0.0dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginTop="10dp"-->
+    <!--                    android:layout_marginEnd="10dp"-->
+    <!--                    android:layout_marginBottom="10dp"-->
+    <!--                    android:font="@font/montserrat_bold"-->
+    <!--                    android:text="Tablero de Cumplimiento"-->
+    <!--                    android:textAlignment="center"-->
+    <!--                    android:textColor="@color/gob_pink"-->
+    <!--                    android:textSize="20sp"-->
+
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintStart_toEndOf="@+id/buttonBackDetalleEstatalCumplimiento"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintVertical_bias="0.020" />-->
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/cardPTrimestreE"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:backgroundTint="@android:color/transparent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/encabezadoMinEstatal">-->
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:id="@+id/constraintTextTrimestre1"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    tools:layout_editor_absoluteX="0dp"-->
+    <!--                    tools:layout_editor_absoluteY="0dp">-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/textTrimestre1TC"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_margin="10dp"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:drawableLeft="@drawable/ic_calendar"-->
+    <!--                        android:drawableRight="@drawable/ic_arrow_expand"-->
+    <!--                        android:text=" Trimestre 1"-->
+    <!--                        android:textColor="@color/gob_dark"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                        android:id="@+id/expandableTrimestre1Est"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginStart="17dp"-->
+    <!--                        android:visibility="visible"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/textTrimestre1TC">-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title1"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text1Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del primer informe trimestral de avance académico de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/tile2"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title1">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView1"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text2Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del primer informe trimestral de avance financiero de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView1"-->
+    <!--                                app:layout_constraintHorizontal_bias="0.8"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title3"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/tile2">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView2"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text3Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Publicación del primer informe trimestral en su página de transparencia de la Institución³"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView2"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/containerSTrimestreE"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:backgroundTint="@color/gob_white_white"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/cardPTrimestreE">-->
+
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:id="@+id/constraintTextTrimestre2"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/textTrimestre2TC"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_margin="10dp"-->
+    <!--                        android:drawableLeft="@drawable/ic_calendar"-->
+    <!--                        android:drawableRight="@drawable/ic_arrow_expand"-->
+    <!--                        android:text=" Trimestre 2"-->
+    <!--                        android:textColor="@color/gob_dark"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                        android:id="@+id/expandableTrimestre2Est"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:visibility="visible"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/textTrimestre2TC">-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title4"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView3"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text4Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del segundo informe trimestral de avance académico de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView3"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title5"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title4">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView4"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text5Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del segundo informe trimestral de avance financiero de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView4"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title6"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title5">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView5"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text6Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Publicación del segundo informe trimestral en su página de transparencia de la Institución³"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView5"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0"/>-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/containerTTrimestr"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:backgroundTint="@color/gob_white_white"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/containerSTrimestreE">-->
+
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:id="@+id/constraintTextTrimestre3"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/textTrimestre3TC"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_margin="10dp"-->
+    <!--                        android:drawableLeft="@drawable/ic_calendar"-->
+    <!--                        android:drawableRight="@drawable/ic_arrow_expand"-->
+    <!--                        android:text=" Trimestre 3"-->
+    <!--                        android:textColor="@color/gob_dark"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                        android:id="@+id/expandableTrimestre3Est"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:visibility="visible"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/textTrimestre3TC">-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title7"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView6"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text7Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del tercer informe trimestral de avance académico de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView6"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title8"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title7">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView7"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text8Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del tercer informe trimestral de avance financiero de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView7"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title9"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title8">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView8"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text9Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Publicación del tercer informe trimestral en su página de transparencia de la Institución³"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView8"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/containerCTrimestre"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                android:backgroundTint="@color/gob_white_white"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/containerTTrimestr">-->
+
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:id="@+id/constraintTextTrimestre4"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/textTrimestre4TC"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_margin="10dp"-->
+    <!--                        android:drawableLeft="@drawable/ic_calendar"-->
+    <!--                        android:drawableRight="@drawable/ic_arrow_expand"-->
+    <!--                        android:text=" Trimestre 4"-->
+    <!--                        android:textColor="@color/gob_dark"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                        android:id="@+id/expandableTrimestre4Est"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:visibility="visible"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/textTrimestre4TC">-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title10"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView9"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                            <TextView-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del cuarto informe trimestral de avance académico de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView9"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0"  />-->
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title11"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title10">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView10"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text11Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Entrega del cuarto informe trimestral de avance financiero de la Universidad a DGESUI²"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView10"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                            android:id="@+id/title12"-->
+    <!--                            android:layout_width="match_parent"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="20dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/title11">-->
+
+    <!--                            <ImageView-->
+    <!--                                android:id="@+id/imageView11"-->
+    <!--                                android:layout_width="wrap_content"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="5dp"-->
+    <!--                                android:src="@drawable/ic_arrow_right"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                            <TextView-->
+    <!--                                android:id="@+id/text12Est"-->
+    <!--                                android:layout_width="0dp"-->
+    <!--                                android:layout_height="wrap_content"-->
+    <!--                                android:layout_margin="10dp"-->
+    <!--                                android:text="Publicación del cuarto informe trimestral en su página de transparencia de la Institución³"-->
+    <!--                                android:textColor="@color/gob_dark"-->
+    <!--                                android:textSize="18dp"-->
+    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                                app:layout_constraintEnd_toStartOf="@+id/imageView11"-->
+    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                                app:layout_constraintVertical_bias="0.0"  />-->
+
+
+    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/entrega"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/containerCTrimestre">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/imageView12"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_margin="5dp"-->
+    <!--                    android:src="@drawable/ic_arrow_right"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/texEntrega"-->
+    <!--                    android:layout_width="0dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginEnd="10dp"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="Entrega del reporte final académico y financiero⁴"-->
+    <!--                    android:textColor="@color/gob_dark"-->
+    <!--                    android:textSize="18dp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toStartOf="@+id/imageView12"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintVertical_bias="0.0"  />-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/comprobacion"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/entrega">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/imageView13"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_margin="5dp"-->
+    <!--                    android:src="@drawable/ic_arrow_right"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/texComprobacion"-->
+    <!--                    android:layout_width="0dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginEnd="10dp"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="Comprobación de la totalidad de los recursos asignados⁵"-->
+    <!--                    android:textColor="@color/gob_dark"-->
+    <!--                    android:textSize="18dp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toStartOf="@+id/imageView13"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintVertical_bias="0.0"  />-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/finiquito"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/comprobacion">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/imageView14"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_margin="5dp"-->
+    <!--                    android:src="@drawable/ic_arrow_right"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/texfiniquito"-->
+    <!--                    android:layout_width="0dp"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginEnd="10dp"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="Finiquito de la subcuenta del fideicomiso PROFEXCE⁶"-->
+    <!--                    android:textColor="@color/gob_dark"-->
+    <!--                    android:textSize="18dp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toStartOf="@+id/imageView14"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintVertical_bias="0.0"  />-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/titleFechaEntrega"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="20dp"-->
+    <!--                android:text="Fecha de Entrega"-->
+    <!--                android:textColor="@color/gob_pink"-->
+    <!--                android:textSize="18dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/finiquito"-->
+    <!--                app:layout_constraintVertical_bias="0.0"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/textFechaEntrega"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="20dp"-->
+    <!--                android:text="00/00/0000"-->
+    <!--                android:textColor="@color/gob_dark"-->
+    <!--                android:textSize="18dp"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintVertical_bias="0.0"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/titleFechaEntrega" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/titleAprobacion"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="20dp"-->
+    <!--                android:text="Aprobación"-->
+    <!--                android:textColor="@color/gob_pink"-->
+    <!--                android:textSize="18dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintVertical_bias="0.0"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/textFechaEntrega" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/textAprobacion"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="20dp"-->
+    <!--                android:text="Aprobación"-->
+    <!--                android:textColor="@color/gob_dark"-->
+    <!--                android:textSize="18dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintVertical_bias="0.0"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/titleAprobacion" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/titleObservaciones"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="20dp"-->
+    <!--                android:text="Observaciones"-->
+    <!--                android:textColor="@color/gob_pink"-->
+    <!--                android:textSize="18dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintVertical_bias="0.0"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/textAprobacion" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/textObservaciones"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="20dp"-->
+    <!--                android:text="Observaciones"-->
+    <!--                android:textColor="@color/gob_dark"-->
+    <!--                android:textSize="18dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintVertical_bias="0.0"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/titleObservaciones" />-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--        </ScrollView>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

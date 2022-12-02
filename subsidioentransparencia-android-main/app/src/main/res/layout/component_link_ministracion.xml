@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/textoDGESUI"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/linkMinistracionMes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/linkMinistracionSemaforo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mes" />
+
+    <TextView
+        android:id="@+id/linkMinistracionMonto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/linkMinistracionSemaforo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linkMinistracionMes"
+        tools:text="$1,000,000.00" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/linkMinistracionSemaforo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/trans"
+        tools:cardBackgroundColor="@color/red"
+        app:layout_constraintTop_toTopOf="@id/linkMinistracionBoton"
+        app:layout_constraintBottom_toBottomOf="@id/linkMinistracionBoton"
+        app:layout_constraintEnd_toStartOf="@id/linkMinistracionBoton"
+        />
+
+    <ImageButton
+        android:id="@+id/linkMinistracionBoton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@color/trans"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/linkMinistracionMonto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/linkMinistracionMes" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

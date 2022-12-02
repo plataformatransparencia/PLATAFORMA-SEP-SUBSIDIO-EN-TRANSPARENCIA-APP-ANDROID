@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gob_green_dark_plus">#0C231E</color>
+    <color name="green_extra_dark">#13322B</color>
+    <color name="gob_green_dark">#214C42</color>
+    <color name="gob_green">#2C7D6C</color>
+    <color name="gob_pink">#9D2449</color>
+    <color name="gob_wine">#87173A</color>
+    <color name="gob_gold">#b38e5d</color>
+    <color name="gob_transparente">#b38e5d</color>
+    <color name="gob_wine_dark">#3D1C25</color>
+    <color name="gob_dark_withe">#79797A</color>
+    <color name="trans">#00000000</color>
+
+
+    <color name="gob_red_dark">#621132</color>
+    <color name="gob_beige">#D4C09B</color>
+    <color name="gob_link">#1379E8</color>
+    <color name="gob_white">#DDDDDD</color>
+    <color name="gob_white_two">#F4F4F4</color>
+    <color name="gob_white_white">#FFFFFF</color>
+    <color name="gob_dark">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow">#ecb64a</color>
+    <color name="red">#d80038</color>
+    <color name="green">#33df77</color>
+
+</resources>

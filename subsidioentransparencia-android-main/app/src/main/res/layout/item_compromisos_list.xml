@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textFechaEstipuladaItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:font="@font/montserrat_bold"
+        android:text="Fecha Estipulada"
+        android:textColor="@color/gob_pink"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textFechaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:font="@font/montserrat_regular_family"
+        android:textColor="@color/gob_dark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFechaEstipuladaItem"
+        tools:text="00/00/0000" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentCumplimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/style_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFechaItem">
+
+        <TextView
+            android:id="@+id/textDetailCumplimientoAccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:font="@font/montserrat_regular_family"
+            android:text="Cumplimiento"
+            android:textColor="@color/gob_pink"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textFechaDetailCumplimientoAccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:font="@font/montserrat_regular_family"
+            android:text="Fecha de ejecución"
+            android:textColor="@color/gob_pink"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textDetailCumplimientoAccion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewDetailCumplimiento18"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textDetailCumplimientoAccion"
+            app:layout_constraintVertical_bias="0.150" />
+
+        <TextView
+            android:id="@+id/fechaDetailCumplimientoItem"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:font="@font/montserrat_regular_family"
+            android:textAlignment="center"
+            android:textColor="@color/gob_dark"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/textFechaDetailCumplimientoAccion"
+            app:layout_constraintVertical_bias="0.150"
+            tools:text="00/00/0000" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1.5dp"
+            android:layout_height="80dp"
+            android:background="@drawable/style_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textFechaDetailCumplimientoAccion"
+            app:layout_constraintStart_toEndOf="@+id/textDetailCumplimientoAccion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ContraintCum"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="0.5dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentCumplimiento">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDetailCumplio18"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="5dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/green"
+            app:cardCornerRadius="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.463" />
+
+        <TextView
+            android:id="@+id/cumplio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:font="@font/montserrat_regular_family"
+            android:text="@string/label_cumplio"
+            android:textColor="@color/gob_dark"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardDetailCumplio18" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardNoDetailCumplio18"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="5dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+
+            app:layout_constraintStart_toEndOf="@+id/cumplio"
+            app:layout_constraintVertical_bias="0.475" />
+
+        <TextView
+            android:id="@+id/noDetailCumplio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:font="@font/montserrat_regular_family"
+            android:text="@string/label_no_cumplio"
+            android:textColor="@color/gob_dark"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardNoDetailCumplio18" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDetailRevision18"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="5dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/yellow"
+            app:cardCornerRadius="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.100"
+
+            app:layout_constraintStart_toEndOf="@+id/noDetailCumplio"
+            app:layout_constraintVertical_bias="0.506" />
+
+        <TextView
+            android:id="@+id/enDetailRevision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:font="@font/montserrat_regular_family"
+            android:text="@string/label_en_revision"
+            android:textColor="@color/gob_dark"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardDetailRevision18" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/obsetvasionesDetailCompromiso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ContraintCum">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/visibleObservacionesDetailCompromiso"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tileObservacionDetailCompromiso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="Observaciones"
+                android:textColor="@color/gob_pink"
+                android:textSize="15dp"
+                android:textStyle="normal"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/plainTextObservacionDetailCompromiso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:font="@font/montserrat_bold"
+                android:textColor="@color/gob_dark"
+                android:textSize="15dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tileObservacionDetailCompromiso"
+                tools:text="Lorem" />
+
+            <Button
+                android:id="@+id/botonDocumentoObservacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/gob_wine"
+                android:drawableLeft="@drawable/ic_dowload_file"
+                android:font="@font/montserrat_bold"
+                android:text=" Ver documento"
+                android:textColor="@color/gob_white_white"
+                android:textSize="13sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tileObservacionDetailCompromiso" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

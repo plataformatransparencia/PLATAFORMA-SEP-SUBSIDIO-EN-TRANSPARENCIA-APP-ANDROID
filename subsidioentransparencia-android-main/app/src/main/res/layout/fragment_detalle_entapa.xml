@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/etapa_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/etapa_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/etapaHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/etapaTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/etapas"
+        android:textAlignment="textStart"
+        android:textColor="@color/gob_wine"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/etapa_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/etapaBackButton"
+        app:layout_constraintTop_toBottomOf="@id/etapaHeader" />
+
+    <ImageButton
+        android:id="@+id/etapaBackButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/back_button_description"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/etapaTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etapaTitle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/etapa_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/etapa_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/etapaTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/etapaDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                tools:text="Lorem ipsum asdf asdf asd asdf asdf asdf asdf asd fasd fas dfas df" />
+
+            <TextView
+                android:id="@+id/titleFechaEstipulada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/fecha_estipulada"
+                android:textColor="@color/gob_wine"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/etapa_margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/etapaTitle" />
+
+            <TextView
+                android:id="@+id/etapaFechaEstipulada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                tools:text="1 enero 2000" />
+
+            <sep.dgesui.subsidioentransparencia.components.CardComponent
+                android:id="@+id/compromiso_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+
+            <TextView
+                android:id="@+id/etapaSubtitleObservaviones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/label_observaciones"
+                android:textColor="@color/gob_wine"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/etapaObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:paddingBottom="150dp"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                tools:text="Lorem ipsum asdf asdf asd asdf asdf asdf asdf asd fasd fas dfas df" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

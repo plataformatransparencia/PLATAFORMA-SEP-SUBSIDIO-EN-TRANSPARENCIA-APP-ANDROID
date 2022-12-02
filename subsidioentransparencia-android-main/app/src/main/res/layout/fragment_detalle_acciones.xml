@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/detalleAccionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_accion_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/detalle_accion_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/detalleAccionTitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/detalle_accion_margen_izquierdo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="30dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/detalle_accion_margen_derecho"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="10dp" />
+
+            <TextView
+                android:id="@+id/detalleAccionTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:font="@font/montserrat_bold"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_wine"
+                android:textSize="23sp"
+                app:layout_constraintEnd_toEndOf="@id/detalle_accion_margen_derecho"
+                app:layout_constraintStart_toEndOf="@id/detalleAccionBack"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Título" />
+
+            <ImageButton
+                android:id="@+id/detalleAccionBack"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/back_button_description"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintBottom_toBottomOf="@id/detalleAccionTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/detalleAccionTitle" />
+
+            <TextView
+                android:id="@+id/subtitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:textColor="@color/gob_wine"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/detalle_accion_margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/detalleAccionTitle"
+                tools:text="subtítulo" />
+
+            <TextView
+                android:id="@+id/accionesDescripcion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/detalle_accion_margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/detalle_accion_margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/subtitulo"
+                tools:text="lorem ipsum asdf asdf asdfa asdf asd fasdf asdf asdf sadfasdf asdf asd fasd fasd fasd fasdf asd fasdf asdf" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detalleCumplimientos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/detalle_accion_margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/detalle_accion_margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/accionesDescripcion"
+                tools:listitem="@layout/layout_compromiso_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

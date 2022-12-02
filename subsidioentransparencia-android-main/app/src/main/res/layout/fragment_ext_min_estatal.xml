@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MinistracionEstatalExtraordinariaFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ministracionExtraordinario_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ministracionExtraordinario_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/ministracionExtraordinariaHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/ministracionExtraordinario_margen_derecho"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ministracionExtraordinariaTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/tablero_estado_universidad"
+        android:textAlignment="center"
+        android:textColor="@color/gob_pink"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ministracionExtraordinariaBack"
+        app:layout_constraintTop_toBottomOf="@id/ministracionExtraordinariaHeader" />
+
+    <ImageButton
+        android:id="@+id/ministracionExtraordinariaBack"
+        android:layout_width="35dp"
+        android:layout_height="48dp"
+        android:background="@color/trans"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/ministracionExtraordinariaTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ministracionExtraordinariaTitle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintEnd_toEndOf="@id/ministracionExtraordinario_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/ministracionExtraordinario_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/ministracionExtraordinariaTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/monto"
+                android:textColor="@color/gob_pink"
+                tools:dgesui_linkLabel="$1,000,000.00" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ministracionExtraordinariaMontos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/component_link" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/ministracionExtraordinariaFederalLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/ministracionExtraodinariaTitleMontoTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/monto_total_ministrado_estado"
+                android:textColor="@color/gob_pink" />
+
+
+            <TextView
+                android:id="@+id/ministracionExtraordinarioMontoFederacion"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="$1,000,000.00" />
+
+
+            <TextView
+                android:id="@+id/ministracionExtraordinarioTituloAdeudoFederacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/adeudo_federal_corte"
+                android:textColor="@color/gob_pink"
+                tools:text="Adedudo Federal con corte al: 1 enero 2000" />
+
+            <TextView
+                android:id="@+id/ministracionExtraordinarioAdeudoFederacion"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="$0.00" />
+
+            <TextView
+                android:id="@+id/ministracionExtraordinarioTituloMontoTotalMinistrado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/monto_total_ministrado_estatal_federal"
+                android:textColor="@color/gob_pink"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/ministracionExtraordinarioMontoTotalMinistrado"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:text="$0.00"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

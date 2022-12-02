@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/labelFechaEstipulada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:font="@font/montserrat_bold"
+        android:text="@string/fecha_estipulada"
+        android:textColor="@color/gob_pink"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/fechaEstipulada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/no_disponible"
+        android:textColor="@color/gob_dark"
+        android:textSize="15sp" />
+
+    <sep.dgesui.subsidioentransparencia.components.CardComponent
+        android:id="@+id/semaforo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:font="@font/montserrat_bold"
+            android:text="@string/label_observaciones"
+            android:textColor="@color/gob_pink"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/entregaCompromisoObservaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:font="@font/montserrat_bold"
+            android:text="@string/no_disponible"
+            android:textColor="@color/gob_dark"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/entregaCompromisoObservacionesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/gob_wine"
+            android:font="@font/montserrat_bold"
+            android:padding="10dp"
+            android:drawableStart="@drawable/ic_accion_link"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/gob_white"
+            android:text="@string/ir_a_pagina"
+            android:textColor="@color/gob_white"
+            android:textSize="15sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

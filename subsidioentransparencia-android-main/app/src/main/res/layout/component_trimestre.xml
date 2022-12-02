@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/textoDGESUI"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/trimestre_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <TextView
+        android:id="@+id/trimestreTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawableEnd="@drawable/ic_arrow_expand"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Trimestre 0" />
+
+    <sep.dgesui.subsidioentransparencia.components.LinkMinistracionComponent
+        android:id="@+id/trimestreMes1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreTitulo"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.LinkMinistracionComponent
+        android:id="@+id/trimestreMes2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreMes1"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.LinkMinistracionComponent
+        android:id="@+id/trimestreMes3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreMes2"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+        android:id="@+id/linkReporteSubsidioOrdinario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreMes3"
+        custom:dgesui_linkLabel="@string/informeSubsidioOrdinario"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+        android:id="@+id/linkReporteRendicionCuentas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/linkReporteSubsidioOrdinario"
+        custom:dgesui_linkLabel="@string/informeRendicionCuentas"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+        android:id="@+id/linkReporteMatricula"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/linkReporteRendicionCuentas"
+        custom:dgesui_linkLabel="@string/informeMatricula"
+        tools:visibility="visible" />
+
+
+</merge>

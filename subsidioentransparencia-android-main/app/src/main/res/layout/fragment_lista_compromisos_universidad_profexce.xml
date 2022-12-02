@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detalle_universidad_profexce_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detalle_universidad_profexce_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/detalleUniversidadProfexceHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/detalleUniversidadProfexceTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/label_compromiso"
+        android:textAlignment="textStart"
+        android:textColor="@color/gob_wine"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_universidad_profexce_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/detalleUniversidadProfexceBackButton"
+        app:layout_constraintTop_toBottomOf="@id/detalleUniversidadProfexceHeader" />
+
+    <ImageButton
+        android:id="@+id/detalleUniversidadProfexceBackButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/back_button_description"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/detalleUniversidadProfexceTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/detalleUniversidadProfexceTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/compromisosUniversidadRecycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@id/detalle_universidad_profexce_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/detalleUniversidadProfexceTitle"
+        tools:listitem="@layout/layout_lista_elementos_card" />
+
+    <TextView
+        android:id="@+id/titleMontoAsignado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/monto_asignado"
+        android:textColor="@color/gob_wine"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/compromisosUniversidadRecycler" />
+
+    <TextView
+        android:id="@+id/montoAsignado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:textColor="@color/gob_dark"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/titleMontoAsignado"
+        tools:text="$1,000,000.00" />
+
+    <TextView
+        android:id="@+id/titleFechaMinistracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/fecha_ministracion"
+        android:textColor="@color/gob_wine"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_universidad_profexce_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/montoAsignado" />
+
+    <TextView
+        android:id="@+id/titleMinistracionEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/deposito_estado"
+        android:textColor="@color/gob_wine"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_center"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/titleFechaMinistracion" />
+
+    <TextView
+        android:id="@+id/titleMinistracionUniversidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/deposito_universidad"
+        android:textColor="@color/gob_wine"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_universidad_profexce_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/guideline_center"
+        app:layout_constraintTop_toBottomOf="@id/titleFechaMinistracion" />
+
+    <TextView
+        android:id="@+id/ministracionEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textColor="@color/gob_dark"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_center"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/titleMinistracionEstado"
+        tools:text="20 de octubre" />
+
+    <TextView
+        android:id="@+id/ministracionUniversidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:font="@font/montserrat_bold"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textColor="@color/gob_dark"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_universidad_profexce_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/guideline_center"
+        app:layout_constraintTop_toBottomOf="@id/titleMinistracionUniversidad"
+        tools:text="@string/deposito_universidad" />
+
+    <TextView
+        android:id="@+id/titleObservaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/label_observaciones"
+        android:textColor="@color/gob_wine"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/ministracionEstado" />
+
+    <TextView
+        android:id="@+id/observaciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:font="@font/montserrat_bold"
+        android:textColor="@color/gob_dark"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_universidad_profexce_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/detalle_universidad_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/titleObservaciones"
+        tools:text="lorem ipsum asdf asdfasdf asdfasdf asdf asdf asdf asdfasdf asdf sd asdfa" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

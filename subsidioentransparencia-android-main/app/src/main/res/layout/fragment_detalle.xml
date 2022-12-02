@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/headerDetalleUniversidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerDetalleUniversidad"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageButton
+                android:id="@+id/buttonBackList"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/back_button_description"
+                android:paddingStart="5dp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintBottom_toBottomOf="@id/generalesUniversidad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/generalesUniversidad"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <sep.dgesui.subsidioentransparencia.components.DatosGeneralesUniversidad
+                android:id="@+id/generalesUniversidad"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/margen_izquierdo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="30dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/margen_derecho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="30dp" />
+
+            <TextView
+                android:id="@+id/titleFichaDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:text="@string/ficha_general"
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/generalesUniversidad" />
+
+            <TextView
+                android:id="@+id/titleDireccionDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_arrow_direccion"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/direccion"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/titleFichaDetalle" />
+
+            <TextView
+                android:id="@+id/direccionUniversidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/titleDireccionDetalle"
+                tools:text="Calle 00, Col. Alguna, Estado, CP 00000" />
+
+            <TextView
+                android:id="@+id/titleRectorDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_accion_person"
+                android:font="@font/montserrat_bold"
+                android:text="@string/rector"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/direccionUniversidad" />
+
+            <TextView
+                android:id="@+id/rectorUniversidad"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/titleRectorDetalle"
+                tools:text="Nombre del Rector" />
+
+            <TextView
+                android:id="@+id/titleGobernadorDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_accion_gob"
+                android:font="@font/montserrat_bold"
+                android:text="@string/gobernador_estado"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/rectorUniversidad" />
+
+
+            <TextView
+                android:id="@+id/gobernador"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/titleGobernadorDetalle"
+                tools:text="Nombre Gobernador" />
+
+
+            <TextView
+                android:id="@+id/titleSitioTranspareciaDetalle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/lbl_sitio_transparencia"
+                android:textColor="@color/gob_dark"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/gobernador" />
+
+            <TextView
+                android:id="@+id/linkSitioTransparencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_accion_link"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:text="Ir a sitio"
+                android:textColor="@color/gob_gold"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/titleSitioTranspareciaDetalle" />
+
+            <Button
+                android:id="@+id/buttonPlanAusteridad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autoLink="web"
+                android:background="@color/gob_wine"
+                android:drawableLeft="@drawable/ic_dowload_file"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_bold"
+                android:padding="10dp"
+                android:text="@string/plan_de_austeridad"
+                android:textColor="@color/gob_white_white"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkSitioTransparencia"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/titleNumeraliaDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/numeralia"
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/buttonPlanAusteridad" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guia_numeralia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="110dp" />
+
+            <TextView
+                android:id="@+id/numMatriculaTotalESDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalle"
+                tools:text="65,528" />
+
+            <TextView
+                android:id="@+id/textMatriculaTotalESDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_matricula_superior"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalle" />
+
+            <TextView
+                android:id="@+id/numMatriculaTotalEMDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textMatriculaTotalESDetalle"
+                tools:text="12,000.00" />
+
+            <TextView
+                android:id="@+id/textMatriculaTotalEMDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_matricula_media_superior"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textMatriculaTotalESDetalle" />
+
+            <TextView
+                android:id="@+id/numMatriculaTotalDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textMatriculaTotalEMDetalle"
+                tools:text="65,528" />
+
+            <TextView
+                android:id="@+id/textMatriculaTotalDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_matricula_total"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textMatriculaTotalEMDetalle" />
+
+            <TextView
+                android:id="@+id/numTotalProfesoresTCDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textMatriculaTotalDetalle"
+                tools:text="65,528" />
+
+            <TextView
+                android:id="@+id/textTotalProfesoresTCDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_profesores_tiempo_completo"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textMatriculaTotalDetalle" />
+
+            <TextView
+                android:id="@+id/numTotalProfesoresTCPDVDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalProfesoresTCDetalle"
+                tools:text="65,528" />
+
+            <TextView
+                android:id="@+id/textTotalProfesoresTCPDVDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_profesores_pdv"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalProfesoresTCDetalle" />
+
+            <TextView
+                android:id="@+id/numProfesoresSistemaNacionalIVDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalProfesoresTCPDVDetalle"
+                tools:text="65,528" />
+
+            <TextView
+                android:id="@+id/textProfesoresSistemaNacionalIVDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_profesores_sni"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalProfesoresTCPDVDetalle" />
+
+            <TextView
+                android:id="@+id/numSubsidioAlumnoFEDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textProfesoresSistemaNacionalIVDetalle"
+                tools:text="$65,528.32" />
+
+            <TextView
+                android:id="@+id/textSubsidioAlumnoFEDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_subsidio_por_alumno_publico"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textProfesoresSistemaNacionalIVDetalle" />
+
+            <TextView
+                android:id="@+id/numPorcentajeParticipacionFDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textSubsidioAlumnoFEDetalle"
+                tools:text="52.98%" />
+
+            <TextView
+                android:id="@+id/textPorcentajeParticipacionFDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_porcentaje_federal"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textSubsidioAlumnoFEDetalle" />
+
+            <TextView
+                android:id="@+id/numPorcentajeParticipacionEDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_pink"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textPorcentajeParticipacionFDetalle"
+                tools:text="52.98%" />
+
+            <TextView
+                android:id="@+id/textPorcentajeParticipacionEDetalle"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:font="@font/montserrat_regular_family"
+                android:paddingStart="10dp"
+                android:text="@string/numeralia_porcentaje_estatal"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/guia_numeralia"
+                app:layout_constraintTop_toBottomOf="@+id/textPorcentajeParticipacionFDetalle" />
+
+
+            <TextView
+                android:id="@+id/titleReferenciasDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="32dp"
+                android:font="@font/montserrat_bold"
+                android:text="Referencias"
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textPorcentajeParticipacionEDetalle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/referenciasNumeralia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/titleReferenciasDetalle"
+                tools:listitem="@layout/layout_referencia" />
+
+            <sep.dgesui.subsidioentransparencia.engineadapter.ChartSubsidios
+                android:id="@+id/chartMontos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/referenciasNumeralia" />
+
+            <TextView
+                android:id="@+id/notaRedondeo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:text="@string/nota_redondeo"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/chartMontos"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textNotaMonto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/notaRedondeo"
+                tools:text="NotaMonto" />
+
+            <Button
+                android:id="@+id/buttonAnexoEjecucion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/gob_wine"
+                android:drawableLeft="@drawable/ic_dowload_file"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_bold"
+                android:padding="10dp"
+                android:textColor="@color/gob_white_white"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/textNotaMonto"
+                tools:text="Anexo de ejecución 2021"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonConvenioMarco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/gob_wine"
+                android:drawableLeft="@drawable/ic_dowload_file"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_bold"
+                android:padding="10dp"
+                android:textColor="@color/gob_white_white"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/buttonAnexoEjecucion"
+                tools:text="Convenio Marco de Colaboración"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonConvenio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/gob_wine"
+                android:drawableLeft="@drawable/ic_dowload_file"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_bold"
+                android:padding="10dp"
+                android:textColor="@color/gob_white_white"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/buttonConvenioMarco"
+                tools:text="Convenio 2000"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/titleTableroDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tablero"
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/buttonConvenioMarco" />
+
+            <Button
+                android:id="@+id/linkCompromisosEstado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/compromiso_estado"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/titleTableroDetalle"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkCompromisosUniversidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/compromiso_universidad"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCompromisosEstado"
+                tools:visibility="visible" />
+
+
+            <Button
+                android:id="@+id/linkCompromisos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/compromisos"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCompromisosUniversidad"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkTableroCumplimiento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tablero_cumplimiento"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCompromisos"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkAccionesEmprendidas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/acciones_emprendidas"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkTableroCumplimiento"
+                tools:visibility="visible" />
+
+
+            <Button
+                android:id="@+id/linkAccionesPorEmprender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/acciones_por_emprender"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkAccionesEmprendidas"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkAccionesPorEmprenderUniversidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/acciones_por_emprender_universidad"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkAccionesPorEmprender"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkAccionesPorEmprenderGobierno"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/acciones_por_emprender_gobierno"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkAccionesPorEmprenderUniversidad"
+                tools:visibility="visible" />
+
+
+            <Button
+                android:id="@+id/linkCumplimientoMinistracionesSEU"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tablero_sep_estado_universidad"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkAccionesPorEmprenderGobierno"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkCumplimientoMinistracionesEU"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tablero_estado_universidad"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCumplimientoMinistracionesSEU"
+                tools:visibility="visible" />
+
+
+
+            <TextView
+                android:id="@+id/textoNotaGlobalNotas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/linkCumplimientoMinistracionesEU"
+                tools:text="(Nota Global)" />
+
+            <TextView
+                android:id="@+id/textoNotaGlobalReferencias"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/textoNotaGlobalNotas"
+                tools:text="(Nota Global)" />
+
+            <TextView
+                android:id="@+id/textoNotaEspecial"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/textoNotaGlobalReferencias"
+                tools:text="(Nota especial)" />
+
+
+            <TextView
+                android:id="@+id/titlereferenciaAnexoDetalle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:textAlignment="center"
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/textoNotaEspecial"
+                tools:text="Referencia de acuerdo al anexo de ejecución 2001" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/referenciasAnexo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/titlereferenciaAnexoDetalle"
+                tools:listitem="@layout/layout_referencia" />
+
+            <TextView
+                android:id="@+id/titleOtrasReferencias"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/otras_referencias"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/referenciasAnexo" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/referenciasOtras"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@id/titleOtrasReferencias"
+                tools:listitem="@layout/layout_referencia" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
+
+

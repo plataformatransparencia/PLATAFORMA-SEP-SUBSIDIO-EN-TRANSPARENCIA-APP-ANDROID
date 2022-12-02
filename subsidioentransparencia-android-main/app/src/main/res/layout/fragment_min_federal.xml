@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentMinFederal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.MinFederalFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resumenMinistracion_margen_izquierod"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/resumenMinistracion_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/resumenMinistracionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/resumenMinistracionBack"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@color/trans"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/resumenMinistracionTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/resumenMinistracionTitulo" />
+
+    <TextView
+        android:id="@+id/resumenMinistracionTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textAlignment="center"
+        android:textColor="@color/gob_wine"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/resumenMinistracion_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/resumenMinistracionBack"
+        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionHeader"
+        tools:text="Tipo de resumen" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/resumenMinistracion_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/resumenMinistracion_margen_izquierod"
+        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionTitulo">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="250dp"
+            android:orientation="vertical">
+
+            <sep.dgesui.subsidioentransparencia.components.TrimestreComponent
+                android:id="@+id/detalleMinistracionTrimestre1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <sep.dgesui.subsidioentransparencia.components.TrimestreComponent
+                android:id="@+id/detalleMinistracionTrimestre2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <sep.dgesui.subsidioentransparencia.components.TrimestreComponent
+                android:id="@+id/detalleMinistracionTrimestre3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <sep.dgesui.subsidioentransparencia.components.TrimestreComponent
+                android:id="@+id/detalleMinistracionTrimestre4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaBarChart
+                android:id="@+id/detalleMinistracionBarChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/labelMontoTotal"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/monto_total_ministrado_sep" />
+
+            <TextView
+                android:id="@+id/montoTotal"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gob_dark_withe"
+                tools:text="$1,000,000.00" />
+
+            <TextView
+                android:id="@+id/labelMontoCalendarizado"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/monto_total_ministrado_sep"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/montoCalendarizado"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gob_dark_withe"
+                android:visibility="gone"
+                tools:text="$1,000,000.00"
+                tools:visibility="visible" />
+
+
+            <!--<TextView
+                android:id="@+id/labelAdeudoTotalEstatalCorteA"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Adeudo total estatal con corte al: 1 enero 2000" />-->
+
+            <LinearLayout
+                android:id="@+id/adeudos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"></LinearLayout>
+
+            <!--<TextView
+                android:id="@+id/adeudoTotalEstatal"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gob_dark_withe"
+                tools:text="$1,000,000.00" />-->
+
+            <TextView
+                android:id="@+id/referenciaMinistracion"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="La referencia, en función del año y de si es estatal o federal" />
+
+            <TextView
+                android:id="@+id/notaMinistracion"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nota_ordinario_estatal"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detalle_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detalle_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/detalleHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/detalleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:font="@font/montserrat_bold"
+        android:text="@string/label_compromiso"
+        android:textAlignment="textStart"
+        android:textColor="@color/gob_wine"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/detalle_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/detalleBackButton"
+        app:layout_constraintTop_toBottomOf="@id/detalleHeader" />
+
+    <ImageButton
+        android:id="@+id/detalleBackButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/back_button_description"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/detalleTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/detalleTitle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/detalle_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/detalle_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/detalleTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/subtituloDetalle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/label_compromiso"
+                android:textColor="@color/gob_wine"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/detalleDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                tools:text="Lorem ipsum asdf asdf asd asdf asdf asdf asdf asd fasd fas dfas df" />
+
+            <ImageView
+                android:id="@+id/imagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:visibility="gone" />
+
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonEtapas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/etapas"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.CardComponent
+                android:id="@+id/compromiso_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+
+            <TextView
+                android:id="@+id/detalleSubtitleObservaviones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/label_observaciones"
+                android:textColor="@color/gob_wine"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/detalleObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:paddingBottom="150dp"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                tools:text="Lorem ipsum asdf asdf asd asdf asdf asdf asdf asd fasd fas dfas df" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/trimestre_profexce_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <TextView
+        android:id="@+id/trimestreProfexceTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        app:drawableEndCompat="@drawable/ic_arrow_expand"
+        app:drawableStartCompat="@drawable/ic_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Trimestre 0" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+        android:id="@+id/trimestreProfexceEntregaAcademico"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreProfexceTitulo"
+        tools:dgesui_linkLabel="Entrega del avance académico"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+        android:id="@+id/trimestreProfexceEntregaFinanciero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreProfexceEntregaAcademico"
+        tools:dgesui_linkLabel="Entrega del avance financiero"
+        tools:visibility="visible" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+        android:id="@+id/trimestreProfexcePublicacionInforme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/trimestre_profexce_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/trimestreProfexceEntregaFinanciero"
+        tools:dgesui_linkLabel="Informe"
+        tools:visibility="visible" />
+
+</merge>

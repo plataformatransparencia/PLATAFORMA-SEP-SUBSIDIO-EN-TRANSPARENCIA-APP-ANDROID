@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/descripcion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:font="@font/montserrat_regular_family"
+        android:layout_marginTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/gob_dark"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/flecha_ir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Descripción del elemento asdfas asdf asdfasdf asdf asdf asd fasdf asdf asd fasdf" />
+
+    <ImageButton
+        android:id="@+id/flecha_ir"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/descripcion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

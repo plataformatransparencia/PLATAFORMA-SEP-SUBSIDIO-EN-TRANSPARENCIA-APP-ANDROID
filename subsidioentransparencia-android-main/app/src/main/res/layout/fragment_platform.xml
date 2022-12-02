@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.PlatformFragment">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0.0dp"
+        android:orientation="vertical"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".fragments.PlatformFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.0dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/buttonBackPlataforma"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_arrow_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.010"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.020" />
+
+
+                <TextView
+                    android:id="@+id/titlePlataforma"
+                    android:layout_width="0.0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:textAlignment="center"
+                    android:textColor="@color/gob_pink"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/buttonBackPlataforma"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.14999998"
+                    tools:text="Conoce la Plataforma en Transparencia" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutVideoPlatform"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tile">
+
+
+                <VideoView
+                    android:id="@+id/videoPlatform"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/butonPlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_play"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/videoPlatform"
+                    app:layout_constraintTop_toTopOf="@+id/videoPlatform" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/listaPlataforma0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutVideoPlatform"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/listaPlataforma1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listaPlataforma0"
+                tools:text="LISTA DE TEXTO" />
+
+
+            <TextView
+                android:id="@+id/numArt62"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listaPlataforma1"
+                tools:text="Articulo 62." />
+
+            <TextView
+                android:id="@+id/textArt62"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numArt62"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numArt67"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textArt62"
+                tools:text="Articulo 67." />
+
+            <TextView
+                android:id="@+id/textArt67"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numArt67"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numI"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textI"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textArt67"
+                tools:text="I" />
+
+            <TextView
+                android:id="@+id/textI"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textArt67"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textII"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textI"
+                tools:text="II" />
+
+            <TextView
+                android:id="@+id/textII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textI"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numIII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textIII"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textII"
+                tools:text="III" />
+
+            <TextView
+                android:id="@+id/textIII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textII"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numIV"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textIV"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textIII"
+                tools:text="IV" />
+
+            <TextView
+                android:id="@+id/textIV"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textIII"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numV"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textV"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textIV"
+                tools:text="V" />
+
+            <TextView
+                android:id="@+id/textV"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textIV"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numVI"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textVI"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textV"
+                tools:text="VI" />
+
+            <TextView
+                android:id="@+id/textVI"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textV"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numVII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textVII"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVI"
+                tools:text="VII" />
+
+            <TextView
+                android:id="@+id/textVII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVI"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numVIII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textVIII"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVII"
+                tools:text="VIII" />
+
+            <TextView
+                android:id="@+id/textVIII"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVII"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numIX"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textIX"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVIII"
+                tools:text="IX" />
+
+            <TextView
+                android:id="@+id/textIX"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVIII"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/numX"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textX"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textIX"
+                tools:text="X" />
+
+            <TextView
+                android:id="@+id/textX"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textIX"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/textComplemento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textX"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/textComplemento1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textComplemento"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/textComplemento2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textComplemento1"
+                tools:text="LISTA DE TEXTO" />
+
+            <TextView
+                android:id="@+id/titleUPE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textComplemento2"
+                tools:text="UPE" />
+
+            <TextView
+                android:id="@+id/textUPE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleUPE"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="UPE" />
+
+            <TextView
+                android:id="@+id/titleUPEAS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textUPE"
+                tools:text="UPEAS" />
+
+            <TextView
+                android:id="@+id/textUPEAS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleUPEAS"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="UPEAS" />
+
+            <TextView
+                android:id="@+id/titleUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textUPEAS"
+                tools:text="UI" />
+
+            <TextView
+                android:id="@+id/textUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="40dp"
+                android:font="@font/montserrat_regular_family"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleUI"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="UI" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

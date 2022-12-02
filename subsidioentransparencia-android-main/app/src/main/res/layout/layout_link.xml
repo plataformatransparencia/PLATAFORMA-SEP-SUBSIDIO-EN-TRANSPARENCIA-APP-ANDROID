@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/linkTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:font="@font/montserrat_bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/gob_dark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/linkButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Link a un titulo muy muy largo que a a a a a a a a a aocupe más de una línea" />
+
+    <ImageButton
+        android:id="@+id/linkButton"
+        android:layout_width="35dp"
+        android:background="@color/trans"
+        android:layout_height="53dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/linkTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/linkTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

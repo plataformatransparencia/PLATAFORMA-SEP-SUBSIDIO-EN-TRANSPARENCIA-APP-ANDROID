@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detalleMinistracion_margen_izquierod"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/detalleMinistracion_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/detalleMinistracionHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/detalleMinistracionBack"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@color/trans"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/detalleMinistracionTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/detalleMinistracionTitulo" />
+
+    <TextView
+        android:id="@+id/detalleMinistracionTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textAlignment="center"
+        android:textColor="@color/gob_wine"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/detalleMinistracion_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/detalleMinistracionBack"
+        app:layout_constraintTop_toBottomOf="@id/detalleMinistracionHeader"
+        tools:text="Mes" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/detalleMinistracion_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/detalleMinistracion_margen_izquierod"
+        app:layout_constraintTop_toBottomOf="@id/detalleMinistracionTitulo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="250dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tituloSemaforoSEPEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/transferencia_sep_estado"
+                android:textAlignment="center"
+                android:textColor="@color/gob_wine"
+                android:textSize="23sp" />
+
+            <sep.dgesui.subsidioentransparencia.components.CardComponent
+                android:id="@+id/semaforoSEPEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tituloObservacionesSemaforoSEPEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/label_observaciones"
+                android:textColor="@color/gob_pink" />
+
+            <TextView
+                android:id="@+id/observacionesSEPEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/gob_dark"
+                tools:text="asdf asdf asdf asdf asdf asd fasd fas dfasdf asdf asdf sad f" />
+
+
+            <TextView
+                android:id="@+id/tituloSemaforoEstadoUniversidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/transferencia_estado_universidad"
+                android:textAlignment="center"
+                android:textColor="@color/gob_wine"
+                android:textSize="23sp" />
+
+            <sep.dgesui.subsidioentransparencia.components.CardComponent
+                android:id="@+id/semaforoEstadoUniversidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+
+            <TextView
+                android:id="@+id/tituloObservacionesSemaforoEstadoUniversidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/label_observaciones"
+                android:textColor="@color/gob_pink" />
+
+            <TextView
+                android:id="@+id/observacionesEstadoUniversidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/gob_dark"
+                tools:text="asdf asdf asdf asdf asdf asd fasd fas dfasdf asdf asdf sad f" />
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mapFragment"
+        android:icon="@drawable/ic_action_home"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/listFragment"
+        android:icon="@drawable/ic_action_list"
+        android:title="Listado" />
+    <item
+        android:id="@+id/contacFragment"
+        android:icon="@drawable/ic_action_contact"
+        android:title="Contacto" />
+    <item
+        android:id="@+id/menuFragment"
+        android:icon="@drawable/ic_action_menu"
+        android:title="Menú" />
+
+
+</menu>

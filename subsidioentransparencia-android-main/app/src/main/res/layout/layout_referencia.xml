@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <TextView
+        android:id="@+id/clave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:font="@font/montserrat_regular_family"
+        android:textAlignment="textEnd"
+        android:textColor="@color/gob_dark"
+        android:textSize="15sp"
+        tools:text="11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contenido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:autoLink="web"
+        android:font="@font/montserrat_regular_family"
+        android:paddingBottom="5dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/gob_dark"
+        android:textSize="15sp"
+        tools:text="lorem ipsum asdf asdf asd fasdf asdfksdfa asd fasd asdfasd asdf asdfasdfa asdfasdfasd"
+        app:layout_constraintStart_toEndOf="@id/clave"
+        app:layout_constraintTop_toTopOf="@id/clave" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

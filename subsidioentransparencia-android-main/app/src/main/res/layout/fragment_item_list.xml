@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/list_margen_izquierdo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/list_margen_derecho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+    <sep.dgesui.subsidioentransparencia.components.TransparenciaHeader
+        android:id="@+id/listHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/listTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:font="@font/montserrat_bold"
+        android:textAlignment="center"
+        android:textColor="@color/gob_dark"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
+        app:layout_constraintStart_toEndOf="@id/listBackButton"
+        app:layout_constraintTop_toBottomOf="@id/listHeader"
+        tools:text="Título de la lista" />
+
+    <ImageButton
+        android:id="@+id/listBackButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/back_button_description"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@id/listTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/listTitle" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
+        app:layout_constraintStart_toStartOf="@id/list_margen_izquierdo"
+        app:layout_constraintTop_toBottomOf="@id/listTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listItemsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/layout_lista_elementos_card" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonMateriales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/materiales_suministros"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonServiciosGenerales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/servicios_generales"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonAsignacionesSubsidios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/asignaciones_subsidios"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonBienesMueblesInmuebles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/bienes_muebles_inmuebles"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonObrasRemodelaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/obras_remodelaciones"
+                tools:visibility="visible" />
+
+
+            <TextView
+                android:id="@+id/title_referencias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text="@string/label_referencias"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="18sp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listReferenciasRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="200dp"
+                android:textAlignment="textStart"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/layout_referencia" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

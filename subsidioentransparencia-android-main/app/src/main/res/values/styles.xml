@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application Theme -->
+    <style name="AppTheme" parent="BaseAppTheme" />
+
+    <!-- Base application theme. Inherit it for your main app theme and the for the version qualifier -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorPrimary">@color/gob_green</item>
+        <item name="colorPrimaryDark">@color/gob_green_dark</item>
+        <item name="colorAccent">@color/gob_red_dark</item>
+
+        <item name="fontFamily">@font/montserrat_regular_family</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+
+
+        <item name="android:statusBarColor">@color/gob_green_dark_plus</item>
+
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowTransitionBackgroundFadeDuration">1000</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="textoDGESUI">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/gob_dark</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+
+</resources>
