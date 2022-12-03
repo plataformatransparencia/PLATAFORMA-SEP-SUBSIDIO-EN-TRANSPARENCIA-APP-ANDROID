@@ -38,11 +38,10 @@ class MinistracionEstatalExtraordinariaFragment(
 
         ministracionExtraordinarioTituloMontoTotalMinistrado.visibility = View.VISIBLE
         ministracionExtraordinarioMontoTotalMinistrado.visibility = View.VISIBLE
-
-
+        var n = 1
         ministracion.apply {
-            //enviar a nueva pantalla con montos
             ministracionExtraordinariaMontos.adapter = MontosEstatalAdapter(estatal.ministracion, informacion, requireActivity())
+
             ministracionExtraordinarioMontoFederacion.text =
                 currencyFormatter.format(totales_adeudos.montoTotalSEP)
 

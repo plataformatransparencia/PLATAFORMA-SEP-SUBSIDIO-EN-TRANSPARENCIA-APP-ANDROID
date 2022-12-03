@@ -32,15 +32,15 @@ class MontosEstatalAdapter(
     override fun getItemCount(): Int = montos.size
 
     inner class Holder(private val view: View) : RecyclerView.ViewHolder(view) {
-
+        private var n =1
         fun bind(ministracion: Ministracion) {
-            view.linkTitle.text = currencyFormatter.format(ministracion.monto)
-            view.linkButton.setOnClickListener(
-                loadFragment(
-                    DetalleMinistracionExtraordinariaEstatal(informacion, ministracion),
-                    activity
+                view.linkTitle.text = currencyFormatter.format(ministracion.monto)
+                view.linkButton.setOnClickListener(
+                    loadFragment(
+                        DetalleMinistracionExtraordinariaEstatal(informacion, montos),
+                        activity
+                    )
                 )
-            )
         }
     }
 }
