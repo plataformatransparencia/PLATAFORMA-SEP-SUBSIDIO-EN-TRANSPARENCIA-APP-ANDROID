@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.fragment_ext_min_estatal.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.currencyFormatter
-import sep.dgesui.subsidioentransparencia.engineadapter.MontosEstatalAdapter
 import sep.dgesui.subsidioentransparencia.tableroext.minest.MinEstatalExt
 
 
@@ -38,14 +37,23 @@ class MinistracionEstatalExtraordinariaFragment(
 
         ministracionExtraordinarioTituloMontoTotalMinistrado.visibility = View.VISIBLE
         ministracionExtraordinarioMontoTotalMinistrado.visibility = View.VISIBLE
-        var n = 1
+        ministracionExtraordinariaMontos.visibility = View.GONE
+        montoTotalEstadoExtraordinario.visibility = View.VISIBLE
+        LinkTranferEstatalExtraordinario.visibility = View.VISIBLE
+        ministracionExtraordinarioMontoFederacion.visibility = View.GONE
         ministracion.apply {
-            ministracionExtraordinariaMontos.adapter = MontosEstatalAdapter(estatal.ministracion, informacion, requireActivity())
+            //ministracionExtraordinariaMontos.adapter = MontosEstatalAdapter(estatal.ministracion, informacion, requireActivity())
+            montoTotalEstadoExtraordinario.text = currencyFormatter.format(totales_adeudos.montoTotalSEP)
 
-            ministracionExtraordinarioMontoFederacion.text =
-                currencyFormatter.format(totales_adeudos.montoTotalSEP)
+//            ministracionExtraordinarioMontoFederacion.text =
+//                currencyFormatter.format(totales_adeudos.montoTotalEstado)
+            LinkTranferEstatalExtraordinario.text = currencyFormatter.format(totales_adeudos.montoTotalEstado)
+            LinkTranferEstatalExtraordinario.setOnClickListener{
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_fragment_container, DetalleMinistracionExtraordinariaEstatal(informacion,ministracion.estatal.ministracion))
+                    .addToBackStack(null).commit()
 
-
+            }
             ministracionExtraordinarioTituloAdeudoFederacion.text = String.format(
                 requireContext().getString(R.string.adeudo_estatal_corte),
                 totales_adeudos.adeudoEstatal?.fecha ?: ""

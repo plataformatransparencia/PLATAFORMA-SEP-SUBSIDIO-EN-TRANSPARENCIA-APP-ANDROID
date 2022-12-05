@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context=".fragments.MinistracionEstatalExtraordinariaFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -31,13 +32,14 @@
         android:id="@+id/ministracionExtraordinariaTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/tablero_estado_universidad"
         android:textAlignment="center"
         android:textColor="@color/gob_pink"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/ministracionExtraordinariaBack"
         app:layout_constraintTop_toBottomOf="@id/ministracionExtraordinariaHeader" />
 
@@ -79,7 +81,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:ignore="SpeakableTextPresentCheck"
                 tools:listitem="@layout/component_link" />
+
+            <TextView
+                android:id="@+id/montoTotalEstadoExtraordinario"
+                style="@style/textoDGESUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:visibility="gone"
+                tools:text="$1,000,000.00"
+                tools:visibility="visible" />
+
 
             <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
                 android:id="@+id/ministracionExtraordinariaFederalLink"
@@ -97,6 +111,18 @@
                 android:text="@string/monto_total_ministrado_estado"
                 android:textColor="@color/gob_pink" />
 
+            <Button
+                android:id="@+id/LinkTranferEstatalExtraordinario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/trans"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:fontFamily="@font/montserrat_regular_family"
+                android:gravity="start"
+                android:paddingTop="10dp"
+                android:visibility="gone"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/ministracionExtraordinarioMontoFederacion"
