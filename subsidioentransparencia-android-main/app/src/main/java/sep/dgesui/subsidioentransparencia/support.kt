@@ -7,6 +7,7 @@ import android.net.Uri
 import android.view.View
 import androidx.core.content.ContextCompat
 import sep.dgesui.subsidioentransparencia.fragments.Item
+import sep.dgesui.subsidioentransparencia.modelfilter.FilterValuesCache
 import java.text.NumberFormat
 import java.util.*
 
@@ -52,8 +53,15 @@ fun flattenItems(items: List<Item>): List<Item> =
     }
 
 
-fun currentYear(): String = Calendar.getInstance().get(Calendar.YEAR).toString()
-
+//fun currentYear(): String = Calendar.getInstance().get(Calendar.YEAR).toString()
+fun currentYear(): String = String.format("%s", getLastAnio())
+fun getLastAnio(): String {
+    if(FilterValuesCache.getFilterValuesIni().value != null){
+        return FilterValuesCache.getFilterValuesIni().value.toString()
+    }else{
+        return Calendar.getInstance().get(Calendar.YEAR).toString()
+    }
+}
 fun extraordinario(year: String, context: Context) =
     String.format(context.getString(R.string.upe_deficit_financiero), year)
 

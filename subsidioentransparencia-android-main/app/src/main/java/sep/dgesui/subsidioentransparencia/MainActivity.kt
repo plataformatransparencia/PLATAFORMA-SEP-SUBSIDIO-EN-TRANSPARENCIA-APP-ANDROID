@@ -3,6 +3,7 @@ package sep.dgesui.subsidioentransparencia
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.MenuItem
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_programs.*
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
@@ -19,6 +21,7 @@ import sep.dgesui.subsidioentransparencia.fragments.ContactFragment
 import sep.dgesui.subsidioentransparencia.fragments.ListFragment
 import sep.dgesui.subsidioentransparencia.fragments.MapsFragment
 import sep.dgesui.subsidioentransparencia.fragments.MenuFragment
+import sep.dgesui.subsidioentransparencia.modelfilter.FilterValuesCache
 import timber.log.Timber
 
 
@@ -37,6 +40,14 @@ class MainActivity : AppCompatActivity() {
         if (BuildConfig.DEBUG)
             Timber.plant(Timber.DebugTree())
 
+        var lastYearInfo = FilterValuesCache.getFilterValuesIni()
+        lastYearInfo.observe(this) {
+            if (lastYearInfo.value != null) {
+                if (filter.year != lastYearInfo.value ){
+                    filter.filtrar()
+                }
+            }
+        }
         setContentView(R.layout.activity_main)
 
         bottom_navigation.setOnNavigationItemSelectedListener { item: MenuItem ->

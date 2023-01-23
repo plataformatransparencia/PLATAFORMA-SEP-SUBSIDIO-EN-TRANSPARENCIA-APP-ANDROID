@@ -20,6 +20,7 @@ import timber.log.Timber
 class FilterValuesCache {
     companion object {
         private var filters = MutableLiveData<FilterValues>(null)
+        private var inicializacion = MutableLiveData<String>(null)
 
         fun getFilterValues(
             contexto: Context,
@@ -47,6 +48,33 @@ class FilterValuesCache {
 
                     }
                 filters
+            }
+        fun getFilterValuesIni(
+            dispatcher: CoroutineDispatcher = Dispatchers.IO
+        ): MutableLiveData<String> =
+            runBlocking {
+                if (inicializacion.value == null)
+                    launch(dispatcher) {
+                        TransparenciaRetrofit
+                            .serviceFactory(FiltroSubsidioService::class.java)
+                            .getFilterSubsidio()
+                            .enqueue(object : Callback<ResponseBody> {
+                                override fun onResponse(
+                                    call: Call<ResponseBody>,
+                                    response: Response<ResponseBody>
+                                ) {
+                                    var resultado = JSONObject(response.body()!!.string())
+                                    val xsub = resultado.getJSONObject("subsidios")
+                                    val years: List<String> = xsub.keys().asSequence().toList().reversed()
+                                    inicializacion.value = years.first().toString()
+                                }
+
+                                override fun onFailure(call: Call<ResponseBody>, t: Throwable) =
+                                    errorHandler(call, t)
+                            })
+
+                    }
+                inicializacion
             }
     }
 }
