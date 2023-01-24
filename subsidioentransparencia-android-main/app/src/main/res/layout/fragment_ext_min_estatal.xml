@@ -140,6 +140,8 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:text="@string/adeudo_federal_corte"
                 android:textColor="@color/gob_pink"
+                android:visibility="gone"
+                tools:visibility="visible"
                 tools:text="Adedudo Federal con corte al: 1 enero 2000" />
 
             <TextView
@@ -147,6 +149,8 @@
                 style="@style/textoDGESUI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible"
                 tools:text="$0.00" />
 
             <TextView

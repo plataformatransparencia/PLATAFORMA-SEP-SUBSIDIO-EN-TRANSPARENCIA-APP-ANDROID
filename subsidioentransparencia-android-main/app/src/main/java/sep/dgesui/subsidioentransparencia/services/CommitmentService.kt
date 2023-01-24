@@ -6,6 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import sep.dgesui.subsidioentransparencia.model.Compromisos
 import sep.dgesui.subsidioentransparencia.tableroext.compromisos.CompromisosExt
+import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.Compromiso
+import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.tablero.TableroCumplimientoPresupuestoWrapper
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.compromisos.CompromisoEstado
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.compromisos.CompromisoUniversidad
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.tablero.TableroCumplimientoWrapper
@@ -36,9 +38,21 @@ interface CommitmentService {
         @Path("id") idUniversidad: String
     ): Call<CompromisoUniversidad>
 
+    @GET("$serviceSection/{year}/{id}/subsidio_presupuesto/universidad")
+    fun getCompromisoUniversidadPresupuesto(
+        @Path("year") year: String,
+        @Path("id") idUniversidad: String
+    ): Call<Compromiso>
+
     @GET("$serviceSection/{year}/{id}/subsidio_profexce/tablero")
     fun getTableroCumplimiento(
         @Path("year") year: String,
         @Path("id") idUniversidad: String
     ): Call<TableroCumplimientoWrapper>
+
+    @GET("$serviceSection/{year}/{id}/subsidio_presupuesto/tablero")
+    fun getTableroCumplimientoPresupuesto(
+        @Path("year") year: String,
+        @Path("id") idUniversidad: String
+    ): Call<TableroCumplimientoPresupuestoWrapper>
 }

@@ -5,4 +5,5 @@ data class Referencias(
     val subsidio_extraordinario: Map<String, String>?,
     val subsidio_ordinario: SubsidioOrdinario?,
     val subsidio_profexce: SubsidioProfexce?,
+    val subsidio_presupuesto: SubsidioProfexce?,
 )

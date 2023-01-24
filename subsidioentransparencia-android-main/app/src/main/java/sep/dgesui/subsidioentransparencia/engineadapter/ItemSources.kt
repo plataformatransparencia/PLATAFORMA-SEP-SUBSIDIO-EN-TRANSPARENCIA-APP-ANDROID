@@ -9,6 +9,7 @@ import sep.dgesui.subsidioentransparencia.services.AccionesEmprenderService
 import sep.dgesui.subsidioentransparencia.services.CommitmentService
 import sep.dgesui.subsidioentransparencia.tableroext.acciones.Accion
 import sep.dgesui.subsidioentransparencia.tableroext.acciones.AccionesWrapper
+import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.Compromiso
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.compromisos.CompromisoEstado
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.compromisos.CompromisoUniversidad
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.compromisos.TablaMontoUniversidad
@@ -34,6 +35,41 @@ class ItemSources {
                         observacion = it.observacion
                     )
                 }
+            }
+
+    fun compromisosPresupuesto(idUniversidad: String, year: String): Map<String,List<Item>> =
+        compromisos
+            .getCompromisoUniversidadPresupuesto(year, idUniversidad)
+            .execute()
+            .let { response ->
+                val compromisos = response.body() ?: Compromiso(sep.dgesui.subsidioentransparencia.tableroext.presupuesto.CompromisoUniversidad(emptyList(),emptyList()))
+
+                val compromisosA = compromisos.compromisos.vertienteA.map {
+                    Item(
+                        descripcion = it.compromiso,
+                        cumplimiento = it.cumplimiento?: "",
+                        fechaCompromiso = it.fechaEjecucion ?: "",
+                        observacion = it.observacion?: ""
+                    )
+                }
+
+                var mapWithValues =  mapOf("compromisoA" to compromisosA)
+
+                if(compromisos.compromisos.vertienteC != null){
+                    val compromisosC = compromisos.compromisos.vertienteC.map {
+                        Item(
+                            descripcion = it.compromiso,
+                            cumplimiento = it.cumplimiento?: "",
+                            fechaCompromiso = it.fechaEjecucion ?: "",
+                            observacion = it.observacion?: ""
+                        )
+                    }
+                    if (compromisosC.isNotEmpty()){
+                        mapWithValues = mapWithValues.plus("compromisoC" to compromisosC)
+                    }
+                }
+
+                mapWithValues
             }
 
     fun compromisosProfexceEstado(idUniversidad: String, year: String): List<Item> =
@@ -71,7 +107,7 @@ class ItemSources {
                 val listaItems = compromisos.compromisos.map {
                     Item(
                         descripcion = it.compromiso,
-                        fechaCompromiso = it.fechaEntrega,
+                        fechaCompromiso = if(it.fechaEntrega != null )  it.fechaEntrega else "",
                         observacion = it.observacion
                     )
                 }
@@ -133,10 +169,10 @@ class ItemSources {
                 val compromisos = respuesta!!.compromisos?.map {
                     Item(
                         descripcion = it.compromiso,
-                        cumplimiento = it.cumplimiento,
+                        cumplimiento = it.cumplimiento?: "",
                         fechaCompromiso = it.fechaEstipulada,
-                        fechaEjecucion = it.fechaEjecucion,
-                        observacion = it.observacion,
+                        fechaEjecucion = it.fechaEjecucion ?: "",
+                        observacion = it.observacion?: "",
                     )
                 }
 
@@ -146,7 +182,7 @@ class ItemSources {
                             cumplimiento = it.cumplimiento,
                             fechaEstipulada = it.fechaEstipulada,
                             fechaEjecucion = it.fechaEjecucion,
-                            observacion = it.observacion,
+                            observacion = it.observacion?: "",
                         )
                     }
 

@@ -161,6 +161,10 @@ class DetalleFragment(
             "subsidio_ordinario" -> cargarReferenciasSubsidioOrdinario(
                 referencias,
             )
+            "subsidio_presupuesto" -> cargarReferenciasSubsidioPresupuesto(
+                referencias,
+            )
+
         }
 
     }
@@ -230,6 +234,27 @@ class DetalleFragment(
         }
     }
 
+    private fun cargarReferenciasSubsidioPresupuesto(
+        referencias: Referencias?,
+    ) {
+        notaRedondeo.visibility = View.VISIBLE
+
+        if (referencias?.subsidio_presupuesto?.anexo != null) {
+
+            titlereferenciaAnexoDetalle.text = String.format(
+                requireContext().getString(R.string.referencias_presupuesto)
+            )
+
+            referenciasAnexo.adapter =
+                ReferenciasAdapter(referencias.subsidio_presupuesto.anexo)
+
+        } else {
+            titlereferenciaAnexoDetalle.isVisible = false
+        }
+        titleOtrasReferencias.isVisible = false
+
+    }
+
     private fun loadDetalle() = runBlocking {
 
 
@@ -251,11 +276,21 @@ class DetalleFragment(
             if (montoFederal == 0.0 && montoEstatal == 0.0 && montoPublico > 0)
                 mapaMontos["Monto Público"] = montoPublico
 
-            if (montoFederal > 0)
-                mapaMontos["Monto Federal"] = montoFederal
+            if(subsidio.equals("subsidio_presupuesto")){
+                if (montoFederal > 0)
+                    mapaMontos["Convenio Vertiente A "] = montoFederal
 
-            if (montoEstatal > 0)
-                mapaMontos["Monto Estatal"] = montoEstatal
+                if (montoEstatal > 0)
+                    mapaMontos["Convenio Vertiente C"] = montoEstatal
+            }else{
+                if (montoFederal > 0)
+                    mapaMontos["Monto Federal"] = montoFederal
+
+                if (montoEstatal > 0)
+                    mapaMontos["Monto Estatal"] = montoEstatal
+            }
+
+
 
 
             notaMontoDecider.montos = mapaMontos
@@ -306,17 +341,67 @@ class DetalleFragment(
             }
 
         if (!detalle.convenio.isNullOrBlank())
-            buttonConvenio.apply {
-                visibility = View.VISIBLE
 
-                text = String.format(
-                    requireContext().getString(R.string.convenio),
-                    year
-                )
+            if(detalle.convenio.contains(",")){
+                val urls = detalle.convenio.split(",")
+                buttonConvenio.apply {
+                    visibility = View.VISIBLE
 
-                setOnClickListener(externalLink(detalle.convenio))
+                    text = String.format(
+                        requireContext().getString(R.string.convenio),
+                        "Vertiente A"
+                    )
+
+                    setOnClickListener(externalLink(urls[0]))
+
+                }
+
+                buttonConvenio2.apply {
+                    visibility = View.VISIBLE
+
+                    text = String.format(
+                        requireContext().getString(R.string.convenio),
+                        "Vertiente C"
+                    )
+
+                    setOnClickListener(externalLink(urls[1]))
+
+                }
+
+            }else{
+
+                when (subsidio) {
+                    "subsidio_presupuesto" -> {
+                        buttonConvenio.apply {
+                            visibility = View.VISIBLE
+
+                            text = String.format(
+                                requireContext().getString(R.string.convenio),
+                                "Vertiente A"
+                            )
+
+                            setOnClickListener(externalLink(detalle.convenio))
+
+                        }
+                    }
+                    else -> {
+                        buttonConvenio.apply {
+                            visibility = View.VISIBLE
+
+                            text = String.format(
+                                requireContext().getString(R.string.convenio),
+                                year
+                            )
+
+                            setOnClickListener(externalLink(detalle.convenio))
+
+                        }
+                    }
+                }
 
             }
+
+
     }
 
     private fun cargarNumeralia(detalle: Detalle) {

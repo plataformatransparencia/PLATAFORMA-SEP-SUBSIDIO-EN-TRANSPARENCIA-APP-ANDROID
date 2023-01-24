@@ -4,11 +4,8 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.*
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
-import sep.dgesui.subsidioentransparencia.extraordinario
-import sep.dgesui.subsidioentransparencia.ordinario
-import sep.dgesui.subsidioentransparencia.profexe
 
 
 fun formatHeader(filter: Filter, area: View, text: TextView, context: Context) {
@@ -35,6 +32,15 @@ fun formatHeader(filter: Filter, area: View, text: TextView, context: Context) {
             )
             text.text = profexe(filter.year, context)
         }
+        "subsidio_presupuesto" -> {
+            area.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.gob_wine
+                )
+            )
+            text.text = extrau079(filter.year, context)
+        }
         else -> text.text = ordinario(filter.year, context)
     }
 }
@@ -44,13 +50,14 @@ fun getTitle(context: Context, subsidio: String): String =
     when (subsidio) {
         "subsidio_extraordinario" -> context.getString(R.string.upe_deficit_financiero)
         "subsidio_profexce" -> context.getString(R.string.upe_profexe)
+        "subsidio_presupuesto" -> context.getString(R.string.upe_u079)
         else -> context.getString(R.string.upe_ordinario)
 
     }
 
 fun paletaColores(context: Context, subsidio: String): PaletaColores =
     when (subsidio) {
-        "subsidio_extraordinario", "subsidio_profexce" -> PaletaColores(
+        "subsidio_extraordinario", "subsidio_profexce","subsidio_presupuesto" -> PaletaColores(
             ContextCompat.getColor(
                 context,
                 R.color.gob_wine

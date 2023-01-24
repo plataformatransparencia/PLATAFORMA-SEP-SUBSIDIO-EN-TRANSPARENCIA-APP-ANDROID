@@ -120,6 +120,42 @@
                 custom:dgesui_linkLabel="@string/obras_remodelaciones"
                 tools:visibility="visible" />
 
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonInformes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/informes"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonSeguimientoEntregas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/seguimiento_entrega"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonTESOFE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/tesofe"
+                tools:visibility="visible" />
+
+            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+                android:id="@+id/buttonCierreCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                custom:dgesui_linkLabel="@string/cierre_cuenta"
+                tools:visibility="visible" />
+
 
             <TextView
                 android:id="@+id/title_referencias"

@@ -596,6 +596,24 @@
                 tools:text="Convenio 2000"
                 tools:visibility="visible" />
 
+            <Button
+                android:id="@+id/buttonConvenio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/gob_wine"
+                android:drawableLeft="@drawable/ic_dowload_file"
+                android:drawablePadding="5dp"
+                android:font="@font/montserrat_bold"
+                android:padding="10dp"
+                android:textColor="@color/gob_white_white"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/buttonConvenio"
+                tools:text="Convenio 2002"
+                tools:visibility="visible" />
+
             <TextView
                 android:id="@+id/titleTableroDetalle"
                 android:layout_width="wrap_content"
@@ -606,7 +624,7 @@
                 android:textColor="@color/gob_dark"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
-                app:layout_constraintTop_toBottomOf="@+id/buttonConvenioMarco" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonConvenio2" />
 
             <Button
                 android:id="@+id/linkCompromisosEstado"
@@ -642,6 +660,40 @@
                 app:layout_constraintTop_toBottomOf="@+id/linkCompromisosEstado"
                 tools:visibility="visible" />
 
+            <Button
+                android:id="@+id/linkCompromisosUniversidadA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/compromiso_universidad_a"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCompromisosUniversidad"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkCompromisosUniversidadC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/compromiso_universidad_c"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCompromisosUniversidadA"
+                tools:visibility="visible" />
+
 
             <Button
                 android:id="@+id/linkCompromisos"
@@ -657,7 +709,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/margen_derecho"
                 app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
-                app:layout_constraintTop_toBottomOf="@+id/linkCompromisosUniversidad"
+                app:layout_constraintTop_toBottomOf="@+id/linkCompromisosUniversidadC"
                 tools:visibility="visible" />
 
             <Button
@@ -765,6 +817,40 @@
                 tools:visibility="visible" />
 
             <Button
+                android:id="@+id/linkCumplimientoMinistracionesSEUVA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tablero_sep_estado_universidad_a"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCumplimientoMinistracionesSEU"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/linkCumplimientoMinistracionesSEUVC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tablero_sep_estado_universidad_c"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_pink"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/margen_derecho"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/linkCumplimientoMinistracionesSEUVA"
+                tools:visibility="visible" />
+
+            <Button
                 android:id="@+id/linkCumplimientoMinistracionesEU"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -778,7 +864,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/margen_derecho"
                 app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
-                app:layout_constraintTop_toBottomOf="@+id/linkCumplimientoMinistracionesSEU"
+                app:layout_constraintTop_toBottomOf="@+id/linkCumplimientoMinistracionesSEUVC"
                 tools:visibility="visible" />
 
 

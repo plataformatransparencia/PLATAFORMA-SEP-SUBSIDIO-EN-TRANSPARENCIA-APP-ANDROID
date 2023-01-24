@@ -8,11 +8,13 @@ import kotlinx.android.synthetic.main.fragment_detalle.*
 import kotlinx.coroutines.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.engineadapter.CumplimientoRepository
 import sep.dgesui.subsidioentransparencia.engineadapter.ItemSources
 import sep.dgesui.subsidioentransparencia.engineadapter.MinistracionRepository
 
 private val itemSources = ItemSources()
 private val ministracionesRepository = MinistracionRepository()
+private val repositoryCumplimiento = CumplimientoRepository()
 
 fun activarTableros(
     detalle: DetalleFragment,
@@ -30,6 +32,7 @@ fun activarTableros(
                 activity
             )
             "subsidio_profexce" -> activarSubsidioProfexe(informacion, detalle, activity)
+            "subsidio_presupuesto" -> activarSubsidioExtraordinarioPresupuesto(informacion, detalle, activity)
         }
     }
 
@@ -189,7 +192,8 @@ private fun activarSubsidioExtraordinario(
                         loadFragment(
                             MinistracionFederalExtraordinariaFragment(
                                 informacion,
-                                ministracionFederal
+                                ministracionFederal,
+                                null
                             ), activity
                         )
                     )
@@ -281,7 +285,8 @@ private fun activarSubsidioExtraordinario(
                         loadFragment(
                             MinistracionFederalExtraordinariaFragment(
                                 informacion,
-                                ministracionFederalExtraordinaria
+                                ministracionFederalExtraordinaria,
+                                null
                             ),
                             activity
                         )
@@ -293,6 +298,103 @@ private fun activarSubsidioExtraordinario(
 
         }
     }
+}
+
+private fun activarSubsidioExtraordinarioPresupuesto(
+    informacion: InformacionGeneralWrapper,
+    detalle: DetalleFragment,
+    activity: FragmentActivity,
+    dispatcher: CoroutineDispatcher = Dispatchers.IO
+) = runBlocking {
+
+
+
+    launch {
+
+        val compromisos = withContext(dispatcher) {
+            itemSources.compromisosPresupuesto(informacion.id, informacion.year)
+        }
+
+        detalle.linkCompromisosUniversidadA.isVisible = true
+        detalle.linkCompromisosUniversidadA.setOnClickListener(
+            loadFragment(
+                ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoA")!!), activity
+            )
+        )
+
+        if(compromisos.containsKey("compromisoC")){
+            detalle.linkCompromisosUniversidadC.isVisible = true
+            detalle.linkCompromisosUniversidadC.setOnClickListener(
+                loadFragment(
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoC")!!), activity
+                )
+            )
+        }
+
+    }
+
+    launch {
+        val ministracionFederalExtraordinaria =
+            withContext(dispatcher) {
+                ministracionesRepository.ministracionFederalExtraordinarioPresupuedto(
+                    informacion.id,
+                    informacion.year
+                )
+            }
+
+        if (ministracionFederalExtraordinaria != null) {
+            detalle.linkCumplimientoMinistracionesSEUVA.isVisible = true
+            detalle.linkCumplimientoMinistracionesSEUVA.setOnClickListener(
+                loadFragment(
+                    MinistracionFederalExtraordinariaFragment(
+                        informacion,
+                        null,
+                        ministracionFederalExtraordinaria!!.federal.ministracionA
+                    ),
+                    activity
+                )
+            )
+
+        }
+
+        if (ministracionFederalExtraordinaria!!.federal.ministracionC != null) {
+
+            detalle.linkCumplimientoMinistracionesSEUVC.isVisible = true
+            detalle.linkCumplimientoMinistracionesSEUVC.setOnClickListener(
+                loadFragment(
+                    MinistracionFederalExtraordinariaFragment(
+                        informacion,
+                        null,
+                        ministracionFederalExtraordinaria!!.federal.ministracionC
+                    ),
+                    activity
+                )
+            )
+
+        }
+    }
+
+    launch {
+        val tablero = withContext(dispatcher) {
+            repositoryCumplimiento.tableroPresupuesto(
+                informacion.id,
+                informacion.year
+            )?.tablero_cumplimiento
+        }
+
+        detalle.linkTableroCumplimiento.isVisible = true
+        detalle.linkTableroCumplimiento.setOnClickListener(
+            loadFragment(
+                CumplimentoPresupuestoFragment(informacion,tablero!!),
+                activity
+            )
+        )
+    }
+
+
+
+
+
 }
 
 

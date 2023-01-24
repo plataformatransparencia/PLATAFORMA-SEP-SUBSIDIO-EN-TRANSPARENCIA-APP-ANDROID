@@ -6,6 +6,7 @@ import sep.dgesui.subsidioentransparencia.tablero.MinFederal
 import sep.dgesui.subsidioentransparencia.tablero.estado.MinEstatal
 import sep.dgesui.subsidioentransparencia.tableroext.minest.MinEstatalExt
 import sep.dgesui.subsidioentransparencia.tableroext.minfed.MinFederalExt
+import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.tablero.MinFederalPres
 
 class MinistracionRepository {
     private val federal = TransparenciaRetrofit.serviceFactory(MinFederalService::class.java)
@@ -32,6 +33,11 @@ class MinistracionRepository {
 
     fun ministracionFederalExtraordinario(id: String, year: String): MinFederalExt? =
         federal.getMinFederalExt(year, id)
+            .execute()
+            .body()
+
+    fun ministracionFederalExtraordinarioPresupuedto(id: String, year: String): MinFederalPres? =
+        federal.getMinFederalPresupuesto(year, id)
             .execute()
             .body()
 }

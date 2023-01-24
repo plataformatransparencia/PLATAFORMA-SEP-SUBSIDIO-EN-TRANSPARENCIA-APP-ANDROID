@@ -71,6 +71,9 @@ fun ordinario(year: String, context: Context) =
 fun profexe(year: String, context: Context) =
     String.format(context.getString(R.string.upe_profexe), year)
 
+fun extrau079(year: String, context: Context) =
+    String.format(context.getString(R.string.upe_u079), year)
+
 const val porcentaje_template = "%1.1f%%"
 
 val localeMX = Locale("es", "MX")

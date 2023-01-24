@@ -237,6 +237,7 @@
     <string name="upe_deficit_financiero">Universidades Públicas Estatales con Déficit Financiero %1$s</string>
     <string name="upe_ordinario">Subsidio Ordinario %1$s</string>
     <string name="upe_profexe">Fortalecimiento a la Excelencia Educativa %1$s</string>
+    <string name="upe_u079">Programa de Expansión de Educación Media Superior y Superior (U079) %1$s</string>
 
     <string name="label_compromiso">Compromiso</string>
     <string name="fecha_estipulada">Fecha estipulada⁷</string>
@@ -275,10 +276,15 @@
     <string name="convenio_marco">Convenio marco de Colaboración</string>
     <string name="tablero">Tablero</string>
     <string name="compromiso_universidad">Compromiso de la Universidad</string>
+    <string name="compromiso_universidad_a">Compromiso de la Universidad Vertiente A</string>
+    <string name="compromiso_universidad_c">Compromiso de la Universidad Vertiente C</string>
     <string name="acciones_gobierno_estado">Acciones por emprender por el gobierno de estado</string>
     <string name="tablero_sep_estado_universidad">Tablero de Cumplimiento de Ministraciones, Aportación Federal: SEP - ESTADO - UNIVERSIDAD</string>
+    <string name="tablero_sep_estado_universidad_a">Tablero de Cumplimiento de Ministraciones Vertiente A, Aportación Federal: SEP - ESTADO - UNIVERSIDAD</string>
+    <string name="tablero_sep_estado_universidad_c">Tablero de Cumplimiento de Ministraciones Vertiente C, Aportación Federal: SEP - ESTADO - UNIVERSIDAD</string>
     <string name="tablero_estado_universidad">Tablero de Cumplimiento de Ministraciones, Aportación Estatal: ESTADO - UNIVERSIDAD</string>
     <string name="referencias_anexo">Referencias de acuerdo al anexo de ejecución %1$s</string>
+    <string name="referencias_presupuesto">Referencias convenio de apoyo en el marco del Programa de Expansión de la Educación Media Superior y Superior, para el tipo superior U079</string>
     <string name="otras_referencias">Otras Referencias</string>
     <string name="compromisos">Compromisos</string>
     <string name="acciones_emprendidas">Acciones emprendidas</string>
@@ -353,4 +359,11 @@
     <string name="nota_ordinario_estatal">Nota: Los datos son proporcionados por la institución. En caso de requerir mayor información será necesario contactar a la Universidad.</string>
     <string name="monto">Monto</string>
     <string name="transferencia_estado_universidad_ext">Transferencia Estado a Universidad</string>
+
+
+    <string name="informes">Informes</string>
+    <string name="seguimiento_entrega">Seguimiento de la entrega de los estados de cuenta de la cuenta productiva específica</string>
+    <string name="tesofe">Seguimiento de reintegros a la TESOFE</string>
+    <string name="cierre_cuenta">Cierre de la cuenta productiva específica</string>
+
 </resources>
