@@ -115,8 +115,9 @@ class FilterFragment(
         spAñoFiltro.onItemSelectedListener = listenerFactory(selectedYear)
         spTipoSubsidio.onItemSelectedListener = listenerFactory(selectedTipoSubsidio)
         spSubsidio.onItemSelectedListener = listenerFactory(selectedSubsidio)
-        spCategoriaFiltro.onItemSelectedListener = listenerFactory(selectedClasificacion)
-        spEstadosFiltro.onItemSelectedListener = listenerFactory(selectedEstado)
+
+        spCategoriaFiltro.onItemSelectedListener = listenerFactoryTwo(selectedClasificacion)
+        spEstadosFiltro.onItemSelectedListener = listenerFactoryTwo(selectedEstado)
     }
 
     override fun onCreateView(
@@ -132,8 +133,28 @@ class FilterFragment(
                 position: Int,
                 id: Long
             ) {
+               if (parent?.getItemAtPosition(position) != "Todos")
+                    target.value = (parent?.getItemAtPosition(position) as String)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                parent?.setSelection(0)
+            }
+        }
+
+    private fun listenerFactoryTwo(target: MutableLiveData<*>): AdapterView.OnItemSelectedListener =
+        object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 if (parent?.getItemAtPosition(position) != "Todos")
                     target.value = (parent?.getItemAtPosition(position) as String)
+                else{
+                    target.value = "Todos"
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -189,15 +210,18 @@ class FilterFragment(
 
         val claveSubsidio = filterValues.value?.subsidios?.llaveDeValor(year, subsidio) ?: ""
 
-        val estados =
-            filterValues.value?.categorias?.forSubsidioAndYearAndClasificacion(
-                claveSubsidio,
-                year,
-                clasificacion
-            ) ?: emptyList()
+        if(clasificacion != "Todos"){
+            val estados =
+                filterValues.value?.categorias?.forSubsidioAndYearAndClasificacion(
+                    claveSubsidio,
+                    year,
+                    clasificacion
+                ) ?: emptyList()
 
-        spEstadosFiltro.adapter = arrayAdapterFactory(estados)
-        spEstadosFiltro.setSelection(0)
+            spEstadosFiltro.adapter = arrayAdapterFactory(estados)
+            spEstadosFiltro.setSelection(0)
+        }
+
 
     }
 
