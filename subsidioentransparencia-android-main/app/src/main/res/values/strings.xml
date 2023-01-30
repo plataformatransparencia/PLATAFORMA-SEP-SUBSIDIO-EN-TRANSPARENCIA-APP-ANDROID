@@ -273,7 +273,7 @@
     <string name="numeralia_subsidio_por_alumno_publico">Subsidio por alumno (federal y estatal)⁵</string>
     <string name="numeralia_porcentaje_federal">Porcentaje de participación de la Federación⁵</string>
     <string name="numeralia_porcentaje_estatal">Porcentaje de participación del Estado⁵</string>
-    <string name="convenio_marco">Convenio marco de Colaboración</string>
+    <string name="convenio_marco">Convenio marco de Colaboración %1$d</string>
     <string name="tablero">Tablero</string>
     <string name="compromiso_universidad">Compromiso de la Universidad</string>
     <string name="compromiso_universidad_a">Compromiso de la Universidad Vertiente A</string>

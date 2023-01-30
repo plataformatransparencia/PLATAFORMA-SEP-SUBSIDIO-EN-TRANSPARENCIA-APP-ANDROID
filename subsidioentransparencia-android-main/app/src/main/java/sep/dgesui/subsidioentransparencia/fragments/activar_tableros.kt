@@ -315,20 +315,50 @@ private fun activarSubsidioExtraordinarioPresupuesto(
             itemSources.compromisosPresupuesto(informacion.id, informacion.year)
         }
 
-        detalle.linkCompromisosUniversidadA.isVisible = true
-        detalle.linkCompromisosUniversidadA.setOnClickListener(
-            loadFragment(
-                ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoA")!!), activity
-            )
-        )
+        if(compromisos.containsKey("compromisoC") && compromisos.containsKey("compromisoA")){
 
-        if(compromisos.containsKey("compromisoC")){
+
+            detalle.linkCompromisosUniversidadA.isVisible = true
+            detalle.linkCompromisosUniversidadA.setOnClickListener(
+                loadFragment(
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoA")!!), activity
+                )
+            )
+
             detalle.linkCompromisosUniversidadC.isVisible = true
             detalle.linkCompromisosUniversidadC.setOnClickListener(
                 loadFragment(
                     ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoC")!!), activity
                 )
             )
+        }else if(compromisos.containsKey("compromisoC") ){
+
+            detalle.linkCompromisosUniversidad.isVisible = true
+            detalle.linkCompromisosUniversidad.setOnClickListener(
+                loadFragment(
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoC")!!), activity
+                )
+            )
+
+        }else if(compromisos.containsKey("compromisoB") ){
+
+            detalle.linkCompromisosUniversidad.isVisible = true
+            detalle.linkCompromisosUniversidad.setOnClickListener(
+                loadFragment(
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoB")!!), activity
+                )
+            )
+
+        }
+        else if(compromisos.containsKey("compromisoA") ){
+
+            detalle.linkCompromisosUniversidad.isVisible = true
+            detalle.linkCompromisosUniversidad.setOnClickListener(
+                loadFragment(
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoA")!!), activity
+                )
+            )
+
         }
 
     }
@@ -342,22 +372,22 @@ private fun activarSubsidioExtraordinarioPresupuesto(
                 )
             }
 
-        if (ministracionFederalExtraordinaria != null) {
-            detalle.linkCumplimientoMinistracionesSEUVA.isVisible = true
-            detalle.linkCumplimientoMinistracionesSEUVA.setOnClickListener(
-                loadFragment(
-                    MinistracionFederalExtraordinariaFragment(
-                        informacion,
-                        null,
-                        ministracionFederalExtraordinaria!!.federal.ministracionA
-                    ),
-                    activity
+        if (ministracionFederalExtraordinaria!!.federal.ministracionA != null && ministracionFederalExtraordinaria!!.federal.ministracionC != null  ) {
+
+            if (ministracionFederalExtraordinaria != null) {
+                detalle.linkCumplimientoMinistracionesSEUVA.isVisible = true
+                detalle.linkCumplimientoMinistracionesSEUVA.setOnClickListener(
+                    loadFragment(
+                        MinistracionFederalExtraordinariaFragment(
+                            informacion,
+                            null,
+                            ministracionFederalExtraordinaria!!.federal.ministracionA
+                        ),
+                        activity
+                    )
                 )
-            )
 
-        }
-
-        if (ministracionFederalExtraordinaria!!.federal.ministracionC != null) {
+            }
 
             detalle.linkCumplimientoMinistracionesSEUVC.isVisible = true
             detalle.linkCumplimientoMinistracionesSEUVC.setOnClickListener(
@@ -370,6 +400,57 @@ private fun activarSubsidioExtraordinarioPresupuesto(
                     activity
                 )
             )
+
+        }else if (ministracionFederalExtraordinaria!!.federal.ministracionC != null){
+
+            if (ministracionFederalExtraordinaria != null) {
+                detalle.linkCumplimientoMinistracionesSEU.isVisible = true
+                detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                    loadFragment(
+                        MinistracionFederalExtraordinariaFragment(
+                            informacion,
+                            null,
+                            ministracionFederalExtraordinaria!!.federal.ministracionC
+                        ),
+                        activity
+                    )
+                )
+
+            }
+
+        }else if (ministracionFederalExtraordinaria!!.federal.ministracionB != null){
+
+            if (ministracionFederalExtraordinaria != null) {
+                detalle.linkCumplimientoMinistracionesSEU.isVisible = true
+                detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                    loadFragment(
+                        MinistracionFederalExtraordinariaFragment(
+                            informacion,
+                            null,
+                            ministracionFederalExtraordinaria!!.federal.ministracionB
+                        ),
+                        activity
+                    )
+                )
+
+            }
+
+        }else if (ministracionFederalExtraordinaria!!.federal.ministracionA != null){
+
+            if (ministracionFederalExtraordinaria != null) {
+                detalle.linkCumplimientoMinistracionesSEU.isVisible = true
+                detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                    loadFragment(
+                        MinistracionFederalExtraordinariaFragment(
+                            informacion,
+                            null,
+                            ministracionFederalExtraordinaria!!.federal.ministracionA
+                        ),
+                        activity
+                    )
+                )
+
+            }
 
         }
     }

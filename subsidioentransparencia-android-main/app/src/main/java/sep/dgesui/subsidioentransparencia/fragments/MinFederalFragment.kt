@@ -89,8 +89,8 @@ class MinFederalFragment(
             4 -> ministracionFederal.federal.informes.subsidio_ordinario.trimestre4 to ministracionFederal.federal.informes.rendicion_cuentas.trimestre1
             else -> throw RuntimeException("El trimestre debe tener un valor entero en el intervalo cerrado [1,4]")
         }.let {
-            Item(cumplimiento = it.first.cumplimiento, observacion = it.first.observacion) to
-                    Item(cumplimiento = it.second.cumplimiento, observacion = it.second.observacion)
+            Item(cumplimiento = it.first.cumplimiento, observacion = it.first.observacion,porcentajeIncremento =null) to
+                    Item(cumplimiento = it.second.cumplimiento, observacion = it.second.observacion,porcentajeIncremento =null)
         }.let {
             DetalleReporteFragment(
                 informacion,
@@ -104,7 +104,7 @@ class MinFederalFragment(
             4 -> ministracionFederal.federal.informes.matricula.semestre2
             else -> null
         }?.let {
-            Item(cumplimiento = it.cumplimiento, observacion = it.observacion)
+            Item(cumplimiento = it.cumplimiento, observacion = it.observacion,porcentajeIncremento =null)
         }?.let {
             DetalleReporteFragment(informacion, titulReporteMatricula, it)
         }

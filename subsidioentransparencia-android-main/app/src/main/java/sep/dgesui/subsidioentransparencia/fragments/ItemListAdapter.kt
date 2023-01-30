@@ -17,6 +17,7 @@ data class Item(
     val observacion: String = "",
     val imagen: String = "",
     val subacciones: List<Item>? = emptyList(),
+    val porcentajeIncremento: Double?,
 )
 
 

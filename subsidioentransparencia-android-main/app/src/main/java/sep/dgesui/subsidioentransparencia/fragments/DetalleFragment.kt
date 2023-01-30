@@ -334,7 +334,7 @@ class DetalleFragment(
 
                 text = String.format(
                     requireContext().getString(R.string.convenio_marco),
-                    year
+                    detalle.MarcoAnio
                 )
 
                 setOnClickListener(externalLink(detalle.MarcoColaboracion))
@@ -347,24 +347,28 @@ class DetalleFragment(
                 buttonConvenio.apply {
                     visibility = View.VISIBLE
 
+                    val tipoConvenio = urls[0].split("*")
+
                     text = String.format(
                         requireContext().getString(R.string.convenio),
-                        "Vertiente A"
+                        "Vertiente "+tipoConvenio[0]
                     )
 
-                    setOnClickListener(externalLink(urls[0]))
+                    setOnClickListener(externalLink(tipoConvenio[1]))
 
                 }
 
                 buttonConvenio2.apply {
                     visibility = View.VISIBLE
 
+                    val tipoConvenio = urls[1].split("*")
+
                     text = String.format(
                         requireContext().getString(R.string.convenio),
-                        "Vertiente C"
+                        "Vertiente "+tipoConvenio[0]
                     )
 
-                    setOnClickListener(externalLink(urls[1]))
+                    setOnClickListener(externalLink(tipoConvenio[1]))
 
                 }
 
@@ -375,12 +379,14 @@ class DetalleFragment(
                         buttonConvenio.apply {
                             visibility = View.VISIBLE
 
+                            val tipoConvenio = detalle.convenio.split("*")
+
                             text = String.format(
                                 requireContext().getString(R.string.convenio),
-                                "Vertiente A"
+                                "Vertiente "+tipoConvenio[0]
                             )
 
-                            setOnClickListener(externalLink(detalle.convenio))
+                            setOnClickListener(externalLink(tipoConvenio[1]))
 
                         }
                     }

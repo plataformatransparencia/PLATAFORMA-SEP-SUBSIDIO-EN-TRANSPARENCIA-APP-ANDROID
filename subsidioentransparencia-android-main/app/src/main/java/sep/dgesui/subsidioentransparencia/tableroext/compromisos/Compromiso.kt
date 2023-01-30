@@ -5,5 +5,6 @@ data class Compromiso(
     val cumplimiento: String?,
     val fechaEjecucion: String?,
     val fechaEstipulada: String,
-    val observacion: String?
+    val observacion: String?,
+    val porcentaje_incremento: Double?
 )

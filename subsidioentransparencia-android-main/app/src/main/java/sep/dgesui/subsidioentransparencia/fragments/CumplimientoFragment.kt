@@ -175,6 +175,7 @@ class CumplimientoFragment(
         fechaCompromiso = fechaLimite,
         fechaEjecucion = fechaEntrega,
         cumplimiento = cumplimiento,
-        observacion = observacion
+        observacion = observacion,
+        porcentajeIncremento = null
     )
 }

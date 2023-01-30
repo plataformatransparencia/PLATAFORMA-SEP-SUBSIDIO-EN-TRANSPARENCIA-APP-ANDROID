@@ -18,6 +18,7 @@ data class Detalle(
         val planAusteridad: String,
         val convenio: String?,
         val MarcoColaboracion: String?,
+        val MarcoAnio: Int?,
         val numeralia: Numeralia
 )
 

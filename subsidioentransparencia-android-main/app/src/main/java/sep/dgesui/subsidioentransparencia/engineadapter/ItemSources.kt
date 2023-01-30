@@ -32,7 +32,8 @@ class ItemSources {
                         descripcion = it.compromiso,
                         cumplimiento = it.cumplimiento,
                         fechaCompromiso = it.fecha,
-                        observacion = it.observacion
+                        observacion = it.observacion,
+                        porcentajeIncremento = null
                     )
                 }
             }
@@ -42,18 +43,35 @@ class ItemSources {
             .getCompromisoUniversidadPresupuesto(year, idUniversidad)
             .execute()
             .let { response ->
-                val compromisos = response.body() ?: Compromiso(sep.dgesui.subsidioentransparencia.tableroext.presupuesto.CompromisoUniversidad(emptyList(),emptyList()))
+                val compromisos = response.body() ?: Compromiso(sep.dgesui.subsidioentransparencia.tableroext.presupuesto.CompromisoUniversidad(emptyList(),emptyList(),emptyList()))
+                var mapWithValues = mapOf<String,List<Item>>()
 
-                val compromisosA = compromisos.compromisos.vertienteA.map {
-                    Item(
-                        descripcion = it.compromiso,
-                        cumplimiento = it.cumplimiento?: "",
-                        fechaCompromiso = it.fechaEjecucion ?: "",
-                        observacion = it.observacion?: ""
-                    )
+                if(compromisos.compromisos.vertienteA != null){
+                    val compromisosA = compromisos.compromisos.vertienteA.map {
+                        Item(
+                            descripcion = it.compromiso,
+                            cumplimiento = it.cumplimiento?: "",
+                            fechaCompromiso = it.fechaEjecucion ?: "",
+                            observacion = it.observacion?: "",
+                            porcentajeIncremento = it.porcentaje_incremento
+                        )
+                    }
+                    mapWithValues =  mapWithValues.plus("compromisoA" to compromisosA)
                 }
 
-                var mapWithValues =  mapOf("compromisoA" to compromisosA)
+                if(compromisos.compromisos.vertienteB != null){
+                    val compromisosB = compromisos.compromisos.vertienteB.map {
+                        Item(
+                            descripcion = it.compromiso,
+                            cumplimiento = it.cumplimiento?: "",
+                            fechaCompromiso = it.fechaEjecucion ?: "",
+                            observacion = it.observacion?: "",
+                            porcentajeIncremento = it.porcentaje_incremento
+                        )
+                    }
+                    mapWithValues =  mapWithValues.plus("compromisoB" to compromisosB)
+                }
+
 
                 if(compromisos.compromisos.vertienteC != null){
                     val compromisosC = compromisos.compromisos.vertienteC.map {
@@ -61,7 +79,8 @@ class ItemSources {
                             descripcion = it.compromiso,
                             cumplimiento = it.cumplimiento?: "",
                             fechaCompromiso = it.fechaEjecucion ?: "",
-                            observacion = it.observacion?: ""
+                            observacion = it.observacion?: "",
+                            porcentajeIncremento = it.porcentaje_incremento
                         )
                     }
                     if (compromisosC.isNotEmpty()){
@@ -83,7 +102,8 @@ class ItemSources {
                     Item(
                         descripcion = it.compromiso,
                         fechaCompromiso = it.fechaEntrega,
-                        observacion = it.observacion
+                        observacion = it.observacion,
+                        porcentajeIncremento = null
                     )
                 }
             }
@@ -108,7 +128,8 @@ class ItemSources {
                     Item(
                         descripcion = it.compromiso,
                         fechaCompromiso = if(it.fechaEntrega != null )  it.fechaEntrega else "",
-                        observacion = it.observacion
+                        observacion = it.observacion,
+                        porcentajeIncremento = null
                     )
                 }
 
@@ -173,6 +194,7 @@ class ItemSources {
                         fechaCompromiso = it.fechaEstipulada,
                         fechaEjecucion = it.fechaEjecucion ?: "",
                         observacion = it.observacion?: "",
+                        porcentajeIncremento = null
                     )
                 }
 
@@ -257,6 +279,7 @@ class ItemSources {
                 fechaCompromiso = subaccion.fechaEstipulada,
                 cumplimiento = subaccion.cumplimiento,
                 observacion = subaccion.observacion,
+                porcentajeIncremento = null
             )
         }
 
@@ -268,6 +291,7 @@ class ItemSources {
             observacion = it.observacion,
             subacciones = subaccionesItems,
             imagen = it.imagen ?: "",
+            porcentajeIncremento = null
         )
     }
 

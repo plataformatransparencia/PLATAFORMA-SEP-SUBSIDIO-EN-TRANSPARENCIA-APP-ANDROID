@@ -64,7 +64,15 @@ open class DetalleCompromisoUniversidadFragment(
                     requireActivity()
                 )
             )
+        }
 
+        if(item.porcentajeIncremento != null){
+            compromiso_card.visibility = View.GONE
+            detalleObservaciones.visibility = View.GONE
+            detalleSubtitleObservaviones.visibility = View.GONE
+            porcentajeIncrementoDetalle.visibility = View.VISIBLE
+            val porcentaje = item.porcentajeIncremento
+            porcentajeIncrementoDetalle.text = "$porcentaje % Incremento"
         }
     }
 }
