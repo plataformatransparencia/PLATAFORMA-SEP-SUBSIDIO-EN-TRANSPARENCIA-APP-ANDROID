@@ -44,15 +44,9 @@ class CumplimentoPresupuestoFragment(
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        val itemsInformes = ArrayList<ItemPresupuesto>()
-
-        itemsInformes.add(tablero.Informes.Primer_trimestre_academico.toItem())
-        itemsInformes.add(tablero.Informes.Primer_trimestre_publicacion.toItem())
-        itemsInformes.add(tablero.Informes.Segundo_trimestre_academico.toItem())
-        itemsInformes.add(tablero.Informes.Segundo_trimestre_publicacion.toItem())
-        itemsInformes.add(tablero.Informes.Final_academico.toItem())
-        itemsInformes.add(tablero.Informes.Oficio.toItem())
-        itemsInformes.add(tablero.Informes.Recursos_financieros.toItem())
+        val itemsInformes = tablero.Informes.map {
+            it.toItem()
+        }
 
         buttonInformes.apply {
             visibility = View.VISIBLE
@@ -76,12 +70,10 @@ class CumplimentoPresupuestoFragment(
             )
         }
 
-        val itemsTESOFE = ArrayList<ItemPresupuesto>()
+        val itemsTESOFE = tablero.Reintegro_TESOFE.map {
+            it.toItem()
+        }
 
-        itemsTESOFE.add(tablero.Reintegro_TESOFE.No_comprobado.toItem())
-        itemsTESOFE.add(tablero.Reintegro_TESOFE.Primera_revision_generado.toItem())
-        itemsTESOFE.add(tablero.Reintegro_TESOFE.Comprometidos.toItem())
-        itemsTESOFE.add(tablero.Reintegro_TESOFE.Segunda_revision_generado.toItem())
 
         buttonTESOFE.apply {
             visibility = View.VISIBLE

@@ -256,7 +256,7 @@
     <string name="ir_a">Ir a %1$s</string>
     <string name="ficha_general">Ficha General</string>
     <string name="direccion">Dirección</string>
-    <string name="rector">Rector</string>
+    <string name="rector">Rector(a)</string>
     <string name="lbl_sitio_transparencia">Sitio de transparencia de la Universidad</string>
     <string name="ir_a_sitio">Ir a sitio</string>
     <string name="plan_de_austeridad">Plan de austeridad</string>
@@ -301,7 +301,7 @@
     <string name="deposito_estado">Depósito Estado</string>
     <string name="deposito_universidad">Depósido Universidad</string>
     <string name="accion">Acción</string>
-    <string name="gobernador_estado">Gobernador del Estado</string>
+    <string name="gobernador_estado">Gobernador(a) del Estado</string>
     <string name="acciones_por_emprender_estado">Acciones por emprender por el Gobierno del Estado</string>
     <string name="convenio">Convenio %1$s</string>
     <string name="nota_redondeo">Nota: El monto total de las ministraciones expresadas en esta tabla puede diferir de la suma establecida en el Anexo de Ejecución debido al redondeo.</string>
