@@ -74,7 +74,7 @@ fun profexe(year: String, context: Context) =
 fun extrau079(year: String, context: Context) =
     String.format(context.getString(R.string.upe_u079), year)
 
-const val porcentaje_template = "%1.1f%%"
+const val porcentaje_template = "%1.2f%%"
 
 val localeMX = Locale("es", "MX")
 

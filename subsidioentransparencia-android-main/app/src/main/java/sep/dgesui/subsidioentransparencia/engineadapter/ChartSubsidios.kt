@@ -14,6 +14,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import kotlinx.android.synthetic.main.layout_chart.view.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.fragments.paletaColores
+import java.text.DecimalFormat
 
 class ChartSubsidios
 @JvmOverloads
@@ -44,8 +45,11 @@ constructor(
         dataset.colors = paleta.asList()
         val pieData = PieData(dataset)
         pieData.setValueTextSize(17F)
+
+        val formater = PercentFormatter(chart)
+        formater.mFormat = DecimalFormat("###,###,##0.00")
         pieData.setValueTextColor(ContextCompat.getColor(context, R.color.white))
-        pieData.setValueFormatter(PercentFormatter(chart))
+        pieData.setValueFormatter(formater)
 
         chart.data = pieData
 
