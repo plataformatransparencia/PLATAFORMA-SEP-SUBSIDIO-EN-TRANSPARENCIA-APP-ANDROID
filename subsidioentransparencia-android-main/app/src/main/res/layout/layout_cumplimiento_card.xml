@@ -146,6 +146,25 @@
             android:textColor="@color/gob_dark"
             android:textSize="10sp" />
 
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bextemp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="invisible"
+            app:cardBackgroundColor="@color/gob_pink"
+            app:cardCornerRadius="60dp" />
+        <TextView
+            android:id="@+id/textemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:visibility="invisible"
+            android:text="@string/label_extemporanea"
+            android:textColor="@color/gob_dark"
+            android:textSize="10sp" />
+
+
     </LinearLayout>
 
     <LinearLayout

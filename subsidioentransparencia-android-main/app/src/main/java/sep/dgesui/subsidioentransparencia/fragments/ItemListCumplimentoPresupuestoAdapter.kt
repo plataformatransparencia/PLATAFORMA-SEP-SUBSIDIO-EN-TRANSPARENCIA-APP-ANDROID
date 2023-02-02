@@ -15,6 +15,7 @@ data class ItemPresupuesto(
     val fechaCompromiso: String = "",
     val fechaEjecucion: String = "",
     val observacion: String = "",
+    var tipo: String = "",
 
 )
 

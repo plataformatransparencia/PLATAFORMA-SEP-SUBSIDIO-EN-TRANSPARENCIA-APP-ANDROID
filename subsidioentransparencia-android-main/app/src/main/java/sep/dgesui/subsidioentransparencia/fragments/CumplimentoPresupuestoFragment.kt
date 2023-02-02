@@ -106,7 +106,8 @@ class CumplimentoPresupuestoFragment(
         fechaCompromiso = fechaLimite,
         fechaEjecucion = fechaEntrega,
         cumplimiento = cumplimiento,
-        observacion = observacion
+        observacion = observacion,
+        tipo = "Fecha de entrega"
     )
 
     private fun DetalleCumplimientoPresupuesto.toItem(): ItemPresupuesto = ItemPresupuesto(
@@ -114,7 +115,8 @@ class CumplimentoPresupuestoFragment(
         fechaCompromiso = fechaLimite,
         fechaEjecucion = fechaEntrega,
         cumplimiento = cumplimiento,
-        observacion = observacion
+        observacion = observacion,
+        tipo = "Fecha de entrega"
     )
 
     private fun Cierre.toItem(): ItemPresupuesto = ItemPresupuesto(
@@ -122,7 +124,8 @@ class CumplimentoPresupuestoFragment(
         fechaCompromiso = fechaLimite,
         fechaEjecucion = fechaComprobacion,
         cumplimiento = cumplimiento,
-        observacion = observacion
+        observacion = observacion,
+        tipo = "Fecha de comprobación"
     )
 
     private fun TESOFE.toItem(): ItemPresupuesto = ItemPresupuesto(
@@ -130,7 +133,8 @@ class CumplimentoPresupuestoFragment(
         fechaCompromiso = fechaLimite,
         fechaEjecucion = fechaReintegro,
         cumplimiento = cumplimiento,
-        observacion = observacion
+        observacion = observacion,
+        tipo =  "Fecha de reintegro"
     )
 
 
