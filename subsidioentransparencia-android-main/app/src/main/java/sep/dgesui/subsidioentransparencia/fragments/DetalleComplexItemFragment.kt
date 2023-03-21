@@ -69,7 +69,8 @@ class DetalleTableroCumplimientoProfexceFragment(
             informacion.year,
             requireContext()
         )
-        detalleAccionBack.setOnClickListener { requireActivity().onBackPressed() }
+        detalleAccionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        //detalleAccionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         accionesDescripcion.text = item.descripcion
         fechaLimite.text = item.fechaCompromiso

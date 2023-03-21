@@ -27,32 +27,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/listTitle"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/listBackButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:font="@font/montserrat_bold"
-        android:textAlignment="center"
-        android:textColor="@color/gob_dark"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
-        app:layout_constraintStart_toEndOf="@id/listBackButton"
-        app:layout_constraintTop_toBottomOf="@id/listHeader"
-        tools:text="Título de la lista" />
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center|start"
+        app:layout_constraintTop_toBottomOf="@id/listHeader">
 
-    <ImageButton
-        android:id="@+id/listBackButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="10dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/back_button_description"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/listTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/listTitle" />
+        <ImageButton
+            android:id="@+id/listBackButtonImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:contentDescription="@string/back_button_description"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/listTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/listTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:font="@font/montserrat_bold"
+            android:textAlignment="center"
+            android:textColor="@color/gob_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
+            app:layout_constraintStart_toEndOf="@id/listBackButtonImage"
+            tools:text="Título de la lista" />
+
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -60,7 +71,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
         app:layout_constraintStart_toStartOf="@id/list_margen_izquierdo"
-        app:layout_constraintTop_toBottomOf="@id/listTitle">
+        app:layout_constraintTop_toBottomOf="@id/listBackButton">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -120,41 +131,98 @@
                 custom:dgesui_linkLabel="@string/obras_remodelaciones"
                 tools:visibility="visible" />
 
-            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+
+            <Button
                 android:id="@+id/buttonInformes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:font="@font/montserrat_bold"
+                android:text="@string/informes"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="19dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listTitle"
+                app:layout_constraintVertical_bias="0.043"
                 android:layout_marginTop="10dp"
                 android:visibility="gone"
-                custom:dgesui_linkLabel="@string/informes"
-                tools:visibility="visible" />
+                tools:visibility="visible"/>
 
-            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+            <Button
                 android:id="@+id/buttonSeguimientoEntregas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:font="@font/montserrat_bold"
+                android:text="@string/seguimiento_entrega"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="19dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonInformes"
+                app:layout_constraintVertical_bias="0.043"
                 android:layout_marginTop="10dp"
                 android:visibility="gone"
-                custom:dgesui_linkLabel="@string/seguimiento_entrega"
-                tools:visibility="visible" />
+                tools:visibility="visible"/>
 
-            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+            <Button
                 android:id="@+id/buttonTESOFE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:font="@font/montserrat_bold"
+                android:text="@string/tesofe"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="19dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonInformes"
+                app:layout_constraintVertical_bias="0.043"
                 android:layout_marginTop="10dp"
                 android:visibility="gone"
-                custom:dgesui_linkLabel="@string/tesofe"
-                tools:visibility="visible" />
+                tools:visibility="visible"/>
 
-            <sep.dgesui.subsidioentransparencia.components.TransparenciaLinkComponent
+            <Button
                 android:id="@+id/buttonCierreCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:font="@font/montserrat_bold"
+                android:text="@string/cierre_cuenta"
+                android:textAlignment="textStart"
+                android:textColor="@color/gob_dark"
+                android:textSize="19dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonInformes"
+                app:layout_constraintVertical_bias="0.043"
                 android:layout_marginTop="10dp"
                 android:visibility="gone"
-                custom:dgesui_linkLabel="@string/cierre_cuenta"
-                tools:visibility="visible" />
+                tools:visibility="visible"/>
 
 
             <TextView

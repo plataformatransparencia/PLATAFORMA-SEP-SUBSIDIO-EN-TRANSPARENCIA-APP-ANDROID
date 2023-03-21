@@ -28,30 +28,65 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
+    <LinearLayout
         android:id="@+id/resumenMinistracionBack"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@color/trans"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/resumenMinistracionTitulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/resumenMinistracionTitulo" />
-
-    <TextView
-        android:id="@+id/resumenMinistracionTitulo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:textAlignment="center"
-        android:textColor="@color/gob_wine"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="@id/resumenMinistracion_margen_derecho"
-        app:layout_constraintStart_toEndOf="@id/resumenMinistracionBack"
-        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionHeader"
-        tools:text="Tipo de resumen" />
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center|start"
+        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionHeader">
+
+        <ImageButton
+            android:id="@+id/resumenMinistracionBackImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:contentDescription="@string/back_button_description"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/listTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/resumenMinistracionTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:font="@font/montserrat_bold"
+            android:textAlignment="center"
+            android:textColor="@color/gob_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
+            app:layout_constraintStart_toEndOf="@id/resumenMinistracionBackImage"
+            tools:text="Título de la lista" />
+
+    </LinearLayout>
+<!--    <ImageButton-->
+<!--        android:id="@+id/resumenMinistracionBack"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:background="@color/trans"-->
+<!--        android:src="@drawable/ic_arrow_left"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/resumenMinistracionTitulo"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/resumenMinistracionTitulo" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/resumenMinistracionTitulo"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:fontFamily="@font/montserrat_regular"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/gob_wine"-->
+<!--        android:textSize="23sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/resumenMinistracion_margen_derecho"-->
+<!--        app:layout_constraintStart_toEndOf="@id/resumenMinistracionBack"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionHeader"-->
+<!--        tools:text="Tipo de resumen" />-->
 
 
     <androidx.core.widget.NestedScrollView
@@ -59,7 +94,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/resumenMinistracion_margen_derecho"
         app:layout_constraintStart_toStartOf="@id/resumenMinistracion_margen_izquierod"
-        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionTitulo">
+        app:layout_constraintTop_toBottomOf="@id/resumenMinistracionBack">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

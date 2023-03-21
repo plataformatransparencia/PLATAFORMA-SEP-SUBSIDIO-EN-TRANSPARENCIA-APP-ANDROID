@@ -347,6 +347,7 @@
     <string name="informeMatricula">Informe semestral de Matrícula Auditada</string>
     <string name="label_incompleta">Incompleta</string>
     <string name="label_complementada">Complementada</string>
+    <string name="label_proceso">En Proceso</string>
     <string name="label_extemporanea">Extemporánea</string>
     <string name="transferencia_sep_estado">Transferencia SEP a Estado</string>
     <string name="transferencia_estado_universidad">Transferencia Estado a Unviersidad \u2077<sup>,</sup>\u2078</string>

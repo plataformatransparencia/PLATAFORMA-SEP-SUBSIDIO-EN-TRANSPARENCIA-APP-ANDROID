@@ -25,9 +25,10 @@ class CardSimpleComponent @JvmOverloads constructor(
 
     fun showData(cumplimiento: String, year: String) {
 
-        if (year.toInt() >= yearWithExtraKeys)
+        if (year.toInt() >= yearWithExtraKeys) {
             cardKeysExtraSimple.visibility = View.VISIBLE
-
+            cardKeysExtraSimple2.visibility = View.VISIBLE
+        }
         circuloCumplimientoSimple.setCardBackgroundColor(
             getColorCumplimiento(
                 cumplimiento,

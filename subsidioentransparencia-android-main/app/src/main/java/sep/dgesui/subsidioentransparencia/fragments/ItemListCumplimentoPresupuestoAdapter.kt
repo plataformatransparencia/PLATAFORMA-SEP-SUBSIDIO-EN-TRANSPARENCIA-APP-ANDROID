@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_lista_elementos_card.view.*
+import kotlinx.android.synthetic.main.university_item.view.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.model.Universidade
 
 data class ItemPresupuesto(
     val descripcion: String = "",
@@ -43,15 +46,23 @@ class ItemListCumplimientoPresupuestoRecyclerAdapter(
     inner class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: ItemPresupuesto) {
             view.descripcion.text = item.descripcion
-
-            if (targetFactory != null)
+            if (targetFactory != null) {
+                view.descripcion.setOnClickListener(
+                    loadFragment(
+                        targetFactory.invoke(item),
+                        activity
+                    )
+                )
                 view.flecha_ir.setOnClickListener(
                     loadFragment(
                         targetFactory.invoke(item),
                         activity
                     )
                 )
+            }
         }
 
+
     }
+
 }

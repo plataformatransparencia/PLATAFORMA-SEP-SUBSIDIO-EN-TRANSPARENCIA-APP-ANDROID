@@ -112,7 +112,7 @@ class DetalleFragment(
                 requireContext()
             )
 
-            buttonBackList.setOnClickListener {
+            generalesUniversidad.setOnClickListener {
                 if (back_to_page == "map"){
                     requireActivity().supportFragmentManager.beginTransaction().apply {
                         replace(

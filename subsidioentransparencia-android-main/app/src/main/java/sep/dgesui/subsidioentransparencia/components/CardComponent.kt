@@ -30,7 +30,8 @@ class CardComponent @JvmOverloads constructor(
     }
 
     fun showExtra() {
-        cardKeysExtra.visibility = View.VISIBLE
+        //cardKeysExtra.visibility = View.VISIBLE
+        //cardKeysExtra2.visibility = View.VISIBLE
     }
 
 

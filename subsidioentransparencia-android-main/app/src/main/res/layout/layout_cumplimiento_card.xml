@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:font="@font/montserrat_bold"
+
             android:text="@string/label_cumplimiento"
             android:textColor="@color/gob_pink"
             android:textSize="15sp"
@@ -65,9 +66,11 @@
 
         <TextView
             android:id="@+id/cardTitleFechaEjecucion"
-            android:layout_width="wrap_content"
+            android:layout_width="137dp"
             android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
             android:font="@font/montserrat_bold"
+            android:gravity="center_horizontal"
             android:text="@string/fecha_ejecucion"
             android:textColor="@color/gob_pink"
             android:textSize="15sp"
@@ -154,15 +157,16 @@
             android:visibility="invisible"
             app:cardBackgroundColor="@color/gob_pink"
             app:cardCornerRadius="60dp" />
+
         <TextView
             android:id="@+id/textemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:visibility="invisible"
             android:text="@string/label_extemporanea"
             android:textColor="@color/gob_dark"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:visibility="invisible" />
 
 
     </LinearLayout>
@@ -184,6 +188,21 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/gob_gold"
+            app:cardCornerRadius="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/label_proceso"
+            android:textColor="@color/gob_dark"
+            android:textSize="10sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="@color/gob_red_dark"
             app:cardCornerRadius="60dp" />
 
@@ -192,21 +211,6 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="@string/label_incompleta"
-            android:textColor="@color/gob_dark"
-            android:textSize="10sp" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="@color/green_extra_dark"
-            app:cardCornerRadius="60dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="@string/label_complementada"
             android:textColor="@color/gob_dark"
             android:textSize="10sp" />
 
@@ -225,5 +229,36 @@
             android:textSize="10sp" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardKeysExtra2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardKeysExtra"
+        tools:visibility="visible">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/green_extra_dark"
+            app:cardCornerRadius="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/label_complementada"
+            android:textColor="@color/gob_dark"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
 
 </merge>

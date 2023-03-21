@@ -20,6 +20,7 @@ fun getColorCumplimiento(cumplimiento: String, context: Context?): Int {
         "No cumplió" -> ContextCompat.getColor(context, R.color.red)
         "En revisión" -> ContextCompat.getColor(context, R.color.yellow)
         "Incompleta" -> ContextCompat.getColor(context, R.color.gob_red_dark)
+        "En proceso" -> ContextCompat.getColor(context, R.color.gob_gold)
         "Complementada" -> ContextCompat.getColor(context, R.color.green_extra_dark)
         "Extemporánea" -> ContextCompat.getColor(context, R.color.gob_pink)
         else -> Color.TRANSPARENT

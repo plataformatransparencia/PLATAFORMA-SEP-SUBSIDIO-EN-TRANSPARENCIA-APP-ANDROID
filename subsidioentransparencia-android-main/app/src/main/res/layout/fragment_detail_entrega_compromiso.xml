@@ -44,34 +44,69 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/botonAtras"
+            <LinearLayout
+                android:id="@+id/buttonBackEntregaCompromiso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nombreUniversidad">
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center|start"
+                app:layout_constraintTop_toBottomOf="@id/detalleMinistracionHeader">
 
                 <ImageButton
-                    android:id="@+id/buttonBackEntregaCompromiso"
+                    android:id="@+id/buttonBackEntregaCompromisoImage"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_margin="10dp"
                     android:background="@android:color/transparent"
+                    android:clickable="false"
+                    android:contentDescription="@string/back_button_description"
                     android:src="@drawable/ic_arrow_left"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="@id/detalleMinistracionTitulo"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/detalleMinistracionTitulo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_compromiso"
+                    android:layout_marginRight="10dp"
+                    android:clickable="false"
+                    android:font="@font/montserrat_bold"
+                    android:textAlignment="center"
                     android:textColor="@color/gob_pink"
+                    android:text="@string/label_compromiso"
                     android:textSize="23sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toEndOf="@id/listBackButtonImage"
+                    />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:id="@+id/botonAtras"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/nombreUniversidad">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/buttonBackEntregaCompromiso"-->
+<!--                    android:layout_width="35dp"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:src="@drawable/ic_arrow_left"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/label_compromiso"-->
+<!--                    android:textColor="@color/gob_pink"-->
+<!--                    android:textSize="23sp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cuerpo"
@@ -79,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/botonAtras">
+                app:layout_constraintTop_toBottomOf="@id/buttonBackEntregaCompromiso">
 
                 <TextView
                     android:id="@+id/etiquetaCompromiso"

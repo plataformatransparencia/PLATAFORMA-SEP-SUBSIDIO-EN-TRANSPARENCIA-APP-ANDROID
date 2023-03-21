@@ -1,6 +1,7 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_item_list.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.tablero.*
+import kotlin.math.log
 
 class CumplimentoPresupuestoFragment(
     protected val informacion: InformacionGeneralWrapper,
@@ -29,8 +31,8 @@ class CumplimentoPresupuestoFragment(
         return inflater.inflate(R.layout.fragment_item_list, container, false)
     }
 
-    open fun loadData() {
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //loadData()
         listHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
@@ -47,58 +49,42 @@ class CumplimentoPresupuestoFragment(
         val itemsInformes = tablero.Informes.map {
             it.toItem()
         }
-
-        buttonInformes.apply {
-            visibility = View.VISIBLE
-            setTarget(
-                loadFragment( ListaCumplimientoPresupuestoFragment(informacion,itemsInformes,R.string.seguimiento_entrega), requireActivity()
-                )
-            )
-
+        buttonInformes.visibility = View.VISIBLE
+        buttonInformes.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.main_fragment_container,
+                ListaCumplimientoPresupuestoFragment(informacion,itemsInformes,R.string.seguimiento_entrega)
+            ).addToBackStack(null).commit()
         }
-
         val itemsSeguimiento = tablero.Seguimiento_de_entrega.map {
             it.toItem()
         }
-
-        buttonSeguimientoEntregas.apply {
-            visibility = View.VISIBLE
-
-            setTarget(
-                loadFragment( ListaCumplimientoPresupuestoFragment(informacion,itemsSeguimiento,R.string.seguimiento_entrega), requireActivity()
-                )
-            )
+        buttonSeguimientoEntregas.visibility = View.VISIBLE
+        buttonSeguimientoEntregas.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.main_fragment_container,
+                ListaCumplimientoPresupuestoFragment(informacion,itemsSeguimiento,R.string.seguimiento_entrega)
+            ).addToBackStack(null).commit()
         }
-
         val itemsTESOFE = tablero.Reintegro_TESOFE.map {
             it.toItem()
         }
-
-
-        buttonTESOFE.apply {
-            visibility = View.VISIBLE
-            setTarget(
-                loadFragment( ListaCumplimientoPresupuestoFragment(informacion,itemsTESOFE,R.string.seguimiento_entrega), requireActivity()
-                )
-            )
-
+        buttonTESOFE.visibility = View.VISIBLE
+        buttonTESOFE.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.main_fragment_container,
+                ListaCumplimientoPresupuestoFragment(informacion,itemsTESOFE,R.string.seguimiento_entrega)
+            ).addToBackStack(null).commit()
         }
-
         val itemsCierreCuenta = ArrayList<ItemPresupuesto>()
         itemsCierreCuenta.add(tablero.Cierre_productiva.toItem())
-
-        buttonCierreCuenta.apply {
-            visibility = View.VISIBLE
-            setTarget(
-                loadFragment( ListaCumplimientoPresupuestoFragment(informacion,itemsCierreCuenta,R.string.seguimiento_entrega), requireActivity()
-                )
-            )
-
+        buttonCierreCuenta.visibility = View.VISIBLE
+        buttonCierreCuenta.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.main_fragment_container,
+                ListaCumplimientoPresupuestoFragment(informacion,itemsCierreCuenta,R.string.seguimiento_entrega)
+            ).addToBackStack(null).commit()
         }
-
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        loadData()
     }
 
     private fun Entrega.toItem(): ItemPresupuesto = ItemPresupuesto(

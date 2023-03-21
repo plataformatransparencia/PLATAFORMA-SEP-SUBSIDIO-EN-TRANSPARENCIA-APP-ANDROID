@@ -26,39 +26,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/etapaTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:font="@font/montserrat_bold"
-        android:text="@string/etapas"
-        android:textAlignment="textStart"
-        android:textColor="@color/gob_wine"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="@id/etapa_margen_derecho"
-        app:layout_constraintStart_toEndOf="@id/etapaBackButton"
-        app:layout_constraintTop_toBottomOf="@id/etapaHeader" />
-
-    <ImageButton
+    <LinearLayout
         android:id="@+id/etapaBackButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="10dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/back_button_description"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/etapaTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/etapaTitle" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center|start"
+        app:layout_constraintTop_toBottomOf="@id/etapaHeader">
+
+        <ImageButton
+            android:id="@+id/etapaBackButtonImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:contentDescription="@string/back_button_description"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/etapaTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/etapaTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:font="@font/montserrat_bold"
+            android:text="@string/etapas"
+            android:textColor="@color/gob_wine"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/etapaBackButtonImage"
+            tools:text="$1,000,000.00" />
+
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/etapa_margen_derecho"
         app:layout_constraintStart_toStartOf="@id/etapa_margen_izquierdo"
-        app:layout_constraintTop_toBottomOf="@id/etapaTitle">
+        app:layout_constraintTop_toBottomOf="@id/etapaBackButton">
 
         <LinearLayout
             android:layout_width="match_parent"

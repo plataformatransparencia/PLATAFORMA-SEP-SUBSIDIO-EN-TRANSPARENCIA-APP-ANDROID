@@ -27,37 +27,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <LinearLayout
         android:id="@+id/detalleMinistracionBack"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@color/trans"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintBottom_toBottomOf="@id/detalleMinistracionTitulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/detalleMinistracionTitulo" />
-
-    <TextView
-        android:id="@+id/detalleMinistracionTitulo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:textAlignment="center"
-        android:textColor="@color/gob_wine"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="@id/detalleMinistracion_margen_derecho"
-        app:layout_constraintStart_toEndOf="@id/detalleMinistracionBack"
-        app:layout_constraintTop_toBottomOf="@id/detalleMinistracionHeader"
-        tools:text="Mes" />
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center|start"
+        app:layout_constraintTop_toBottomOf="@id/detalleMinistracionHeader">
 
+        <ImageButton
+            android:id="@+id/listBackButtonImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:contentDescription="@string/back_button_description"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/detalleMinistracionTitulo"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/detalleMinistracionTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:font="@font/montserrat_bold"
+            android:textAlignment="center"
+            android:textColor="@color/gob_wine"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/listBackButtonImage"
+            tools:text="mes" />
+
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/detalleMinistracion_margen_derecho"
         app:layout_constraintStart_toStartOf="@id/detalleMinistracion_margen_izquierod"
-        app:layout_constraintTop_toBottomOf="@id/detalleMinistracionTitulo">
+        app:layout_constraintTop_toBottomOf="@id/detalleMinistracionBack">
 
         <LinearLayout
             android:layout_width="match_parent"
