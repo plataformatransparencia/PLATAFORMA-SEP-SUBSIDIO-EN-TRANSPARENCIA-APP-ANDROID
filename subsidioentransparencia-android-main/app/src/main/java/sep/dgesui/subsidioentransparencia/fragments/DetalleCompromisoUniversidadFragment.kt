@@ -1,6 +1,7 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,9 @@ import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detalle_compromiso_universidad.*
 import kotlinx.android.synthetic.main.fragment_detalle_compromiso_universidad.view.*
+import kotlinx.android.synthetic.main.fragment_filter.*
+import kotlinx.android.synthetic.main.layout_compromiso_card.view.*
+import kotlinx.android.synthetic.main.layout_cumplimiento_card.view.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import sep.dgesui.subsidioentransparencia.ListaAccionesEtapas2018
@@ -40,6 +44,14 @@ open class DetalleCompromisoUniversidadFragment(
         detalleDescripcion.text = item.descripcion
         compromiso_card.setValues(item.cumplimiento, item.fechaCompromiso)
         detalleObservaciones.text = item.observacion
+        /*Se agrega condicion para cambiar el "Cumplió por Cumple" y "No cumplió por No cumple"
+        para los compromisos del subsidio ordinario unicamente, para cambiar todos de todos los subsidios
+        cambiar nombres en archivo "layout_cumplimiento_car.xml*/
+        if(informacion.subsidio == "subsidio_ordinario"){
+            compromiso_card.cardKeys.cplio.setText(getString(R.string.label_cumple))
+            compromiso_card.cardKeys.ncplio.setText(getString(R.string.label_no_cumple))
+        }
+
 
         if (item.imagen.isNotBlank()) {
 

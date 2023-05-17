@@ -244,7 +244,9 @@
     <string name="label_cumplimiento">Cumplimiento</string>
     <string name="fecha_reunion">Fecha de reunión</string>
     <string name="label_cumplio">Cumplió</string>
+    <string name="label_cumple">Cumple</string>
     <string name="label_no_cumplio">No cumplió</string>
+    <string name="label_no_cumple">No cumple</string>
     <string name="label_en_revision">En revisión</string>
     <string name="label_observaciones">Observaciones</string>
     <string name="label_referencias">Referencias</string>

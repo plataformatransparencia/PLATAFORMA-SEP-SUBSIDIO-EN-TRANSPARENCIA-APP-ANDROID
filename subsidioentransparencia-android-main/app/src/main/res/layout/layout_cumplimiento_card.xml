@@ -113,6 +113,7 @@
             app:cardCornerRadius="60dp" />
 
         <TextView
+            android:id="@+id/cplio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -128,6 +129,7 @@
             app:cardCornerRadius="60dp" />
 
         <TextView
+            android:id="@+id/ncplio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
