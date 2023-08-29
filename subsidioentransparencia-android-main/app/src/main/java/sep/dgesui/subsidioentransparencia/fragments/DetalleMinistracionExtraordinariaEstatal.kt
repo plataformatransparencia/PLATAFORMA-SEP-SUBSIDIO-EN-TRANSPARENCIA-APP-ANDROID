@@ -46,7 +46,9 @@ class DetalleMinistracionExtraordinariaEstatal(
             informacin.year,
             requireContext()
         )
-        detalleMinistracionExtraordinariaBackTransfer.setOnClickListener { requireActivity().onBackPressed() }
+        detalleMinistracionExtraordinariaBackTransfer.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
         detalleMinistracionExtraordinariaTitleTransfer.text = currencyFormatter.format(ministracion[0].monto)
 
         val params = LinearLayout.LayoutParams(

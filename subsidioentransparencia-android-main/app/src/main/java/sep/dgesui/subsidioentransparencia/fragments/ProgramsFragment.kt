@@ -105,7 +105,3 @@ class ProgramsFragment : Fragment() {
 
 
 }
-
-private fun LinearLayout.addView(view1: String) {
-
-}

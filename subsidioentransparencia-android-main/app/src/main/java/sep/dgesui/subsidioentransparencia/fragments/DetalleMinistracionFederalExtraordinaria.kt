@@ -30,7 +30,9 @@ class DetalleMinistracionFederalExtraordinaria(
             informacion.nombreUniversidad, informacion.subsidio, informacion.year, requireContext()
         )
 
-        detalleMinistracionExtraordinariaBack.setOnClickListener { requireActivity().onBackPressed() }
+        detalleMinistracionExtraordinariaBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(ministracion.monto)
 

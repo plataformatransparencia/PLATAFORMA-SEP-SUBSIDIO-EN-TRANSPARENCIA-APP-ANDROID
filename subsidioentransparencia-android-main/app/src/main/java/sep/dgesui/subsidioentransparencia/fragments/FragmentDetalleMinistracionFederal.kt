@@ -33,7 +33,7 @@ class FragmentDetalleMinistracionFederal(
             requireContext()
         )
 
-        detalleMinistracionBack.setOnClickListener { requireActivity().onBackPressed() }
+        detalleMinistracionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
         detalleMinistracionTitulo.text = mes
 
         datos.sep_estado.apply {
@@ -77,7 +77,7 @@ class FragmentDetalleMinistracionEstatal(
             requireContext()
         )
 
-        detalleMinistracionBack.setOnClickListener { requireActivity().onBackPressed() }
+        detalleMinistracionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
         detalleMinistracionTitulo.text = mes
 
         semaforoSEPEstado.visibility = View.GONE

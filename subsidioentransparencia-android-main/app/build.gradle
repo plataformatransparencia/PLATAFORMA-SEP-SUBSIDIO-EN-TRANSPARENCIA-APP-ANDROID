@@ -23,15 +23,15 @@ sonarqube
         }
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion '32.0.0'
-
+    compileSdkVersion = 33
+    buildToolsVersion = '33.0.1'
+    namespace = "sep.dgesui.subsidioentransparencia"
     defaultConfig {
         applicationId "sep.dgesui.subsidioentransparencia"
-        minSdkVersion 21
-        targetSdkVersion 32
-        versionCode 119
-        versionName "1.2.14"
+        minSdkVersion 26
+        targetSdkVersion 33
+        versionCode 120
+        versionName "1.2.15"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

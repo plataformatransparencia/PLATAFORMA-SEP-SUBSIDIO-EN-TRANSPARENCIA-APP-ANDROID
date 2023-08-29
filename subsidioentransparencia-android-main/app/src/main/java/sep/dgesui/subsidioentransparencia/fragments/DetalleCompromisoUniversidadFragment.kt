@@ -39,7 +39,9 @@ open class DetalleCompromisoUniversidadFragment(
             requireContext()
         )
 
-        detalleBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        detalleBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         detalleDescripcion.text = item.descripcion
         compromiso_card.setValues(item.cumplimiento, item.fechaCompromiso)

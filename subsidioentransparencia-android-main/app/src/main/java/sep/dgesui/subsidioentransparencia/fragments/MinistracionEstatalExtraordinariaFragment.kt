@@ -33,7 +33,7 @@ class MinistracionEstatalExtraordinariaFragment(
             requireContext()
         )
 
-        ministracionExtraordinariaBack.setOnClickListener { requireActivity().onBackPressed() }
+        ministracionExtraordinariaBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         ministracionExtraordinarioTituloMontoTotalMinistrado.visibility = View.VISIBLE
         ministracionExtraordinarioMontoTotalMinistrado.visibility = View.VISIBLE

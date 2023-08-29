@@ -38,7 +38,7 @@ class ListaAccionesUADECExtraordinario2019(
 
         listTitle.text = tituloLista
 
-        listBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         listItemsRecycler.adapter =
             ItemListCardRecyclerAdapter(acciones, requireActivity(), targetFactory)

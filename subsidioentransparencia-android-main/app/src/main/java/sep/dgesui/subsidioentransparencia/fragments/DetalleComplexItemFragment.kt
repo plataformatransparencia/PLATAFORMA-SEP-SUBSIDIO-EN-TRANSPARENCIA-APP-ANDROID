@@ -37,7 +37,9 @@ class DetalleComplexItemFragment(
             informacion.year,
             requireContext()
         )
-        detalleAccionBack.setOnClickListener { requireActivity().onBackPressed() }
+        detalleAccionBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         detalleAccionTitle.text = titulo
         subtitulo.text = titulo

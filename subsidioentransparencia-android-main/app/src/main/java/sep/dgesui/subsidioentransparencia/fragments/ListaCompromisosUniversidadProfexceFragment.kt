@@ -38,7 +38,7 @@ class ListaCompromisosUniversidadProfexceFragment(
             requireContext()
         )
 
-        detalleUniversidadProfexceBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        detalleUniversidadProfexceBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
 
         compromisosUniversidadRecycler.adapter =

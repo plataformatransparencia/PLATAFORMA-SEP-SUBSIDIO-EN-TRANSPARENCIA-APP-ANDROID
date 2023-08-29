@@ -34,7 +34,7 @@ class MinistracionFederalExtraordinariaFragment(
             informacion.nombreUniversidad, informacion.subsidio, informacion.year, requireContext()
         )
 
-        ministracionExtraordinariaBack.setOnClickListener { requireActivity().onBackPressed() }
+        ministracionExtraordinariaBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         ministracionExtraordinariaTitle.text =
             context?.getString(R.string.tablero_sep_estado_universidad)

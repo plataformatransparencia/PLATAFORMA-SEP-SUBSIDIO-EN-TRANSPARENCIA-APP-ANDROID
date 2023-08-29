@@ -32,7 +32,9 @@ class CumplimientoFragment(
 
         labelCumplimiento = requireContext().getString(R.string.label_cumplimiento)
 
-        ministracionBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        ministracionBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         ministracionHeader.setValues(
             informacion.nombreUniversidad,

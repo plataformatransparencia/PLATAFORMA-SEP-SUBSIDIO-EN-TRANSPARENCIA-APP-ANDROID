@@ -44,7 +44,7 @@ class ListaAccionesUniversidadExtraordinario2020(
 
         listTitle.text = requireContext().getString(R.string.acciones_por_emprender_universidad)
 
-        listBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         listItemsRecycler.adapter =
             ItemListCardRecyclerAdapter(

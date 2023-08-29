@@ -47,7 +47,7 @@ class MinEstatalFragment(
 
         resumenMinistracionTitulo.text = context?.getString(R.string.tablero_estado_universidad)
 
-        resumenMinistracionBack.setOnClickListener { requireActivity().onBackPressed() }
+        resumenMinistracionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         detalleMinistracionTrimestre1.trimestre = 1
         detalleMinistracionTrimestre2.trimestre = 2

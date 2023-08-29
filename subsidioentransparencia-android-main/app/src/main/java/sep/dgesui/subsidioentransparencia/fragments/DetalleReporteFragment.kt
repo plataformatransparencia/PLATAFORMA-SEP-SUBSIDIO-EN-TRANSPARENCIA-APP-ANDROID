@@ -26,7 +26,9 @@ class DetalleReporteFragment(
 
         detalleReporteTitulo.text = titulo
 
-        detalleReporteBack.setOnClickListener { requireActivity().onBackPressed() }
+        detalleReporteBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         detalleReporteSemaforo.showData(item.cumplimiento, informacion.year)
 

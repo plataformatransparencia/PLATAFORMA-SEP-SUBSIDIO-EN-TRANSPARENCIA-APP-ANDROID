@@ -32,7 +32,9 @@ class DetalleEtapa2018(
             requireContext()
         )
 
-        etapaBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        etapaBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         etapaFechaEstipulada.text = item.fechaCompromiso
 

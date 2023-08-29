@@ -41,7 +41,7 @@ class ListaAccionesEmprenderEstadoExtraordinario2020(
 
         listTitle.text = requireContext().getString(R.string.acciones_por_emprender_estado)
 
-        listBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         listItemsRecycler.adapter =
             ItemListCardRecyclerAdapter(acciones ?: emptyList(), requireActivity(), targetFactory)

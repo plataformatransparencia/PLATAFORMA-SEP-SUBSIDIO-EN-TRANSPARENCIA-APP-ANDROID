@@ -38,7 +38,7 @@ class FragmentAccionesEmprendidasExtraordinario2018(
                 requireContext()
             )
 
-            listBackButton.setOnClickListener { requireActivity().onBackPressed() }
+            listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
             listTitle.text = requireContext().getString(R.string.accion)
 

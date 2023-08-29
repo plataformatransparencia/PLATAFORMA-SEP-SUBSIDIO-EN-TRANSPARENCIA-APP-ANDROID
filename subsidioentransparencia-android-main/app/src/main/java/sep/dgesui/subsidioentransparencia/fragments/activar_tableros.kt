@@ -321,14 +321,14 @@ private fun activarSubsidioExtraordinarioPresupuesto(
             detalle.linkCompromisosUniversidadA.isVisible = true
             detalle.linkCompromisosUniversidadA.setOnClickListener(
                 loadFragment(
-                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoA")!!), activity
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoA"]!!), activity
                 )
             )
 
             detalle.linkCompromisosUniversidadC.isVisible = true
             detalle.linkCompromisosUniversidadC.setOnClickListener(
                 loadFragment(
-                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoC")!!), activity
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoC"]!!), activity
                 )
             )
         }else if(compromisos.containsKey("compromisoC") ){
@@ -336,7 +336,7 @@ private fun activarSubsidioExtraordinarioPresupuesto(
             detalle.linkCompromisosUniversidad.isVisible = true
             detalle.linkCompromisosUniversidad.setOnClickListener(
                 loadFragment(
-                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoC")!!), activity
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoC"]!!), activity
                 )
             )
 
@@ -345,7 +345,7 @@ private fun activarSubsidioExtraordinarioPresupuesto(
             detalle.linkCompromisosUniversidad.isVisible = true
             detalle.linkCompromisosUniversidad.setOnClickListener(
                 loadFragment(
-                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoB")!!), activity
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoB"]!!), activity
                 )
             )
 
@@ -355,7 +355,7 @@ private fun activarSubsidioExtraordinarioPresupuesto(
             detalle.linkCompromisosUniversidad.isVisible = true
             detalle.linkCompromisosUniversidad.setOnClickListener(
                 loadFragment(
-                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos.get("compromisoA")!!), activity
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoA"]!!), activity
                 )
             )
 

@@ -30,7 +30,9 @@ open class DetalleCompromisoEstadoProfexceFragment(
             requireContext()
         )
 
-        detalleEstadoProfexceBackButton.setOnClickListener { requireActivity().onBackPressed() }
+        detalleEstadoProfexceBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         detalleEstadoProfexceDescripcion.text = item.descripcion
         detalleEstadoProfexceFechaEntrega.text = item.fechaCompromiso
