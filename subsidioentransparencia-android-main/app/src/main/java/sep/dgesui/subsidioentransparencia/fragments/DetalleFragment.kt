@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.applyLinks
 import kotlinx.android.synthetic.main.fragment_detalle.*
+import kotlinx.android.synthetic.main.fragment_detalle_compromiso_estado_profexce.detalleEstadoProfexceTitle
 import kotlinx.coroutines.*
 import sep.dgesui.subsidioentransparencia.*
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
@@ -456,7 +457,9 @@ class DetalleFragment(
 
         direccionUniversidad.text = detalle.direccion
         rectorUniversidad.text = detalle.rector
+        titleRectorDetalle.text = detalle.rectorCargo
         gobernador.text = detalle.gobernador
+        titleGobernadorDetalle.text = detalle.gobernadorCargo
         linkSitioTransparencia.apply {
 
             Link(context.getString(R.string.ir_a_sitio))
