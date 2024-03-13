@@ -40,7 +40,7 @@ data class Numeralia(
         val fullTimeProfessorsTotal: Int,
         val desirableProfileProfessor: Int,
         val nationalSystemResearchersProfessor: Int,
-        val studentAllowance: Double,
+        val studentAllowance: Double?,
         val federationOwnershipPercentage: Double,
         val stateOwnershipPercentage: Double
 )

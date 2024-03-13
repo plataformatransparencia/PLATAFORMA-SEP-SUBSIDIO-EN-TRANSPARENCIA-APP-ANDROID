@@ -413,7 +413,32 @@ class DetalleFragment(
 
     private fun cargarNumeralia(detalle: Detalle) {
         detalle.numeralia.apply {
-
+            titleNumeraliaDetalleProceso.visibility = View.GONE
+            if (higherEducationEnrolment == 0 &&
+                highSchoolEnrolment == 0 &&
+                enrolmentTotal == 0 &&
+                fullTimeProfessorsTotal == 0 &&
+                desirableProfileProfessor == 0 &&
+                nationalSystemResearchersProfessor == 0 &&
+                studentAllowance == 0.0
+                ){
+                titleNumeraliaDetalleProceso.visibility = View.VISIBLE
+                titleNumeraliaDetalleProceso.text = "(Institución en proceso de creación)"
+                numMatriculaTotalESDetalle.visibility = View.GONE
+                textMatriculaTotalESDetalle.visibility = View.GONE
+                numMatriculaTotalEMDetalle.visibility = View.GONE
+                textMatriculaTotalEMDetalle.visibility = View.GONE
+                numMatriculaTotalDetalle.visibility = View.GONE
+                textMatriculaTotalDetalle.visibility = View.GONE
+                numTotalProfesoresTCDetalle.visibility = View.GONE
+                textTotalProfesoresTCDetalle.visibility = View.GONE
+                numTotalProfesoresTCPDVDetalle.visibility = View.GONE
+                textTotalProfesoresTCPDVDetalle.visibility = View.GONE
+                numProfesoresSistemaNacionalIVDetalle.visibility = View.GONE
+                textProfesoresSistemaNacionalIVDetalle.visibility = View.GONE
+                numSubsidioAlumnoFEDetalle.visibility = View.GONE
+                textSubsidioAlumnoFEDetalle.visibility = View.GONE
+            }
             numMatriculaTotalESDetalle.text =
                 integerFormatter.format(higherEducationEnrolment)
 
@@ -434,6 +459,7 @@ class DetalleFragment(
 
             numSubsidioAlumnoFEDetalle.text =
                 currencyFormatter.format(studentAllowance)
+
 
             numPorcentajeParticipacionFDetalle.text = String.format(
                 porcentaje_template,

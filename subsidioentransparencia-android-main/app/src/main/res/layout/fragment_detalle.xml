@@ -216,6 +216,18 @@
                 app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
                 app:layout_constraintTop_toBottomOf="@+id/buttonPlanAusteridad" />
 
+            <TextView
+                android:id="@+id/titleNumeraliaDetalleProceso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:font="@font/montserrat_bold"
+                android:text=""
+                android:textColor="@color/gob_dark"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/margen_izquierdo"
+                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalle" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guia_numeralia"
                 android:layout_width="wrap_content"
@@ -233,7 +245,7 @@
                 android:textColor="@color/gob_pink"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@id/guia_numeralia"
-                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalle"
+                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalleProceso"
                 tools:text="65,528" />
 
             <TextView
@@ -249,7 +261,7 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@id/margen_derecho"
                 app:layout_constraintStart_toStartOf="@id/guia_numeralia"
-                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalle" />
+                app:layout_constraintTop_toBottomOf="@+id/titleNumeraliaDetalleProceso" />
 
             <TextView
                 android:id="@+id/numMatriculaTotalEMDetalle"
