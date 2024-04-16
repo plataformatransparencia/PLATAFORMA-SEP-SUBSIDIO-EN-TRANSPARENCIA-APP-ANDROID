@@ -30,8 +30,8 @@ android {
         applicationId "sep.dgesui.subsidioentransparencia"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 122
-        versionName "1.2.17"
+        versionCode 123
+        versionName "1.2.18"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

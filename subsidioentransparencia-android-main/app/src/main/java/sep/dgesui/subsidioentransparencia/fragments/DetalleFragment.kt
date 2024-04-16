@@ -313,9 +313,9 @@ class DetalleFragment(
                 setOnClickListener(externalLink(detalle.planAusteridad))
             }
 
-        if (!detalle.anexoEjecucion.isNullOrEmpty())
+        if (!detalle.anexoEjecucion.isNullOrEmpty()) {
+            titleNumeraliaDetalleProceso.text = "(Institución en proceso de consolidación)"
             buttonAnexoEjecucion.apply {
-
                 visibility = View.VISIBLE
 
                 text = String.format(
@@ -325,8 +325,7 @@ class DetalleFragment(
 
                 setOnClickListener(externalLink(detalle.anexoEjecucion))
             }
-
-
+        }
         if (!detalle.MarcoColaboracion.isNullOrBlank())
             buttonConvenioMarco.apply {
 
