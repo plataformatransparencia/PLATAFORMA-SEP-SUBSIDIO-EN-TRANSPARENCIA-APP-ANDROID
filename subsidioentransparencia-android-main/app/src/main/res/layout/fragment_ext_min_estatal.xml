@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="@string/monto_total_ministrado_estado"
+                android:text="@string/monto_total_calendarizado_estado"
                 android:textColor="@color/gob_pink" />
 
             <Button

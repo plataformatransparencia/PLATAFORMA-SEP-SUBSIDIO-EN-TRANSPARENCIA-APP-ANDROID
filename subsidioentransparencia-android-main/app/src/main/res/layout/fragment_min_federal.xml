@@ -137,7 +137,7 @@
                 style="@style/textoDGESUI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/monto_total_ministrado_sep" />
+                android:text="@string/monto_total_calendarizado_sep" />
 
             <TextView
                 android:id="@+id/montoTotal"
@@ -152,7 +152,7 @@
                 style="@style/textoDGESUI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/monto_total_ministrado_sep"
+                android:text="@string/monto_total_calendarizado"
                 android:visibility="gone"
                 tools:visibility="visible" />
 

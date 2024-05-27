@@ -340,8 +340,9 @@
     <string name="cumplimiento_monto_calendarizado">Cumplimiento monto calendarizado</string>
     <string name="monto_calendarizado">Monto calendarizado</string>
     <string name="monto_recibido">Monto recibido</string>
-    <string name="monto_total_ministrado_sep">Monto total ministrado por la SEP</string>
-    <string name="monto_total_ministrado_estado">Monto total ministrado por el Estado</string>
+    <string name="monto_total_calendarizado">Monto total calendarizado</string>
+    <string name="monto_total_calendarizado_sep">Monto total calendarizado por la SEP</string>
+    <string name="monto_total_calendarizado_estado">Monto total calendarizado por el Estado</string>
     <string name="monto_total_ministrado_federacion">Monto total ministrado por la Federación</string>
     <string name="monto_total_ministrado_estatal_federal">Monto total ministrado, aportación federal y estatal</string>
     <string name="informeSubsidioOrdinario">Informe trimestral del Subsidio Ordinario</string>

@@ -82,7 +82,7 @@ class MinEstatalFragment(
 
         val montoTotalField = montoTotal
 
-        labelMontoTotal.text = context?.getString(R.string.monto_total_ministrado_estado)
+        labelMontoTotal.text = context?.getString(R.string.monto_total_calendarizado_estado)
 
         labelMontoCalendarizado.visibility = View.VISIBLE
         montoCalendarizado.visibility = View.VISIBLE
