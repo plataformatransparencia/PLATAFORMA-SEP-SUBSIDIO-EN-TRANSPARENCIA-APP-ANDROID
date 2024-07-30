@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/buttonBackPoliticas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center|start"
+        app:layout_constraintBottom_toTopOf="@+id/contenido"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:contentDescription="@string/back_button_description"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/titlePolitica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:font="@font/montserrat_bold"
+            android:text="Política de privacidad"
+            android:textAlignment="center"
+            android:textColor="@color/gob_pink"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/list_margen_derecho"
+            app:layout_constraintStart_toEndOf="@id/buttonBackPoliticas" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contenido"
+        android:layout_width="0dp"
+        android:layout_height="590dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBackPoliticas">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/conenidoscroll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titlePoliticatext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="25dp"
+                    android:font="@font/montserrat_bold"
+                    android:text="Política de privacidad"
+                    android:textAlignment="center"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/politicatext1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:autoSizeTextType="uniform"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="Esta política de privacidad rige el uso de la aplicación del software Subsidio en Transparencia para dispositivos móviles, que fue creada por la Dirección General de Educación Superior Universitaria e Intercultural."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titlePoliticatext" />
+
+                <TextView
+                    android:id="@+id/politicatext2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="Esta aplicación promueve la transparencia de la información relativa al apoyo financiero de recursos públicos federales y estatales ordinarios y extraordinarios otorgados por la Federación y las Entidades Federativas a las Universidades Públicas Estatales (UPES), Universidades Públicas Estatales con Apoyo Solidario (UPEAS) y Universidades Interculturales (Ul) para garantizar su operación de conformidad con el Articulo 67 de la Ley General de Educación Superior, fracciones II y VIII."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext1" />
+
+                <TextView
+                    android:id="@+id/politicatext3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_bold"
+                    android:justificationMode="inter_word"
+                    android:text="¿Qué información recopilamos?"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext2" />
+
+                <TextView
+                    android:id="@+id/politicatext4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="La aplicación no recopila información personal de los usuarios como nombre, apellido, edad, fecha de nacimiento, etc., y no se almacenan ni comparten datos de los servicios a los cuales se solicita permiso."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext3" />
+
+                <TextView
+                    android:id="@+id/politicatext5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="La aplicación Subsidio en Transparencia requiere permisos de los siguientes servicios:"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext4" />
+
+                <TextView
+                    android:id="@+id/politicatext6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="• Geolocalización: permiso necesario para futuras mejoras en la aplicación, no recopila los datos de ubicación ni se comparten."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext5" />
+
+                <TextView
+                    android:id="@+id/politicatext7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="• Almacenamiento: permite el guardado de archivos necesarios de la aplicación."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext6" />
+
+                <TextView
+                    android:id="@+id/politicatext8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="• Network: permite saber si el dispositivo cuenta con internet."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext7" />
+
+                <TextView
+                    android:id="@+id/politicatext9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="La información de ubicación utilizada por esta aplicación es limitada a la posición GPS en coordenadas de latitud y longitud. No incluye ninguna información que lo identifique a usted o a su dispositivo que permita el rastreo de su equipo. Ninguna información será guardada ni compartida, se garantiza la completa privacidad de usuarios y el contenido de su equipo."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext8" />
+
+                <TextView
+                    android:id="@+id/politicatext10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Contacto"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext9" />
+
+                <TextView
+                    android:id="@+id/politicatext11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:font="@font/montserrat_regular_family"
+                    android:justificationMode="inter_word"
+                    android:text="Para ponerse en contacto con nosotros, utilice el correo electrónico: "
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gob_dark"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext10" />
+
+                <TextView
+                    android:id="@+id/textCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:font="@font/montserrat_regular"
+                    android:text="@string/text_contact_corr"
+                    android:textColor="@color/gob_gold"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.39"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/politicatext11"
+                    app:layout_constraintVertical_bias="0.029999971" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -314,7 +314,7 @@
     <string name="obras_remodelaciones">Obras y remodelaciones</string>
     <string name="etapas">Etapas</string>
     <string name="adeudo_estatal_corte">Adeudo total estatal con corte al:\n %1$s</string>
-    <string name="adeudo_federal_corte">Adeudo total federal con corte al:\n %1$s</string>
+    <string name="adeudo_federal_corte">Adeudo de la aportación Federal por parte del Estado con corte al:\n %1$s</string>
     <string name="ver_documento">Ver documento</string>
     <string name="ir_a_pagina">Ir a la página</string>
     <string name="trimestreN">Trimestre %1$d</string>

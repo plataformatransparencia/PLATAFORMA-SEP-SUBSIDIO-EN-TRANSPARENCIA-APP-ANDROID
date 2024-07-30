@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import kotlinx.android.synthetic.main.fragment_menu.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
@@ -39,6 +40,9 @@ class MenuFragment : Fragment(){
 
         buttonProgramas.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, ProgramsFragment()).addToBackStack(null).commit()
+        }
+        buttonPolitica.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container,PoliticaFragment()).addToBackStack(null).commit()
         }
     }
 
