@@ -5,15 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_detalle_acciones.*
-import kotlinx.android.synthetic.main.fragment_detalle_acciones.accionesDescripcion
-import kotlinx.android.synthetic.main.fragment_detalle_acciones.detalleAccionBack
-import kotlinx.android.synthetic.main.fragment_detalle_acciones.detalleAccionHeader
-import kotlinx.android.synthetic.main.fragment_detalle_acciones.detalleAccionTitle
-import kotlinx.android.synthetic.main.fragment_detalle_acciones.subtitulo
-import kotlinx.android.synthetic.main.fragment_detalle_cumplimiento_profexce.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleAccionesBinding
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleCumplimientoProfexceBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.EntregaCompromisoAdapter
 
 class DetalleComplexItemFragment(
@@ -22,32 +16,42 @@ class DetalleComplexItemFragment(
     private val item: ComplexItem,
 ) : Fragment() {
 
+    private var _binding: FragmentDetalleAccionesBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_detalle_acciones, container, false)
+    ): View? {
+        _binding = FragmentDetalleAccionesBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detalleAccionHeader.setValues(
+        binding.detalleAccionHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
-        detalleAccionBack.setOnClickListener {
+        binding.detalleAccionBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        detalleAccionTitle.text = titulo
-        subtitulo.text = titulo
+        binding.detalleAccionTitle.text = titulo
+        binding.subtitulo.text = titulo
 
 
-        accionesDescripcion.text = item.descripcion
+        binding.accionesDescripcion.text = item.descripcion
 
-        detalleCumplimientos.adapter = EntregaCompromisoAdapter(item.cumplimientos)
+        binding.detalleCumplimientos.adapter = EntregaCompromisoAdapter(item.cumplimientos)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 
@@ -56,34 +60,43 @@ class DetalleTableroCumplimientoProfexceFragment(
     private val item: Item,
 ) : Fragment() {
 
+    private var _binding: FragmentDetalleCumplimientoProfexceBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_detalle_cumplimiento_profexce, container, false)
+    ): View? {
+        _binding = FragmentDetalleCumplimientoProfexceBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        detalleAccionHeader.setValues(
+        binding.detalleAccionHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
-        detalleAccionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
-        //detalleAccionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        binding.detalleAccionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
-        accionesDescripcion.text = item.descripcion
-        fechaLimite.text = item.fechaCompromiso
+        binding.accionesDescripcion.text = item.descripcion
+        binding.fechaLimite.text = item.fechaCompromiso
 
-        cumplimientoProfexceSemaforo.setValues(item.cumplimiento, item.fechaEjecucion)
+        binding.cumplimientoProfexceSemaforo.setValues(item.cumplimiento, item.fechaEjecucion)
 
         if (item.observacion.isNotEmpty()) {
-            observaciones.text = item.observacion
+            binding.observaciones.text = item.observacion
         } else {
-            observaciones.visibility = View.GONE
-            labelObservaciones.visibility = View.GONE
+            binding.observaciones.visibility = View.GONE
+            binding.labelObservaciones.visibility = View.GONE
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

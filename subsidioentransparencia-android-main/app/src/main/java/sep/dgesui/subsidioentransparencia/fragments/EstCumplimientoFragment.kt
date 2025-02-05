@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_est_cumplimiento.*
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentEstCumplimientoBinding
 import sep.dgesui.subsidioentransparencia.getColorCumplimiento
 
 
@@ -18,38 +17,44 @@ class EstCumplimientoFragment(
     val nombre: String
 ) : Fragment() {
 
-
+    private var _binding: FragmentEstCumplimientoBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_est_cumplimiento, container, false)
+        _binding = FragmentEstCumplimientoBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        YearMinEstCumpl.text = year.substring(0, 4)
-        titleUni.text = nombre
-        titleMesEst.text = listEstCumplimiento[0]
+        binding.YearMinEstCumpl.text = year.substring(0, 4)
+        binding.titleUni.text = nombre
+        binding.titleMesEst.text = listEstCumplimiento[0]
 
-        buttonBackMesEst.setOnClickListener {
+        binding.buttonBackMesEst.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
         val colorCumplimientoMesEst = getColorCumplimiento(listEstCumplimiento[1], context)
-        cardViewcumplimientoMesEst.setCardBackgroundColor(colorCumplimientoMesEst)
+        binding.cardViewcumplimientoMesEst.setCardBackgroundColor(colorCumplimientoMesEst)
 
-        fechaCumplimientoMesEst.text = listEstCumplimiento[2]
+        binding.fechaCumplimientoMesEst.text = listEstCumplimiento[2]
 
-        if (!listEstCumplimiento[3].isEmpty()) {
-            visibleObservacionesMesEst.isVisible = true
-            textObservacionMesEst.text = listEstCumplimiento[3]
+        if (listEstCumplimiento[3].isNotEmpty()) {
+            binding.visibleObservacionesMesEst.isVisible = true
+            binding.textObservacionMesEst.text = listEstCumplimiento[3]
         } else {
-            visibleObservacionesMesEst.isVisible = false
-            visibleObservacionesMesEst.isVisible = false
+            binding.visibleObservacionesMesEst.isVisible = false
+            binding.visibleObservacionesMesEst.isVisible = false
         }
 
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

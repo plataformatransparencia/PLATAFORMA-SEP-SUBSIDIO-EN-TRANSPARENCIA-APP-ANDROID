@@ -5,14 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_item_list.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
-import sep.dgesui.subsidioentransparencia.engineadapter.CumplimientoRepository
-import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.tablero.DetalleCumplimientoPresupuesto
-import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.tablero.Entrega
-import sep.dgesui.subsidioentransparencia.tableroext.profexce.tablero.DetalleCumplimiento
-import sep.dgesui.subsidioentransparencia.tableroext.profexce.tablero.TableroCumplimiento
+import sep.dgesui.subsidioentransparencia.databinding.FragmentItemListBinding
 
 open class ListaCumplimientoPresupuestoFragment(
     protected val informacion: InformacionGeneralWrapper,
@@ -23,29 +17,35 @@ open class ListaCumplimientoPresupuestoFragment(
     private val targetFactory =
         { item: ItemPresupuesto -> DetalleCumplimientoPresupuestoFragment(informacion, item) }
 
+    private var _binding: FragmentItemListBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_item_list, container, false)
+    ): View? {
+        _binding = FragmentItemListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     open fun loadData() {
 
-        listHeader.setValues(
+        binding.listHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        listTitle.text = requireContext().getString(titulo)
+        binding.listTitle.text = requireContext().getString(titulo)
 
-        listBackButton.setOnClickListener {
+        binding.listBackButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
 
-        listItemsRecycler.adapter =
+        binding.listItemsRecycler.adapter =
             ItemListCumplimientoPresupuestoRecyclerAdapter(
                 tablero,
                 requireActivity(),
@@ -58,4 +58,8 @@ open class ListaCumplimientoPresupuestoFragment(
         loadData()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -11,8 +12,8 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import kotlinx.android.synthetic.main.layout_chart.view.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.LayoutChartBinding
 import sep.dgesui.subsidioentransparencia.fragments.paletaColores
 import java.text.DecimalFormat
 
@@ -23,20 +24,21 @@ constructor(
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0,
 ) : ConstraintLayout(ctx, attributeSet, defStyleAttr) {
-
+    private var binding: LayoutChartBinding? = null
     init {
-        LayoutInflater.from(ctx)
-            .inflate(R.layout.layout_chart, this)
+        binding = rootView.let {
+            LayoutChartBinding.inflate(LayoutInflater.from(context), it as ViewGroup)
+        }
     }
 
     fun plot(montos: Map<String, Double>, tipoSubsidio: String) {
 
         if (montos.size > 1) {
             val total = montos.values.reduce { acc, value -> acc + value }
-            monto_total.text = numberFormatCurrency.format(total)
+            binding?.montoTotal?.text = numberFormatCurrency.format(total)
         } else {
-            monto_total.isVisible = false
-            txtMontoTotal.isVisible = false
+            binding?.montoTotal?.isVisible = false
+            binding?.txtMontoTotal?.isVisible = false
         }
         val dataset = montos.values.map { PieEntry(it.toFloat()) }
             .let { PieDataSet(it, "") }
@@ -46,25 +48,25 @@ constructor(
         val pieData = PieData(dataset)
         pieData.setValueTextSize(17F)
 
-        val formater = PercentFormatter(chart)
+        val formater = PercentFormatter(binding?.chart)
         formater.mFormat = DecimalFormat("###,###,##0.00")
         pieData.setValueTextColor(ContextCompat.getColor(context, R.color.white))
         pieData.setValueFormatter(formater)
 
-        chart.data = pieData
+        binding?.chart?.data = pieData
 
-        chart.isRotationEnabled = false
-        chart.setDrawEntryLabels(false)
-        chart.setHoleColor(Color.WHITE)
-        chart.centerTextRadiusPercent = 1.0f
-        chart.isUsePercentValuesEnabled
-        chart.setUsePercentValues(true)
-        chart.legend.isEnabled = false
-        chart.description.isEnabled = false
-        chart.defaultValueFormatter
-        chart.animation
-        chart.animateXY(2000, 2000)
-        chart_keys.adapter = montos.entries
+        binding?.chart?.isRotationEnabled = false
+        binding?.chart?.setDrawEntryLabels(false)
+        binding?.chart?.setHoleColor(Color.WHITE)
+        binding?.chart?.centerTextRadiusPercent = 1.0f
+        binding?.chart?.isUsePercentValuesEnabled
+        binding?.chart?.setUsePercentValues(true)
+        binding?.chart?.legend?.isEnabled = false
+        binding?.chart?.description?.isEnabled = false
+        binding?.chart?.defaultValueFormatter
+        binding?.chart?.animation
+        binding?.chart?.animateXY(2000, 2000)
+        binding?.chartKeys?.adapter = montos.entries
             .mapIndexed { idx, entry ->
                 ChartKey(paleta.asList()[idx], entry.value, entry.key)
             }

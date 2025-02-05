@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_matricula_fed.*
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentMatriculaFedBinding
 import sep.dgesui.subsidioentransparencia.getColorCumplimiento
 
 class MatriculaFedFragment(
@@ -17,40 +16,47 @@ class MatriculaFedFragment(
     val year: String
 ) : Fragment() {
 
+    private var _binding: FragmentMatriculaFedBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matricula_fed, container, false)
+        _binding = FragmentMatriculaFedBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        YearMatricula.text = year.substring(0, 4)
-        titleUniMat.text = uni
-        buttonBackMatricula.setOnClickListener {
+        binding.YearMatricula.text = year.substring(0, 4)
+        binding.titleUniMat.text = uni
+        binding.buttonBackMatricula.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
         val colorCumplimientoMatricula = getColorCumplimiento(listMatricula[1], context)
-        cardViewcumplimientoMatricula.setCardBackgroundColor(colorCumplimientoMatricula)
+        binding.cardViewcumplimientoMatricula.setCardBackgroundColor(colorCumplimientoMatricula)
 
         when (listMatricula[1]) {
-            "Cumplió" -> textMatriculaTrimestralCumplio.text = "Cumplió"
-            "No cumplió" -> textMatriculaTrimestralCumplio.text = "No Cumplió"
-            "En revisión" -> textMatriculaTrimestralCumplio.text = "En Revisión"
+            "Cumplió" -> binding.textMatriculaTrimestralCumplio.text = "Cumplió"
+            "No cumplió" -> binding.textMatriculaTrimestralCumplio.text = "No Cumplió"
+            "En revisión" -> binding.textMatriculaTrimestralCumplio.text = "En Revisión"
             else -> {
-                textMatriculaTrimestralCumplio.text = "No Cumplió"
+                binding.textMatriculaTrimestralCumplio.text = "No Cumplió"
             }
         }
 
-        visibleObservacionesMatricula.isVisible = false
-        if (!listMatricula[2].isEmpty()) {
-            visibleObservacionesMatricula.isVisible = true
-            textObservacionMatricula.text = listMatricula[2]
+        binding.visibleObservacionesMatricula.isVisible = false
+        if (listMatricula[2].isNotEmpty()) {
+            binding.visibleObservacionesMatricula.isVisible = true
+            binding.textObservacionMatricula.text = listMatricula[2]
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

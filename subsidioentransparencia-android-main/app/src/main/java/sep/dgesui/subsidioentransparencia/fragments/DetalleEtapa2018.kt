@@ -5,43 +5,52 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_detalle_entapa.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleEntapaBinding
 
 class DetalleEtapa2018(
     private val informacion: InformacionGeneralWrapper,
     private val item: Item,
 ) : Fragment() {
-
+    private var _binding: FragmentDetalleEntapaBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_detalle_entapa, container, false)
+    ): View? {
+        _binding = FragmentDetalleEntapaBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
 
-        etapaHeader.setValues(
+        binding.etapaHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        etapaBackButton.setOnClickListener {
+        binding.etapaBackButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        etapaFechaEstipulada.text = item.fechaCompromiso
+        binding.etapaFechaEstipulada.text = item.fechaCompromiso
 
-        etapaDescripcion.text = item.descripcion
-        compromiso_card.setValues(item.cumplimiento, item.fechaEjecucion)
+        binding.etapaDescripcion.text = item.descripcion
+        binding.compromisoCard.setValues(item.cumplimiento, item.fechaEjecucion)
 
-        etapaObservaciones.text = item.observacion
+        binding.etapaObservaciones.text = item.observacion
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

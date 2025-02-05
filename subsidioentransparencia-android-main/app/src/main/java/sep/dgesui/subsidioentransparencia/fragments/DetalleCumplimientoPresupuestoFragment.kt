@@ -1,58 +1,59 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.component_semaforo_smple.view.*
-import kotlinx.android.synthetic.main.fragment_detalle_cumplimiento_profexce.*
-import kotlinx.android.synthetic.main.fragment_detalle_cumplimiento_profexce.detalleAccionBack
-import kotlinx.android.synthetic.main.fragment_detalle_cumplimiento_profexce.detalleAccionHeader
-import kotlinx.android.synthetic.main.fragment_detalle_cumplimiento_profexce.detalleAccionTitle
-import kotlinx.android.synthetic.main.item_compromisos_list.view.*
-import kotlinx.android.synthetic.main.layout_compromiso_card.view.*
-import kotlinx.android.synthetic.main.layout_cumplimiento_card.view.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleCumplimientoProfexceBinding
+import sep.dgesui.subsidioentransparencia.databinding.LayoutCumplimientoCardBinding
 
 open class DetalleCumplimientoPresupuestoFragment(
     private val informacion: InformacionGeneralWrapper,
     private val item: ItemPresupuesto,
 ) : Fragment() {
 
+    private var _binding: FragmentDetalleCumplimientoProfexceBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_detalle_cumplimiento_profexce, container, false)
+    ): View? {
+        _binding = FragmentDetalleCumplimientoProfexceBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        detalleAccionHeader.setValues(
+
+
+        binding.detalleAccionHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        detalleAccionBack.setOnClickListener {
+        binding.detalleAccionBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-
-        accionesDescripcion.text = item.descripcion
-        fechaLimite.text = item.fechaCompromiso
-        cumplimientoProfexceSemaforo.cardTitleFechaEjecucion.text = item.tipo
-        cumplimientoProfexceSemaforo.bextemp.visibility = View.VISIBLE
-        cumplimientoProfexceSemaforo.textemp.visibility = View.VISIBLE
-        cumplimientoProfexceSemaforo.setValues(item.cumplimiento, item.fechaEjecucion )
+        val bnc = LayoutCumplimientoCardBinding.bind(view)
+        binding.accionesDescripcion.text = item.descripcion
+        binding.fechaLimite.text = item.fechaCompromiso
+        bnc.cardTitleFechaEjecucion.text = item.tipo
+        bnc.bextemp.visibility = View.VISIBLE
+        bnc.textemp.visibility = View.VISIBLE
+        binding.cumplimientoProfexceSemaforo.setValues(item.cumplimiento, item.fechaEjecucion )
         if (item.observacion.isNotEmpty()) {
-            observaciones.text = item.observacion
+            binding.observaciones.text = item.observacion
         } else {
-            observaciones.visibility = View.GONE
-            labelObservaciones.visibility = View.GONE
+            binding.observaciones.visibility = View.GONE
+            binding.labelObservaciones.visibility = View.GONE
         }
 
 
@@ -67,8 +68,8 @@ class DetalleAccionCumplimientoPresupuestoFragment(informacion: InformacionGener
         super.onViewCreated(view, savedInstanceState)
         val lblAccion = requireContext().getString(R.string.accion)
 
-        detalleAccionTitle.text = lblAccion
-        subtitulo.text = lblAccion
+        binding.detalleAccionTitle.text = lblAccion
+        binding.subtitulo.text = lblAccion
 
     }
 }

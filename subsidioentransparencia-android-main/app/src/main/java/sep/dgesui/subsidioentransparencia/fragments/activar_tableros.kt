@@ -4,7 +4,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import kotlinx.android.synthetic.main.fragment_detalle.*
 import kotlinx.coroutines.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
@@ -16,6 +15,7 @@ private val itemSources = ItemSources()
 private val ministracionesRepository = MinistracionRepository()
 private val repositoryCumplimiento = CumplimientoRepository()
 
+
 fun activarTableros(
     detalle: DetalleFragment,
     informacion: InformacionGeneralWrapper,
@@ -23,7 +23,6 @@ fun activarTableros(
 ) = runBlocking {
 
     launch {
-
         when (informacion.subsidio) {
             "subsidio_ordinario" -> activarSubsidioOrdinario(informacion, detalle, activity)
             "subsidio_extraordinario" -> activarSubsidioExtraordinario(
@@ -47,7 +46,6 @@ private fun activarSubsidioExtraordinario(
     when (informacion.year) {
         "2018" -> {
             launch {
-
                 val compromisos =
                     withContext(dispatcher) {
                         itemSources.getCompromisosExtraordinarios2018(
@@ -56,8 +54,8 @@ private fun activarSubsidioExtraordinario(
                     }
 
                 if (compromisos.actividades.isNotEmpty()) {
-                    detalle.linkCompromisos.isVisible = true
-                    detalle.linkCompromisos.setOnClickListener(
+                    detalle.binding.linkCompromisos.isVisible = true
+                    detalle.binding.linkCompromisos.setOnClickListener(
                         loadFragment(
                             FragmentListaCompromisosExtraordinario2018(
                                 informacion,
@@ -82,8 +80,8 @@ private fun activarSubsidioExtraordinario(
                     }
 
                 if (accionesEmprendidas.items != null) {
-                    detalle.linkAccionesEmprendidas.isVisible = true
-                    detalle.linkAccionesEmprendidas.setOnClickListener(
+                    detalle.binding.linkAccionesEmprendidas.isVisible = true
+                    detalle.binding.linkAccionesEmprendidas.setOnClickListener(
                         loadFragment(
                             FragmentAccionesEmprendidasExtraordinario2018(
                                 informacion,
@@ -108,8 +106,8 @@ private fun activarSubsidioExtraordinario(
 
                 if (accionesPorEmprender.items != null) {
 
-                    detalle.linkAccionesPorEmprender.isVisible = true
-                    detalle.linkAccionesPorEmprender.setOnClickListener(
+                    detalle.binding.linkAccionesPorEmprender.isVisible = true
+                    detalle.binding.linkAccionesPorEmprender.setOnClickListener(
                         loadFragment(
                             FragmentAccionesPorEmprenderExtraordinario2018(
                                 informacion,
@@ -136,8 +134,8 @@ private fun activarSubsidioExtraordinario(
                         )
                     }
 
-                detalle.linkAccionesPorEmprender.isVisible = true
-                detalle.linkAccionesPorEmprender.setOnClickListener(
+                detalle.binding.linkAccionesPorEmprender.isVisible = true
+                detalle.binding.linkAccionesPorEmprender.setOnClickListener(
                     loadFragment(
                         ListaAccionesUniversidadExtraordinario2020(
                             informacion,
@@ -164,8 +162,8 @@ private fun activarSubsidioExtraordinario(
 
                 if (ministracionEstatal != null) {
 
-                    detalle.linkCumplimientoMinistracionesSEU.isVisible = true
-                    detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                    detalle.binding.linkCumplimientoMinistracionesSEU.isVisible = true
+                    detalle.binding.linkCumplimientoMinistracionesSEU.setOnClickListener(
                         loadFragment(
                             MinistracionEstatalExtraordinariaFragment(
                                 informacion,
@@ -187,8 +185,8 @@ private fun activarSubsidioExtraordinario(
                 }
 
                 if (ministracionFederal != null) {
-                    detalle.linkCumplimientoMinistracionesEU.isVisible = true
-                    detalle.linkCumplimientoMinistracionesEU.setOnClickListener(
+                    detalle.binding.linkCumplimientoMinistracionesEU.isVisible = true
+                    detalle.binding.linkCumplimientoMinistracionesEU.setOnClickListener(
                         loadFragment(
                             MinistracionFederalExtraordinariaFragment(
                                 informacion,
@@ -210,8 +208,8 @@ private fun activarSubsidioExtraordinario(
 
 
                 if (accionesPorEmprender.items?.isNotEmpty() == true) {
-                    detalle.linkAccionesPorEmprenderUniversidad.isVisible = true
-                    detalle.linkAccionesPorEmprenderUniversidad.setOnClickListener(
+                    detalle.binding.linkAccionesPorEmprenderUniversidad.isVisible = true
+                    detalle.binding.linkAccionesPorEmprenderUniversidad.setOnClickListener(
                         loadFragment(
                             ListaAccionesUniversidadExtraordinario2020(
                                 informacion,
@@ -232,8 +230,8 @@ private fun activarSubsidioExtraordinario(
                     }
 
                 if (accionesEmprenderGobierno.items?.isNotEmpty() == true) {
-                    detalle.linkAccionesPorEmprenderGobierno.isVisible = true
-                    detalle.linkAccionesPorEmprenderGobierno.setOnClickListener(
+                    detalle.binding.linkAccionesPorEmprenderGobierno.isVisible = true
+                    detalle.binding.linkAccionesPorEmprenderGobierno.setOnClickListener(
                         loadFragment(
                             ListaAccionesEmprenderEstadoExtraordinario2020(
                                 informacion,
@@ -257,8 +255,8 @@ private fun activarSubsidioExtraordinario(
                     }
 
                 if (ministracionEstatalExtraordinaria != null) {
-                    detalle.linkCumplimientoMinistracionesEU.isVisible = true
-                    detalle.linkCumplimientoMinistracionesEU.setOnClickListener(
+                    detalle.binding.linkCumplimientoMinistracionesEU.isVisible = true
+                    detalle.binding.linkCumplimientoMinistracionesEU.setOnClickListener(
                         loadFragment(
                             MinistracionEstatalExtraordinariaFragment(
                                 informacion,
@@ -280,8 +278,8 @@ private fun activarSubsidioExtraordinario(
                     }
 
                 if (ministracionFederalExtraordinaria != null) {
-                    detalle.linkCumplimientoMinistracionesSEU.isVisible = true
-                    detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                    detalle.binding.linkCumplimientoMinistracionesSEU.isVisible = true
+                    detalle.binding.linkCumplimientoMinistracionesSEU.setOnClickListener(
                         loadFragment(
                             MinistracionFederalExtraordinariaFragment(
                                 informacion,
@@ -318,23 +316,23 @@ private fun activarSubsidioExtraordinarioPresupuesto(
         if(compromisos.containsKey("compromisoC") && compromisos.containsKey("compromisoA")){
 
 
-            detalle.linkCompromisosUniversidadA.isVisible = true
-            detalle.linkCompromisosUniversidadA.setOnClickListener(
+            detalle.binding.linkCompromisosUniversidadA.isVisible = true
+            detalle.binding.linkCompromisosUniversidadA.setOnClickListener(
                 loadFragment(
                     ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoA"]!!), activity
                 )
             )
 
-            detalle.linkCompromisosUniversidadC.isVisible = true
-            detalle.linkCompromisosUniversidadC.setOnClickListener(
+            detalle.binding.linkCompromisosUniversidadC.isVisible = true
+            detalle.binding.linkCompromisosUniversidadC.setOnClickListener(
                 loadFragment(
                     ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoC"]!!), activity
                 )
             )
         }else if(compromisos.containsKey("compromisoC") ){
 
-            detalle.linkCompromisosUniversidad.isVisible = true
-            detalle.linkCompromisosUniversidad.setOnClickListener(
+            detalle.binding.linkCompromisosUniversidad.isVisible = true
+            detalle.binding.linkCompromisosUniversidad.setOnClickListener(
                 loadFragment(
                     ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoC"]!!), activity
                 )
@@ -342,8 +340,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
 
         }else if(compromisos.containsKey("compromisoB") ){
 
-            detalle.linkCompromisosUniversidad.isVisible = true
-            detalle.linkCompromisosUniversidad.setOnClickListener(
+            detalle.binding.linkCompromisosUniversidad.isVisible = true
+            detalle.binding.linkCompromisosUniversidad.setOnClickListener(
                 loadFragment(
                     ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoB"]!!), activity
                 )
@@ -352,8 +350,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
         }
         else if(compromisos.containsKey("compromisoA") ){
 
-            detalle.linkCompromisosUniversidad.isVisible = true
-            detalle.linkCompromisosUniversidad.setOnClickListener(
+            detalle.binding.linkCompromisosUniversidad.isVisible = true
+            detalle.binding.linkCompromisosUniversidad.setOnClickListener(
                 loadFragment(
                     ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos["compromisoA"]!!), activity
                 )
@@ -375,13 +373,13 @@ private fun activarSubsidioExtraordinarioPresupuesto(
         if (ministracionFederalExtraordinaria!!.federal.ministracionA != null && ministracionFederalExtraordinaria!!.federal.ministracionC != null  ) {
 
             if (ministracionFederalExtraordinaria != null) {
-                detalle.linkCumplimientoMinistracionesSEUVA.isVisible = true
-                detalle.linkCumplimientoMinistracionesSEUVA.setOnClickListener(
+                detalle.binding.linkCumplimientoMinistracionesSEUVA.isVisible = true
+                detalle.binding.linkCumplimientoMinistracionesSEUVA.setOnClickListener(
                     loadFragment(
                         MinistracionFederalExtraordinariaFragment(
                             informacion,
                             null,
-                            ministracionFederalExtraordinaria!!.federal.ministracionA
+                            ministracionFederalExtraordinaria.federal.ministracionA
                         ),
                         activity
                     )
@@ -389,8 +387,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
 
             }
 
-            detalle.linkCumplimientoMinistracionesSEUVC.isVisible = true
-            detalle.linkCumplimientoMinistracionesSEUVC.setOnClickListener(
+            detalle.binding.linkCumplimientoMinistracionesSEUVC.isVisible = true
+            detalle.binding.linkCumplimientoMinistracionesSEUVC.setOnClickListener(
                 loadFragment(
                     MinistracionFederalExtraordinariaFragment(
                         informacion,
@@ -404,8 +402,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
         }else if (ministracionFederalExtraordinaria!!.federal.ministracionC != null){
 
             if (ministracionFederalExtraordinaria != null) {
-                detalle.linkCumplimientoMinistracionesSEU.isVisible = true
-                detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                detalle.binding.linkCumplimientoMinistracionesSEU.isVisible = true
+                detalle.binding.linkCumplimientoMinistracionesSEU.setOnClickListener(
                     loadFragment(
                         MinistracionFederalExtraordinariaFragment(
                             informacion,
@@ -421,8 +419,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
         }else if (ministracionFederalExtraordinaria!!.federal.ministracionB != null){
 
             if (ministracionFederalExtraordinaria != null) {
-                detalle.linkCumplimientoMinistracionesSEU.isVisible = true
-                detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                detalle.binding.linkCumplimientoMinistracionesSEU.isVisible = true
+                detalle.binding.linkCumplimientoMinistracionesSEU.setOnClickListener(
                     loadFragment(
                         MinistracionFederalExtraordinariaFragment(
                             informacion,
@@ -438,8 +436,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
         }else if (ministracionFederalExtraordinaria!!.federal.ministracionA != null){
 
             if (ministracionFederalExtraordinaria != null) {
-                detalle.linkCumplimientoMinistracionesSEU.isVisible = true
-                detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+                detalle.binding.linkCumplimientoMinistracionesSEU.isVisible = true
+                detalle.binding.linkCumplimientoMinistracionesSEU.setOnClickListener(
                     loadFragment(
                         MinistracionFederalExtraordinariaFragment(
                             informacion,
@@ -463,8 +461,8 @@ private fun activarSubsidioExtraordinarioPresupuesto(
             )?.tablero_cumplimiento
         }
 
-        detalle.linkTableroCumplimiento.isVisible = true
-        detalle.linkTableroCumplimiento.setOnClickListener(
+        detalle.binding.linkTableroCumplimiento.isVisible = true
+        detalle.binding.linkTableroCumplimiento.setOnClickListener(
             loadFragment(
                 CumplimentoPresupuestoFragment(informacion,tablero!!),
                 activity
@@ -494,8 +492,8 @@ private fun activarSubsidioProfexe(
             )
         }
 
-        detalle.linkCompromisosEstado.isVisible = true
-        detalle.linkCompromisosEstado.setOnClickListener(
+        detalle.binding.linkCompromisosEstado.isVisible = true
+        detalle.binding.linkCompromisosEstado.setOnClickListener(
             loadFragment(
                 ListaCompromisosEstadoProfexce(informacion, compromisosEstado),
                 activity
@@ -510,8 +508,8 @@ private fun activarSubsidioProfexe(
             itemSources.compromisosProfexceUniversidad(informacion.id, informacion.year)
         }
 
-        detalle.linkCompromisosUniversidad.isVisible = true
-        detalle.linkCompromisosUniversidad.setOnClickListener(
+        detalle.binding.linkCompromisosUniversidad.isVisible = true
+        detalle.binding.linkCompromisosUniversidad.setOnClickListener(
             loadFragment(
                 ListaCompromisosUniversidadProfexceFragment(
                     informacion,
@@ -523,8 +521,8 @@ private fun activarSubsidioProfexe(
         )
     }
 
-    detalle.linkTableroCumplimiento.isVisible = true
-    detalle.linkTableroCumplimiento.setOnClickListener(
+    detalle.binding.linkTableroCumplimiento.isVisible = true
+    detalle.binding.linkTableroCumplimiento.setOnClickListener(
         loadFragment(CumplimientoFragment(informacion), activity)
     )
 }
@@ -542,8 +540,8 @@ private fun activarSubsidioOrdinario(
             itemSources.compromisosOrdinarios(informacion.id, informacion.year)
         }
 
-        detalle.linkCompromisosUniversidad.isVisible = true
-        detalle.linkCompromisosUniversidad.setOnClickListener(
+        detalle.binding.linkCompromisosUniversidad.isVisible = true
+        detalle.binding.linkCompromisosUniversidad.setOnClickListener(
             loadFragment(
                 ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos), activity
             )
@@ -557,8 +555,8 @@ private fun activarSubsidioOrdinario(
         }
 
         if (ministracionFederal != null) {
-            detalle.linkCumplimientoMinistracionesSEU.isVisible = true
-            detalle.linkCumplimientoMinistracionesSEU.setOnClickListener(
+            detalle.binding.linkCumplimientoMinistracionesSEU.isVisible = true
+            detalle.binding.linkCumplimientoMinistracionesSEU.setOnClickListener(
                 loadFragment(
                     MinFederalFragment(informacion, ministracionFederal), activity
                 )
@@ -574,8 +572,8 @@ private fun activarSubsidioOrdinario(
 
         if (ministracionEstatal != null) {
 
-            detalle.linkCumplimientoMinistracionesEU.isVisible = true
-            detalle.linkCumplimientoMinistracionesEU.setOnClickListener(
+            detalle.binding.linkCumplimientoMinistracionesEU.isVisible = true
+            detalle.binding.linkCumplimientoMinistracionesEU.setOnClickListener(
                 loadFragment(MinEstatalFragment(informacion, ministracionEstatal), activity)
             )
         }

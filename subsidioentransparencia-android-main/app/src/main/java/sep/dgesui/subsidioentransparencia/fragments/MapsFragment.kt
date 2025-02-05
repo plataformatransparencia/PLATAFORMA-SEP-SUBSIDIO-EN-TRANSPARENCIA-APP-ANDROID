@@ -2,6 +2,7 @@ package sep.dgesui.subsidioentransparencia.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.fragment_maps.*
 import kotlinx.coroutines.Job
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentMapsBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.model.Universidade
 import timber.log.Timber
@@ -24,7 +25,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
     val job = Job()
     var id = ""
     var nombre = ""
-
     init {
         filter.selectDetalle = true
         filter.btnFilter = true
@@ -32,7 +32,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
     fun googleMapsConfigurations(googleMap: GoogleMap) {
         GoogleMapOptions().useViewLifecycleInFragment(true)
-        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.style_json))
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(binding.root.context, R.raw.style_json))
         googleMap.uiSettings.isMapToolbarEnabled = false
         googleMap.uiSettings.isScrollGesturesEnabled = true
         googleMap.uiSettings.isRotateGesturesEnabled = false
@@ -42,7 +42,9 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
 
     private fun setMarkers(googleMap: GoogleMap, list: List<Universidade>, subsidio: String) {
+
         googleMap.clear()
+
         googleMap.moveCamera(
             CameraUpdateFactory.newLatLngZoom(
                 LatLng(
@@ -51,7 +53,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                 ), 5.1F
             )
         )
-
         for (mapsUni in list) {
 
             if (subsidio != "subsidio_ordinario") {
@@ -106,23 +107,24 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
             filter.content.observe(this) { listaRecibida ->
                 googleMapsConfigurations(googleMap)
+                Log.e("markers", listaRecibida.toString() )
                 setMarkers(googleMap, listaRecibida, filter.subsidio)
 
-                borrarFiltroMaps.isVisible = filter.filtered
+                binding.borrarFiltroMaps.isVisible = filter.filtered
 
-                formatHeader(filter, cTitleYearMaps, TitleYearMaps, requireContext())
+                formatHeader(filter, binding.cTitleYearMaps, binding.TitleYearMaps, requireContext())
 
-                borrarFiltroMaps.setOnClickListener {
+                binding.borrarFiltroMaps.setOnClickListener {
                     Timber.d("BORRAR ${filter.filtered}")
                     filter.reset()
                     filter.filtrar()
-                    borrarFiltroMaps.isVisible = false
+                    binding.borrarFiltroMaps.isVisible = false
                     filter.selectDeficitFinanciero = false
-                    cTitleYearMaps.setBackgroundColor(Color.parseColor("#225C4F"))
+                    binding.cTitleYearMaps.setBackgroundColor(Color.parseColor("#225C4F"))
                 }
 
 
-                buttonFilterMaps.setOnClickListener {
+                binding.buttonFilterMaps.setOnClickListener {
                     filter.btnFilter = false
                     filter.selectState = false
                     FilterFragment(requireContext()) { MapsFragment() }
@@ -136,7 +138,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
     }
 
 
-    override fun onMarkerClick(marker: Marker?): Boolean {
+    override fun onMarkerClick(marker:Marker): Boolean {
         id = marker!!.zIndex.toInt().toString()
         nombre = marker.title.toString()
         filter.selectDetalle = false
@@ -150,23 +152,26 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         return true
     }
 
-
+    private var _binding: FragmentMapsBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+        _binding = FragmentMapsBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mapFragment = childFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+
+        mapFragment.getMapAsync(callback)
+
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
@@ -175,7 +180,8 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                 }
             })
 
-
     }
+
+
 
 }

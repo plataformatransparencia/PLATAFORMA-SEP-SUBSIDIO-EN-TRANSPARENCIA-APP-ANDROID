@@ -3,13 +3,11 @@ package sep.dgesui.subsidioentransparencia.engineadapter
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_compromisos_list.view.*
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.ItemCompromisosListBinding
 import sep.dgesui.subsidioentransparencia.getColorCumplimiento
 import sep.dgesui.subsidioentransparencia.tableroext.compromisos.Cumplimiento
 
@@ -17,14 +15,9 @@ class CommitActividadesCumplimientoAdapter(
     val compromisosext: ArrayList<Cumplimiento>
 ) : RecyclerView.Adapter<CommitActividadesCumplimientoAdapter.CompromisosCumplimientosExtHolder>() {
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): CompromisosCumplimientosExtHolder {
-        return CompromisosCumplimientosExtHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_compromisos_list, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): CompromisosCumplimientosExtHolder {
+        val binding = ItemCompromisosListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CompromisosCumplimientosExtHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CompromisosCumplimientosExtHolder, position: Int) {
@@ -33,7 +26,7 @@ class CommitActividadesCumplimientoAdapter(
 
     override fun getItemCount(): Int = compromisosext.size
 
-    inner class CompromisosCumplimientosExtHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class CompromisosCumplimientosExtHolder(val binding: ItemCompromisosListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(compromiso: Cumplimiento) {
             var fechaEstipulada = ""
             var fechaEjecucion = ""
@@ -41,13 +34,14 @@ class CommitActividadesCumplimientoAdapter(
                 fechaEstipulada = compromiso.fechaEstipulada
                 fechaEjecucion = compromiso.fechaEjecucion
             }
-            view.textFechaItem.text = fechaEstipulada
-            view.fechaDetailCumplimientoItem.text = fechaEjecucion
+
+            binding.textFechaItem.text = fechaEstipulada
+            binding.fechaDetailCumplimientoItem.text = fechaEjecucion
 
 
-            val color = getColorCumplimiento(compromiso.cumplimiento, view.context)
+            val color = getColorCumplimiento(compromiso.cumplimiento, binding.root.context)
 
-            view.cardViewDetailCumplimiento18.setCardBackgroundColor(color)
+            binding.cardViewDetailCumplimiento18.setCardBackgroundColor(color)
 
             ajustarObservaciones(compromiso.observacion)
 
@@ -55,25 +49,25 @@ class CommitActividadesCumplimientoAdapter(
 
         private fun ajustarObservaciones(observacion: String) {
             if (observacion.startsWith("http")) {
-                view.botonDocumentoObservacion.isVisible = true
-                view.plainTextObservacionDetailCompromiso.isVisible = false
+                binding.botonDocumentoObservacion.isVisible = true
+                binding.plainTextObservacionDetailCompromiso.isVisible = false
 
                 if (!observacion.endsWith(".pdf"))
-                    view.botonDocumentoObservacion.text = "Ir a la página"
+                    binding.botonDocumentoObservacion.text = "Ir a la página"
 
-                view.botonDocumentoObservacion.setOnClickListener {
+                binding.botonDocumentoObservacion.setOnClickListener {
                     startActivity(
-                        view.context,
+                        binding.root.context,
                         Intent.getIntentOld(Uri.parse(observacion).toString()),
                         null
                     )
                 }
 
             } else {
-                view.botonDocumentoObservacion.isVisible = false
-                view.plainTextObservacionDetailCompromiso.isVisible = true
+                binding.botonDocumentoObservacion.isVisible = false
+                binding.plainTextObservacionDetailCompromiso.isVisible = true
 
-                view.plainTextObservacionDetailCompromiso.text = observacion
+                binding.plainTextObservacionDetailCompromiso.text = observacion
             }
         }
     }

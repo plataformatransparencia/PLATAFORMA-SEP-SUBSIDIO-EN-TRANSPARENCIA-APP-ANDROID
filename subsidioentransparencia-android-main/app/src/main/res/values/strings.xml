@@ -369,5 +369,6 @@
     <string name="seguimiento_entrega">Seguimiento de la entrega de los estados de cuenta de la cuenta productiva específica</string>
     <string name="tesofe">Seguimiento de reintegros a la TESOFE</string>
     <string name="cierre_cuenta">Cierre de la cuenta productiva específica</string>
+    <string name="logo">Logo</string>
 
 </resources>

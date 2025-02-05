@@ -7,56 +7,59 @@ import sep.dgesui.subsidioentransparencia.fragments.Item
 class SupportKtTest {
 
     private val original = listOf(
-        Item(descripcion = "i1", fechaCompromiso = "fecha", observacion = ""),
+        Item(descripcion = "i1", fechaCompromiso = "fecha", observacion = "",porcentajeIncremento = 0.0),
         Item(
             descripcion = "i2",
             fechaCompromiso = "fecha",
             observacion = "",
+            porcentajeIncremento = 0.0,
             subacciones = listOf(
                 Item(
                     descripcion = "sa21",
                     fechaCompromiso = "fecha",
-                    observacion = ""
-                ), Item(descripcion = "sa22", fechaCompromiso = "fecha", observacion = "")
+                    observacion = "",porcentajeIncremento = 0.0
+                ), Item(descripcion = "sa22", fechaCompromiso = "fecha", observacion = "",porcentajeIncremento = 0.0)
             )
         ),
         Item(
             descripcion = "i3",
             fechaCompromiso = "fecha",
             observacion = "",
+            porcentajeIncremento = 0.0,
             subacciones = listOf(
                 Item(
                     descripcion = "Etapa 1 sa31",
                     fechaCompromiso = "fecha",
-                    observacion = ""
-                ), Item(descripcion = "Etapa 2 sa32", fechaCompromiso = "fecha", observacion = "")
+                    observacion = "",porcentajeIncremento = 0.0
+                ), Item(descripcion = "Etapa 2 sa32", fechaCompromiso = "fecha", observacion = "",porcentajeIncremento = 0.0)
             )
         ),
     )
 
     val esperado = listOf(
-        Item(descripcion = "i1", fechaCompromiso = "fecha", observacion = ""),
+        Item(descripcion = "i1", fechaCompromiso = "fecha", observacion = "",porcentajeIncremento = 0.0),
         Item(
             descripcion = "i2",
             fechaCompromiso = "fecha",
-            observacion = "",
+            observacion = "",porcentajeIncremento = 0.0
         ),
         Item(
             descripcion = "sa21",
             fechaCompromiso = "fecha",
-            observacion = ""
+            observacion = "",porcentajeIncremento = 0.0
         ),
-        Item(descripcion = "sa22", fechaCompromiso = "fecha", observacion = ""),
+        Item(descripcion = "sa22", fechaCompromiso = "fecha", observacion = "",porcentajeIncremento = 0.0),
         Item(
             descripcion = "i3",
             fechaCompromiso = "fecha",
-            observacion = "",
+            observacion = "",porcentajeIncremento = 0.0,
             subacciones = listOf(
                 Item(
                     descripcion = "Etapa 1 sa31",
                     fechaCompromiso = "fecha",
-                    observacion = ""
-                ), Item(descripcion = "Etapa 2 sa32", fechaCompromiso = "fecha", observacion = "")
+                    observacion = "" ,
+                    porcentajeIncremento = 0.0
+                ), Item(descripcion = "Etapa 2 sa32", fechaCompromiso = "fecha", observacion = "",porcentajeIncremento = 0.0)
             )
         ),
     )

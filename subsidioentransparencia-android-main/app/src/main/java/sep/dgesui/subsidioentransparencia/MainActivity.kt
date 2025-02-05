@@ -1,21 +1,11 @@
 package sep.dgesui.subsidioentransparencia
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.util.TypedValue
 import android.view.MenuItem
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_programs.*
+import sep.dgesui.subsidioentransparencia.databinding.ActivityMainBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.fragments.ContactFragment
 import sep.dgesui.subsidioentransparencia.fragments.ListFragment
@@ -32,10 +22,13 @@ class MainActivity : AppCompatActivity() {
     val contacFragment = ContactFragment()
     val menuFragment = MenuFragment()
     var filter = Filter.filter
-
+    private lateinit var binding: ActivityMainBinding
     @SuppressLint("MissingInflatedId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         if (BuildConfig.DEBUG)
             Timber.plant(Timber.DebugTree())
@@ -48,9 +41,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        setContentView(R.layout.activity_main)
 
-        bottom_navigation.setOnNavigationItemSelectedListener { item: MenuItem ->
+        binding.bottomNavigation.setOnItemSelectedListener  { item: MenuItem ->
             item.isCheckable = false
             when (item.itemId) {
                 R.id.mapFragment -> {

@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_inf_rendicion_fed.*
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentInfRendicionFedBinding
 import sep.dgesui.subsidioentransparencia.getColorCumplimiento
 
 
@@ -17,39 +16,46 @@ class InfRendicionFedFragment(
     val year: String,
     val uni: String
 ) : Fragment() {
-
+    private var _binding: FragmentInfRendicionFedBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inf_rendicion_fed, container, false)
+        _binding = FragmentInfRendicionFedBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        YearRend.text = year.substring(0, 4)
-        titleUni.text = uni
-        buttonBackTableroTR.setOnClickListener {
+        binding.YearRend.text = year.substring(0, 4)
+        binding.titleUni.text = uni
+        binding.buttonBackTableroTR.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
         val colorCumplimientoTrimestreR = getColorCumplimiento(listRendicion[1], context)
-        cardViewcumplimientoTrimestreR.setCardBackgroundColor(colorCumplimientoTrimestreR)
+        binding.cardViewcumplimientoTrimestreR.setCardBackgroundColor(colorCumplimientoTrimestreR)
 
         when (listRendicion[1]) {
-            "Cumplió" -> textInfRendicionTrimestralCumplio.text = "Cumplió"
-            "No cumplió" -> textInfRendicionTrimestralCumplio.text = "No Cumplió"
-            "En revisión" -> textInfRendicionTrimestralCumplio.text = "En Revisión"
+            "Cumplió" -> binding.textInfRendicionTrimestralCumplio.text = "Cumplió"
+            "No cumplió" -> binding.textInfRendicionTrimestralCumplio.text = "No Cumplió"
+            "En revisión" -> binding.textInfRendicionTrimestralCumplio.text = "En Revisión"
             else -> {
-                textInfRendicionTrimestralCumplio.text = "No Cumplió"
+                binding.textInfRendicionTrimestralCumplio.text = "No Cumplió"
             }
         }
 
-        visibleObservacionesTrimestreR.isVisible = false
+        binding.visibleObservacionesTrimestreR.isVisible = false
         if (listRendicion[2] != "") {
-            visibleObservacionesTrimestreR.isVisible = true
-            textObservacionTrimestreR.text = listRendicion[2]
+            binding.visibleObservacionesTrimestreR.isVisible = true
+            binding.textObservacionTrimestreR.text = listRendicion[2]
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

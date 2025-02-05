@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.compromisos_extraordinarios_fragment.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.CompromisosExtraordinariosFragmentBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.ReferenciasAdapter
 
 class FragmentListaCompromisosExtraordinario2018(
@@ -38,50 +37,60 @@ class FragmentListaCompromisosExtraordinario2018(
                 complexItem
             )
         }
-
+    private var _binding: CompromisosExtraordinariosFragmentBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.compromisos_extraordinarios_fragment, container, false)
+    ): View? {
+        _binding = CompromisosExtraordinariosFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        lista_compromisos_header.setValues(
+        binding.listaCompromisosHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        listaCompromisosBack.setOnClickListener { requireActivity().onBackPressed() }
+        binding.listaCompromisosBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
-        listaCompromisosCompromisos.adapter =
+        binding.listaCompromisosCompromisos.adapter =
             ItemListCardRecyclerAdapter(
                 compromisos,
                 requireActivity(),
                 simpleItemTargetFactory
             )
 
-        listaCompromisosActividades.adapter =
+        binding.listaCompromisosActividades.adapter =
             ComplexItemListRecyclerAdapter(
                 actividades,
                 requireActivity(),
                 accionesTargeFactory
             )
 
-        listaCompromisosEntregas.adapter = ComplexItemListRecyclerAdapter(
+        binding.listaCompromisosEntregas.adapter = ComplexItemListRecyclerAdapter(
             entregas,
             requireActivity(),
             entregasTargeFactory
         )
 
 
-        listaCompromisosReferencias.adapter = ReferenciasAdapter(referencias ?: emptyMap())
+        binding.listaCompromisosReferencias.adapter = ReferenciasAdapter(referencias ?: emptyMap())
 
-        listaCompromisosNota.text = notaCompromiso
+        binding.listaCompromisosNota.text = notaCompromiso
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 

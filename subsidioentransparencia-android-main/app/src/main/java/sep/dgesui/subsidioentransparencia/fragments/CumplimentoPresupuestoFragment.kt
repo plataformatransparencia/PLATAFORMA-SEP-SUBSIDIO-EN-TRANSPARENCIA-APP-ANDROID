@@ -1,56 +1,52 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_item_list.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentItemListBinding
 import sep.dgesui.subsidioentransparencia.tableroext.presupuesto.tablero.*
-import kotlin.math.log
 
 class CumplimentoPresupuestoFragment(
     protected val informacion: InformacionGeneralWrapper,
     protected val tablero: TableroCumplimientoPresupuesto
     ) : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+    private var _binding: FragmentItemListBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_item_list, container, false)
+        _binding = FragmentItemListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //loadData()
-        listHeader.setValues(
+        binding.listHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        listTitle.text = requireContext().getString(R.string.tablero_cumplimiento)
+        binding.listTitle.text = requireContext().getString(R.string.tablero_cumplimiento)
 
-        listBackButton.setOnClickListener {
+        binding.listBackButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
         val itemsInformes = tablero.Informes.map {
             it.toItem()
         }
-        buttonInformes.visibility = View.VISIBLE
-        buttonInformes.setOnClickListener {
+        binding.buttonInformes.visibility = View.VISIBLE
+        binding.buttonInformes.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(
                 R.id.main_fragment_container,
                 ListaCumplimientoPresupuestoFragment(informacion,itemsInformes,R.string.seguimiento_entrega)
@@ -59,8 +55,8 @@ class CumplimentoPresupuestoFragment(
         val itemsSeguimiento = tablero.Seguimiento_de_entrega.map {
             it.toItem()
         }
-        buttonSeguimientoEntregas.visibility = View.VISIBLE
-        buttonSeguimientoEntregas.setOnClickListener {
+        binding.buttonSeguimientoEntregas.visibility = View.VISIBLE
+        binding.buttonSeguimientoEntregas.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(
                 R.id.main_fragment_container,
                 ListaCumplimientoPresupuestoFragment(informacion,itemsSeguimiento,R.string.seguimiento_entrega)
@@ -69,8 +65,8 @@ class CumplimentoPresupuestoFragment(
         val itemsTESOFE = tablero.Reintegro_TESOFE.map {
             it.toItem()
         }
-        buttonTESOFE.visibility = View.VISIBLE
-        buttonTESOFE.setOnClickListener {
+        binding.buttonTESOFE.visibility = View.VISIBLE
+        binding.buttonTESOFE.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(
                 R.id.main_fragment_container,
                 ListaCumplimientoPresupuestoFragment(informacion,itemsTESOFE,R.string.seguimiento_entrega)
@@ -78,8 +74,8 @@ class CumplimentoPresupuestoFragment(
         }
         val itemsCierreCuenta = ArrayList<ItemPresupuesto>()
         itemsCierreCuenta.add(tablero.Cierre_productiva.toItem())
-        buttonCierreCuenta.visibility = View.VISIBLE
-        buttonCierreCuenta.setOnClickListener {
+        binding.buttonCierreCuenta.visibility = View.VISIBLE
+        binding.buttonCierreCuenta.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(
                 R.id.main_fragment_container,
                 ListaCumplimientoPresupuestoFragment(informacion,itemsCierreCuenta,R.string.seguimiento_entrega)
@@ -123,5 +119,8 @@ class CumplimentoPresupuestoFragment(
         tipo =  "Fecha de reintegro"
     )
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

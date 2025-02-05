@@ -16,11 +16,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.applyLinks
-import kotlinx.android.synthetic.main.fragment_detalle.*
-import kotlinx.android.synthetic.main.fragment_detalle_compromiso_estado_profexce.detalleEstadoProfexceTitle
 import kotlinx.coroutines.*
 import sep.dgesui.subsidioentransparencia.*
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.FichaRepository
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.engineadapter.NotaRepository
@@ -28,7 +27,6 @@ import sep.dgesui.subsidioentransparencia.engineadapter.ReferenciasAdapter
 import sep.dgesui.subsidioentransparencia.model.Detalle
 import sep.dgesui.subsidioentransparencia.model.Universidade
 import sep.dgesui.subsidioentransparencia.modelreferencias.Referencias
-import timber.log.Timber
 
 
 class DetalleFragment(
@@ -52,9 +50,6 @@ class DetalleFragment(
     var listUni: List<Universidade> = emptyList()
 
     init {
-        Timber.d("Loading detail for: Year [$year] ID [$id] Name [$nombre] Subsidio [$subsidio]")
-
-
         filter.content.observe(this) { listaRecibida: List<Universidade> ->
             listUni = listaRecibida
         }
@@ -67,6 +62,7 @@ class DetalleFragment(
 
         d.behavior.peekHeight = run {
             val displayMetrics = DisplayMetrics()
+            @Suppress("DEPRECATION")
             (context as Activity?)!!.windowManager.defaultDisplay.getMetrics(displayMetrics)
             displayMetrics.heightPixels
         }
@@ -83,14 +79,16 @@ class DetalleFragment(
             dismiss()
     }
 
-
+    private var _binding: FragmentDetalleBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_detalle, container, false)
+        _binding = FragmentDetalleBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
@@ -101,19 +99,19 @@ class DetalleFragment(
 
         runBlocking {
 
-            notaMontoDecider = ChartNotaDecider(textNotaMonto)
+            notaMontoDecider = ChartNotaDecider(binding.textNotaMonto)
 
 
             activarTableros(thisDetalle, informacion, requireActivity())
 
-            headerDetalleUniversidad.setValues(
+            binding.headerDetalleUniversidad.setValues(
                 informacion.nombreUniversidad,
                 informacion.subsidio,
                 informacion.year,
                 requireContext()
             )
 
-            generalesUniversidad.setOnClickListener {
+            binding.generalesUniversidad.setOnClickListener {
                 if (back_to_page == "map"){
                     requireActivity().supportFragmentManager.beginTransaction().apply {
                         replace(
@@ -141,7 +139,7 @@ class DetalleFragment(
         val notas = withContext(dispatcher) { notasRepository.notas(year, id, subsidio) }
 
         if (notas != null)
-            textoNotaGlobalNotas.text = notas.nota_global
+            binding.textoNotaGlobalNotas.text = notas.nota_global
 
     }
 
@@ -150,7 +148,7 @@ class DetalleFragment(
         val referencias = async(dispatcher) { fichaRepository.referencias(year) }.await()
 
 
-        referenciasNumeralia.adapter =
+        binding.referenciasNumeralia.adapter =
             ReferenciasAdapter(referencias?.numeralia ?: emptyMap())
 
         when (subsidio) {
@@ -171,88 +169,88 @@ class DetalleFragment(
     }
 
     private fun cargarReferenciasSubsidioProfexce(referencias: Referencias?) {
-        titleOtrasReferencias.visibility = View.GONE
-        referenciasOtras.visibility = View.GONE
+        binding.titleOtrasReferencias.visibility = View.GONE
+        binding.referenciasOtras.visibility = View.GONE
 
         if (referencias?.subsidio_profexce?.anexo != null) {
 
-            titlereferenciaAnexoDetalle.text =
+            binding.titlereferenciaAnexoDetalle.text =
                 requireContext().getString(R.string.label_referencias)
 
-            referenciasAnexo.adapter =
+            binding.referenciasAnexo.adapter =
                 ReferenciasAdapter(referencias.subsidio_profexce.anexo)
 
         } else {
-            titlereferenciaAnexoDetalle.isVisible = false
+            binding.titlereferenciaAnexoDetalle.isVisible = false
         }
     }
 
     private fun cargarReferenciasSubsidioExtraordinario(
         referencias: Referencias?,
     ) {
-        titleOtrasReferencias.visibility = View.GONE
-        referenciasOtras.visibility = View.GONE
+        binding.titleOtrasReferencias.visibility = View.GONE
+        binding.referenciasOtras.visibility = View.GONE
 
         if (referencias?.subsidio_extraordinario?.get("nota monto") != null)
             referencias.subsidio_extraordinario["nota monto"].apply {
-                textNotaMonto.text = this
+                binding.textNotaMonto.text = this
                 notaMontoDecider.nota = this
             }
         else
-            textNotaMonto.visibility = View.GONE
+            binding.textNotaMonto.visibility = View.GONE
 
         if (referencias?.subsidio_extraordinario?.get("nota global") != null)
-            textoNotaGlobalReferencias.text = referencias.subsidio_extraordinario["nota global"]
+            binding.textoNotaGlobalReferencias.text = referencias.subsidio_extraordinario["nota global"]
         else
-            textoNotaGlobalReferencias.visibility = View.GONE
+            binding.textoNotaGlobalReferencias.visibility = View.GONE
 
     }
 
     private fun cargarReferenciasSubsidioOrdinario(
         referencias: Referencias?,
     ) {
-        notaRedondeo.visibility = View.VISIBLE
+        binding.notaRedondeo.visibility = View.VISIBLE
 
         if (referencias?.subsidio_ordinario?.anexo != null) {
 
-            titlereferenciaAnexoDetalle.text = String.format(
+            binding.titlereferenciaAnexoDetalle.text = String.format(
                 requireContext().getString(R.string.referencias_anexo),
                 year
             )
 
-            referenciasAnexo.adapter =
+            binding.referenciasAnexo.adapter =
                 ReferenciasAdapter(referencias.subsidio_ordinario.anexo)
 
         } else {
-            titlereferenciaAnexoDetalle.isVisible = false
+            binding.titlereferenciaAnexoDetalle.isVisible = false
         }
 
         if (referencias?.subsidio_ordinario?.otras != null) {
-            referenciasOtras.adapter =
+            binding.referenciasOtras.adapter =
                 ReferenciasAdapter(referencias.subsidio_ordinario.otras)
         } else {
-            titleOtrasReferencias.isVisible = false
+            binding.titleOtrasReferencias.isVisible = false
         }
     }
 
     private fun cargarReferenciasSubsidioPresupuesto(
         referencias: Referencias?,
     ) {
-        notaRedondeo.visibility = View.VISIBLE
+        binding.notaRedondeo.visibility = View.VISIBLE
 
         if (referencias?.subsidio_presupuesto?.anexo != null) {
 
-            titlereferenciaAnexoDetalle.text = String.format(
+            binding.titlereferenciaAnexoDetalle.text = String.format(
                 requireContext().getString(R.string.referencias_presupuesto)
             )
 
-            referenciasAnexo.adapter =
+            binding.referenciasAnexo.adapter =
                 ReferenciasAdapter(referencias.subsidio_presupuesto.anexo)
 
         } else {
-            titlereferenciaAnexoDetalle.isVisible = false
+            binding.titlereferenciaAnexoDetalle.isVisible = false
         }
-        titleOtrasReferencias.isVisible = false
+        binding.titleOtrasReferencias.isVisible = false
 
     }
 
@@ -297,16 +295,16 @@ class DetalleFragment(
             notaMontoDecider.montos = mapaMontos
 
             if (mapaMontos.isNotEmpty())
-                chartMontos.plot(mapaMontos, subsidio)
+                binding.chartMontos.plot(mapaMontos, subsidio)
             else
-                chartMontos.visibility = View.GONE
+                binding.chartMontos.visibility = View.GONE
 
         }
     }
 
     private fun cargarDocumentos(detalle: Detalle) {
         if (detalle.planAusteridad.isNotBlank())
-            buttonPlanAusteridad.apply {
+            binding.buttonPlanAusteridad.apply {
 
                 visibility = View.VISIBLE
 
@@ -314,8 +312,8 @@ class DetalleFragment(
             }
 
         if (!detalle.anexoEjecucion.isNullOrEmpty()) {
-            titleNumeraliaDetalleProceso.text = "(Institución en proceso de consolidación)"
-            buttonAnexoEjecucion.apply {
+            binding.titleNumeraliaDetalleProceso.text = "(Institución en proceso de consolidación)"
+            binding.buttonAnexoEjecucion.apply {
                 visibility = View.VISIBLE
 
                 text = String.format(
@@ -327,11 +325,8 @@ class DetalleFragment(
             }
         }
         if (!detalle.MarcoColaboracion.isNullOrBlank())
-            buttonConvenioMarco.apply {
-
+            binding.buttonConvenioMarco.apply {
                 visibility = View.VISIBLE
-
-
                 text = String.format(
                     requireContext().getString(R.string.convenio_marco),
                     detalle.MarcoAnio
@@ -344,11 +339,9 @@ class DetalleFragment(
 
             if(detalle.convenio.contains(",")){
                 val urls = detalle.convenio.split(",")
-                buttonConvenio.apply {
+                binding.buttonConvenio.apply {
                     visibility = View.VISIBLE
-
                     val tipoConvenio = urls[0].split("*")
-
                     text = String.format(
                         requireContext().getString(R.string.convenio),
                         "Vertiente "+tipoConvenio[0]
@@ -358,11 +351,9 @@ class DetalleFragment(
 
                 }
 
-                buttonConvenio2.apply {
+                binding.buttonConvenio2.apply {
                     visibility = View.VISIBLE
-
                     val tipoConvenio = urls[1].split("*")
-
                     text = String.format(
                         requireContext().getString(R.string.convenio),
                         "Vertiente "+tipoConvenio[0]
@@ -376,11 +367,9 @@ class DetalleFragment(
 
                 when (subsidio) {
                     "subsidio_presupuesto" -> {
-                        buttonConvenio.apply {
+                        binding.buttonConvenio.apply {
                             visibility = View.VISIBLE
-
                             val tipoConvenio = detalle.convenio.split("*")
-
                             text = String.format(
                                 requireContext().getString(R.string.convenio),
                                 "Vertiente "+tipoConvenio[0]
@@ -391,9 +380,8 @@ class DetalleFragment(
                         }
                     }
                     else -> {
-                        buttonConvenio.apply {
+                        binding.buttonConvenio.apply {
                             visibility = View.VISIBLE
-
                             text = String.format(
                                 requireContext().getString(R.string.convenio),
                                 year
@@ -412,7 +400,7 @@ class DetalleFragment(
 
     private fun cargarNumeralia(detalle: Detalle) {
         detalle.numeralia.apply {
-            titleNumeraliaDetalleProceso.visibility = View.GONE
+            binding.titleNumeraliaDetalleProceso.visibility = View.GONE
             if (higherEducationEnrolment == 0 &&
                 highSchoolEnrolment == 0 &&
                 enrolmentTotal == 0 &&
@@ -421,50 +409,50 @@ class DetalleFragment(
                 nationalSystemResearchersProfessor == 0 &&
                 studentAllowance == 0.0
                 ){
-                titleNumeraliaDetalleProceso.visibility = View.VISIBLE
-                titleNumeraliaDetalleProceso.text = "(Institución en proceso de creación)"
-                numMatriculaTotalESDetalle.visibility = View.GONE
-                textMatriculaTotalESDetalle.visibility = View.GONE
-                numMatriculaTotalEMDetalle.visibility = View.GONE
-                textMatriculaTotalEMDetalle.visibility = View.GONE
-                numMatriculaTotalDetalle.visibility = View.GONE
-                textMatriculaTotalDetalle.visibility = View.GONE
-                numTotalProfesoresTCDetalle.visibility = View.GONE
-                textTotalProfesoresTCDetalle.visibility = View.GONE
-                numTotalProfesoresTCPDVDetalle.visibility = View.GONE
-                textTotalProfesoresTCPDVDetalle.visibility = View.GONE
-                numProfesoresSistemaNacionalIVDetalle.visibility = View.GONE
-                textProfesoresSistemaNacionalIVDetalle.visibility = View.GONE
-                numSubsidioAlumnoFEDetalle.visibility = View.GONE
-                textSubsidioAlumnoFEDetalle.visibility = View.GONE
+                binding.titleNumeraliaDetalleProceso.visibility = View.VISIBLE
+                binding.titleNumeraliaDetalleProceso.text = "(Institución en proceso de creación)"
+                binding.numMatriculaTotalESDetalle.visibility = View.GONE
+                binding.textMatriculaTotalESDetalle.visibility = View.GONE
+                binding.numMatriculaTotalEMDetalle.visibility = View.GONE
+                binding.textMatriculaTotalEMDetalle.visibility = View.GONE
+                binding.numMatriculaTotalDetalle.visibility = View.GONE
+                binding.textMatriculaTotalDetalle.visibility = View.GONE
+                binding.numTotalProfesoresTCDetalle.visibility = View.GONE
+                binding.textTotalProfesoresTCDetalle.visibility = View.GONE
+                binding.numTotalProfesoresTCPDVDetalle.visibility = View.GONE
+                binding.textTotalProfesoresTCPDVDetalle.visibility = View.GONE
+                binding.numProfesoresSistemaNacionalIVDetalle.visibility = View.GONE
+                binding.textProfesoresSistemaNacionalIVDetalle.visibility = View.GONE
+                binding.numSubsidioAlumnoFEDetalle.visibility = View.GONE
+                binding.textSubsidioAlumnoFEDetalle.visibility = View.GONE
             }
-            numMatriculaTotalESDetalle.text =
+            binding.numMatriculaTotalESDetalle.text =
                 integerFormatter.format(higherEducationEnrolment)
 
-            numMatriculaTotalEMDetalle.text =
+            binding.numMatriculaTotalEMDetalle.text =
                 integerFormatter.format(highSchoolEnrolment)
 
-            numMatriculaTotalDetalle.text =
+            binding.numMatriculaTotalDetalle.text =
                 integerFormatter.format(enrolmentTotal)
 
-            numTotalProfesoresTCDetalle.text =
+            binding.numTotalProfesoresTCDetalle.text =
                 integerFormatter.format(fullTimeProfessorsTotal)
 
-            numTotalProfesoresTCPDVDetalle.text =
+            binding.numTotalProfesoresTCPDVDetalle.text =
                 integerFormatter.format(desirableProfileProfessor)
 
-            numProfesoresSistemaNacionalIVDetalle.text =
+            binding.numProfesoresSistemaNacionalIVDetalle.text =
                 integerFormatter.format(nationalSystemResearchersProfessor)
 
-            numSubsidioAlumnoFEDetalle.text =
+            binding.numSubsidioAlumnoFEDetalle.text =
                 currencyFormatter.format(studentAllowance)
 
 
-            numPorcentajeParticipacionFDetalle.text = String.format(
+            binding.numPorcentajeParticipacionFDetalle.text = String.format(
                 porcentaje_template,
                 federationOwnershipPercentage
             )
-            numPorcentajeParticipacionEDetalle.text =
+            binding.numPorcentajeParticipacionEDetalle.text =
                 String.format(
                     porcentaje_template,
                     stateOwnershipPercentage
@@ -475,17 +463,17 @@ class DetalleFragment(
 
     private fun cargarInformacion(detalle: Detalle) {
 
-        generalesUniversidad.setValues(
+        binding.generalesUniversidad.setValues(
             detalle.siglas, detalle.nombre,
             detalle.webUrl, detalle.escudo
         )
 
-        direccionUniversidad.text = detalle.direccion
-        rectorUniversidad.text = detalle.rector
-        titleRectorDetalle.text = detalle.rectorCargo
-        gobernador.text = detalle.gobernador
-        titleGobernadorDetalle.text = detalle.gobernadorCargo
-        linkSitioTransparencia.apply {
+        binding.direccionUniversidad.text = detalle.direccion
+        binding.rectorUniversidad.text = detalle.rector
+        binding.titleRectorDetalle.text = detalle.rectorCargo
+        binding.gobernador.text = detalle.gobernador
+        binding.titleGobernadorDetalle.text = detalle.gobernadorCargo
+        binding.linkSitioTransparencia.apply {
 
             Link(context.getString(R.string.ir_a_sitio))
                 .setHighlightAlpha(0.4F)
@@ -530,6 +518,9 @@ class DetalleFragment(
 
 
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

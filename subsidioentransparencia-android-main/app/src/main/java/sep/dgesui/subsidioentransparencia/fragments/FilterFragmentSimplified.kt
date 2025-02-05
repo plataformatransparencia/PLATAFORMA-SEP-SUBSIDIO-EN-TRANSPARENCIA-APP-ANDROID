@@ -14,9 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.fragment_filter.*
 import kotlinx.coroutines.runBlocking
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentFilterBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.modelfilter.FilterValuesCache
 
@@ -46,12 +46,12 @@ class FilterFragment(
     }
 
     private fun setupButtonListener() {
-        closeFilter.setOnClickListener {
+        binding.closeFilter.setOnClickListener {
             onDestroyView()
         }
 
 
-        butonFilter.setOnClickListener {
+        binding.butonFilter.setOnClickListener {
 
             runBlocking {
 
@@ -112,18 +112,25 @@ class FilterFragment(
     }
 
     private fun setupItemSelectedListeners() {
-        spAñoFiltro.onItemSelectedListener = listenerFactory(selectedYear)
-        spTipoSubsidio.onItemSelectedListener = listenerFactory(selectedTipoSubsidio)
-        spSubsidio.onItemSelectedListener = listenerFactory(selectedSubsidio)
+        binding.spAOFiltro.onItemSelectedListener = listenerFactory(selectedYear)
+        binding.spTipoSubsidio.onItemSelectedListener = listenerFactory(selectedTipoSubsidio)
+        binding.spSubsidio.onItemSelectedListener = listenerFactory(selectedSubsidio)
 
-        spCategoriaFiltro.onItemSelectedListener = listenerFactoryTwo(selectedClasificacion)
-        spEstadosFiltro.onItemSelectedListener = listenerFactoryTwo(selectedEstado)
+        binding.spCategoriaFiltro.onItemSelectedListener = listenerFactoryTwo(selectedClasificacion)
+        binding.spEstadosFiltro.onItemSelectedListener = listenerFactoryTwo(selectedEstado)
     }
 
+    private var _binding: FragmentFilterBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_filter, container, false)
+    ): View? {
+        _binding = FragmentFilterBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     private fun listenerFactory(target: MutableLiveData<*>): AdapterView.OnItemSelectedListener =
         object : AdapterView.OnItemSelectedListener {
@@ -165,16 +172,16 @@ class FilterFragment(
     private fun loadYears() {
         val years = filterValues.value?.subsidios?.years ?: emptyList()
 
-        spAñoFiltro.adapter = arrayAdapterFactory(years)
-        spAñoFiltro.setSelection(0)
+        binding.spAOFiltro.adapter = arrayAdapterFactory(years)
+        binding.spAOFiltro.setSelection(0)
     }
 
     private fun loadTiposSubsidiosForYear() {
         val year = selectedYear.value!!
         val tiposSubsidio = filterValues.value?.subsidios?.tiposSubsidioForYear(year) ?: emptyList()
 
-        spTipoSubsidio.adapter = arrayAdapterFactory(tiposSubsidio)
-        spTipoSubsidio.setSelection(0)
+        binding.spTipoSubsidio.adapter = arrayAdapterFactory(tiposSubsidio)
+        binding.spTipoSubsidio.setSelection(0)
 
     }
 
@@ -186,8 +193,8 @@ class FilterFragment(
         val subsidios =
             filterValues.value?.subsidios?.subsidiosForYear(year, tipoSubsidio) ?: emptyList()
 
-        spSubsidio.adapter = arrayAdapterFactory(subsidios)
-        spSubsidio.setSelection(0)
+        binding.spSubsidio.adapter = arrayAdapterFactory(subsidios)
+        binding.spSubsidio.setSelection(0)
     }
 
     private fun loadClasificaciones() {
@@ -199,8 +206,8 @@ class FilterFragment(
             filterValues.value?.clasificacion?.clasificacionesForSubsidio(claveSubsidio)
                 ?: emptyList()
 
-        spCategoriaFiltro.adapter = arrayAdapterFactory(clasificaciones)
-        spCategoriaFiltro.setSelection(0)
+        binding.spCategoriaFiltro.adapter = arrayAdapterFactory(clasificaciones)
+        binding.spCategoriaFiltro.setSelection(0)
     }
 
     private fun loadEstados() {
@@ -218,8 +225,8 @@ class FilterFragment(
                     clasificacion
                 ) ?: emptyList()
 
-            spEstadosFiltro.adapter = arrayAdapterFactory(estados)
-            spEstadosFiltro.setSelection(0)
+            binding.spEstadosFiltro.adapter = arrayAdapterFactory(estados)
+            binding.spEstadosFiltro.setSelection(0)
         }
 
 
@@ -238,6 +245,7 @@ class FilterFragment(
 
         d.behavior.peekHeight = run {
             val displayMetrics = DisplayMetrics()
+            @Suppress("DEPRECATION")
             (context as Activity?)!!.windowManager.defaultDisplay.getMetrics(displayMetrics)
             displayMetrics.heightPixels
         }

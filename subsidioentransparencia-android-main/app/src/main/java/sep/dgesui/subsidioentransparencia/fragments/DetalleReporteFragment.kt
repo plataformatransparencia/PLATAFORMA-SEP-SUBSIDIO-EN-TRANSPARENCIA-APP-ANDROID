@@ -5,40 +5,48 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_detalle_reporte.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleReporteBinding
 
 class DetalleReporteFragment(
     private val informacion: InformacionGeneralWrapper,
     private val titulo:String,
     private val item: Item
 ) : Fragment() {
-
+    private var _binding: FragmentDetalleReporteBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_detalle_reporte, container, false)
+    ): View? {
+        _binding = FragmentDetalleReporteBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detalleReporteTitulo.text = titulo
+        binding.detalleReporteTitulo.text = titulo
 
-        detalleReporteBack.setOnClickListener {
+        binding.detalleReporteBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        detalleReporteSemaforo.showData(item.cumplimiento, informacion.year)
+        binding.detalleReporteSemaforo.showData(item.cumplimiento, informacion.year)
 
 
         if (item.observacion.isNotEmpty()) {
-            detalleReporteObservaciones.text = item.observacion
+            binding.detalleReporteObservaciones.text = item.observacion
         } else {
-            detalleReporteObservaciones.visibility = View.GONE
-            detalleReporteTituloObservaciones.visibility = View.GONE
+            binding.detalleReporteObservaciones.visibility = View.GONE
+            binding.detalleReporteTituloObservaciones.visibility = View.GONE
         }
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -20,7 +20,7 @@
 
     <ImageButton
         android:id="@+id/linkButton"
-        android:layout_width="35dp"
+        android:layout_width="50dp"
         android:background="@color/trans"
         android:layout_height="53dp"
         android:src="@drawable/ic_arrow_right"

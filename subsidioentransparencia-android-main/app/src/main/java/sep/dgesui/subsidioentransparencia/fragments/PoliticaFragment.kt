@@ -6,21 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_contact.textCorreo
-import kotlinx.android.synthetic.main.fragment_platform.buttonBackPlataforma
-import kotlinx.android.synthetic.main.fragment_politicas.buttonBackPoliticas
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentPoliticasBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 
 class PoliticaFragment : Fragment(){
     var filter = Filter.filter
 
+    private var _binding: FragmentPoliticasBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_politicas, container, false)
+        _binding = FragmentPoliticasBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
@@ -28,16 +28,21 @@ class PoliticaFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
 
-        buttonBackPoliticas.setOnClickListener {
+        binding.buttonBackPoliticas.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        textCorreo.setOnClickListener {
+        binding.textCorreo.setOnClickListener {
             val intenEmail = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_EMAIL, arrayOf("subsidiotransparencia@nube.sep.gob.mx"))
             }
             startActivity(intenEmail)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
