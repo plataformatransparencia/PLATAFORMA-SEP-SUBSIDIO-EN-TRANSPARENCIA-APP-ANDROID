@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_item_list.*
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentItemListBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.ReferenciasAdapter
 
 class FragmentAccionesEmprendidasExtraordinario2018(
@@ -19,31 +19,36 @@ class FragmentAccionesEmprendidasExtraordinario2018(
 ) : Fragment() {
     private val targetFactory =
         { item: Item -> DetalleAccionUniversidadFragment(informacion, item) }
-
+    private var _binding: FragmentItemListBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_item_list, container, false)
+    ): View? {
+        _binding = FragmentItemListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         runBlocking {
 
-            listHeader.setValues(
+            binding.listHeader.setValues(
                 informacion.nombreUniversidad,
                 informacion.subsidio,
                 informacion.year,
                 requireContext()
             )
 
-            listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+            binding.listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
-            listTitle.text = requireContext().getString(R.string.accion)
+            binding.listTitle.text = requireContext().getString(R.string.accion)
 
             coroutineScope {
-                listItemsRecycler.adapter =
+                binding.listItemsRecycler.adapter =
                     ItemListCardRecyclerAdapter(
                         acciones ?: emptyList(),
                         requireActivity(),
@@ -51,13 +56,18 @@ class FragmentAccionesEmprendidasExtraordinario2018(
                     )
 
                 if (referencias != null) {
-                    title_referencias.visibility = View.VISIBLE
+                    binding.titleReferencias.visibility = View.VISIBLE
 
-                    listReferenciasRecycler.visibility = View.VISIBLE
-                    listReferenciasRecycler.adapter = ReferenciasAdapter(referencias)
+                    binding.listReferenciasRecycler.visibility = View.VISIBLE
+                    binding.listReferenciasRecycler.adapter = ReferenciasAdapter(referencias)
                 }
             }
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

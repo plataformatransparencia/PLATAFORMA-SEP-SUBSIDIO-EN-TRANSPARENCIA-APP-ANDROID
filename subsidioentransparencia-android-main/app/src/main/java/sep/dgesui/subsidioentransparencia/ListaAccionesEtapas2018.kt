@@ -1,6 +1,5 @@
 package sep.dgesui.subsidioentransparencia
 
-import kotlinx.android.synthetic.main.fragment_item_list.*
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.fragments.DetalleEtapa2018
 import sep.dgesui.subsidioentransparencia.fragments.Item
@@ -18,21 +17,20 @@ class ListaAccionesEtapas2018(
     }
 
     override fun loadData() {
-
-        listHeader.setValues(
+        binding.listHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        listTitle.text = requireContext().getString(R.string.acciones_por_emprender)
+        binding.listTitle.text = requireContext().getString(R.string.acciones_por_emprender)
 
-        listBackButton.setOnClickListener {
+        binding.listBackButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        listItemsRecycler.adapter =
+        binding.listItemsRecycler.adapter =
             ItemListCardRecyclerAdapter(
                 compromisos,
                 requireActivity(),

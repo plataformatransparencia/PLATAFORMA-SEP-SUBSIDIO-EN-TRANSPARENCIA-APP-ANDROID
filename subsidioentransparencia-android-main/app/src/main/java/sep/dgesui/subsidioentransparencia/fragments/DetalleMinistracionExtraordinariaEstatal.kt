@@ -4,22 +4,17 @@ package sep.dgesui.subsidioentransparencia.fragments
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria.*
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria_transfers.*
-import kotlinx.android.synthetic.main.fragment_programs.*
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.currencyFormatter
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleMinistracionExtraordinariaTransfersBinding
 import sep.dgesui.subsidioentransparencia.tableroext.minest.Ministracion
 
 
@@ -28,28 +23,32 @@ class DetalleMinistracionExtraordinariaEstatal(
     private val informacin: InformacionGeneralWrapper,
     private val ministracion: List<Ministracion>
 ) : Fragment() {
-
+    private var _binding: FragmentDetalleMinistracionExtraordinariaTransfersBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_detalle_ministracion_extraordinaria_transfers, container, false)
+    ): View? {
+        _binding = FragmentDetalleMinistracionExtraordinariaTransfersBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detalleMinistracionExtraordinariaHeaderTransfer.setValues(
+        binding.detalleMinistracionExtraordinariaHeaderTransfer.setValues(
             informacin.nombreUniversidad,
             informacin.subsidio,
             informacin.year,
             requireContext()
         )
-        detalleMinistracionExtraordinariaBackTransfer.setOnClickListener {
+        binding.detalleMinistracionExtraordinariaBackTransfer.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        detalleMinistracionExtraordinariaTitleTransfer.text = currencyFormatter.format(ministracion[0].monto)
+        binding.detalleMinistracionExtraordinariaTitleTransfer.text = currencyFormatter.format(ministracion[0].monto)
 
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -66,7 +65,7 @@ class DetalleMinistracionExtraordinariaEstatal(
             buttontransfer.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_arrow_right,0)
             buttontransfer.setBackgroundColor(Color.TRANSPARENT)
             buttontransfer.setPadding(0,0,0,20)
-            conenidoscrollTransfer.addView(buttontransfer)
+            binding.conenidoscrollTransfer.addView(buttontransfer)
             val min = it
             buttontransfer.setOnClickListener{
                 requireActivity().supportFragmentManager.beginTransaction()
@@ -93,6 +92,10 @@ class DetalleMinistracionExtraordinariaEstatal(
         }*/
 
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

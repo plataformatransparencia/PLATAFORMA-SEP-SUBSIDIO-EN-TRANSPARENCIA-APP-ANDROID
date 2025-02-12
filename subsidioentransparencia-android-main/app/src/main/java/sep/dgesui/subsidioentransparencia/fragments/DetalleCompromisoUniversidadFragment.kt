@@ -1,78 +1,91 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.os.Bundle
-import android.util.Log
+import android.text.Html.FROM_HTML_MODE_COMPACT
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_detalle_compromiso_universidad.*
-import kotlinx.android.synthetic.main.fragment_detalle_compromiso_universidad.view.*
-import kotlinx.android.synthetic.main.fragment_filter.*
-import kotlinx.android.synthetic.main.layout_compromiso_card.view.*
-import kotlinx.android.synthetic.main.layout_cumplimiento_card.view.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import sep.dgesui.subsidioentransparencia.ListaAccionesEtapas2018
 import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleCompromisoUniversidadBinding
+import sep.dgesui.subsidioentransparencia.databinding.LayoutCompromisoCardBinding
+import sep.dgesui.subsidioentransparencia.databinding.LayoutCumplimientoCardBinding
 
 open class DetalleCompromisoUniversidadFragment(
     private val informacion: InformacionGeneralWrapper,
     private val item: Item,
+    private val titulo: String = ""
 ) : Fragment() {
 
+    private var _binding: FragmentDetalleCompromisoUniversidadBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_detalle_compromiso_universidad, container, false)
-
+    ): View? {
+        _binding = FragmentDetalleCompromisoUniversidadBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.detalleTitle.text = titulo
+        if (titulo == "Compromisos"){
+            binding.subtituloDetalle.text = titulo
+        }else{
+            binding.subtituloDetalle.text = "Informe"
+            binding.compromisoCard.showExtra()
+        }
 
-        detalleHeader.setValues(
+        binding.detalleHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        detalleBackButton.setOnClickListener {
+        binding.detalleBackButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        detalleDescripcion.text = item.descripcion
-        compromiso_card.setValues(item.cumplimiento, item.fechaCompromiso)
-        detalleObservaciones.text = item.observacion
+        binding.detalleDescripcion.text = HtmlCompat.fromHtml(item.descripcion, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        binding.compromisoCard.setValues(item.cumplimiento, item.fechaCompromiso)
+        binding.detalleObservaciones.text = item.observacion
         /*Se agrega condicion para cambiar el "Cumplió por Cumple" y "No cumplió por No cumple"
         para los compromisos del subsidio ordinario unicamente, para cambiar todos de todos los subsidios
         cambiar nombres en archivo "layout_cumplimiento_car.xml*/
         if(informacion.subsidio == "subsidio_ordinario"){
-            compromiso_card.cardKeys.cplio.setText(getString(R.string.label_cumple))
-            compromiso_card.cardKeys.ncplio.setText(getString(R.string.label_no_cumple))
+            val bnc = LayoutCumplimientoCardBinding.bind(view)
+            bnc.cplio.text = getString(R.string.label_cumple)
+            bnc.ncplio.text = getString(R.string.label_no_cumple)
         }
 
 
         if (item.imagen.isNotBlank()) {
 
             runBlocking {
-                view.imagen.visibility = View.VISIBLE
+                binding.imagen.visibility = View.VISIBLE
                 launch {
                     Picasso
                         .get().load("https://dgesui.ses.sep.gob.mx${item.imagen}")
-                        .into(view.imagen)
+                        .into(binding.imagen)
                 }
             }
 
         }
 
-        if (item.subacciones != null && item.subacciones.isNotEmpty()) {
-            buttonEtapas.visibility = View.VISIBLE
-            compromiso_card.visibility = View.GONE
+        if (!item.subacciones.isNullOrEmpty()) {
+            binding.buttonEtapas.visibility = View.VISIBLE
+            binding.compromisoCard.visibility = View.GONE
 
-            buttonEtapas.setTarget(
+            binding.buttonEtapas.setTarget(
                 loadFragment(
                     ListaAccionesEtapas2018(informacion, item.subacciones),
                     requireActivity()
@@ -81,13 +94,17 @@ open class DetalleCompromisoUniversidadFragment(
         }
 
         if(item.porcentajeIncremento != null){
-            compromiso_card.visibility = View.GONE
-            detalleObservaciones.visibility = View.GONE
-            detalleSubtitleObservaviones.visibility = View.GONE
-            porcentajeIncrementoDetalle.visibility = View.VISIBLE
+            binding.compromisoCard.visibility = View.GONE
+            binding.detalleObservaciones.visibility = View.GONE
+            binding.detalleSubtitleObservaviones.visibility = View.GONE
+            binding.porcentajeIncrementoDetalle.visibility = View.VISIBLE
             val porcentaje = item.porcentajeIncremento
-            porcentajeIncrementoDetalle.text = "$porcentaje % Incremento"
+            binding.porcentajeIncrementoDetalle.text = "$porcentaje % Incremento"
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 
@@ -99,8 +116,8 @@ class DetalleAccionUniversidadFragment(informacion: InformacionGeneralWrapper, i
         super.onViewCreated(view, savedInstanceState)
         val lblAccion = requireContext().getString(R.string.accion)
 
-        detalleTitle.text = lblAccion
-        subtituloDetalle.text = lblAccion
+        binding.detalleTitle.text = lblAccion
+        binding.subtituloDetalle.text = lblAccion
 
     }
 }

@@ -1,5 +1,7 @@
 package sep.dgesui.subsidioentransparencia.engineadapter
 
+import android.text.Html
+import androidx.core.text.HtmlCompat
 import sep.dgesui.subsidioentransparencia.flattenItems
 import sep.dgesui.subsidioentransparencia.fragments.ComplexItem
 import sep.dgesui.subsidioentransparencia.fragments.CumplimientoInfo
@@ -25,9 +27,57 @@ class ItemSources {
             .getCommitmentOrdinario(year, idUniversidad)
             .execute()
             .let { response ->
-                val compromisos = response.body() ?: Compromisos(emptyList())
-
+                val compromisos = response.body() ?: Compromisos(emptyList(),emptyList(),emptyList(),emptyList())
                 compromisos.compromisos.map {
+                    Item(
+                        descripcion = it.compromiso,
+                        cumplimiento = it.cumplimiento,
+                        fechaCompromiso = it.fecha,
+                        observacion = it.observacion,
+                        porcentajeIncremento = null
+                    )
+                }
+            }
+
+    fun compromisosOrdinarios_itso(idUniversidad: String, year: String): List<Item> =
+        compromisos
+            .getCommitmentOrdinario(year, idUniversidad)
+            .execute()
+            .let { response ->
+                val compromisos = response.body() ?: Compromisos(emptyList(),emptyList(),emptyList(),emptyList())
+                compromisos.itso.map {
+                    Item(
+                        descripcion = it.compromiso,
+                        cumplimiento = it.cumplimiento,
+                        fechaCompromiso = it.fecha,
+                        observacion = it.observacion,
+                        porcentajeIncremento = null
+                    )
+                }
+            }
+    fun compromisosOrdinarios_pef(idUniversidad: String, year: String): List<Item> =
+        compromisos
+            .getCommitmentOrdinario(year, idUniversidad)
+            .execute()
+            .let { response ->
+                val compromisos = response.body() ?: Compromisos(emptyList(),emptyList(),emptyList(),emptyList())
+                compromisos.pef.map {
+                    Item(
+                        descripcion = it.compromiso,
+                        cumplimiento = it.cumplimiento,
+                        fechaCompromiso = it.fecha,
+                        observacion = it.observacion,
+                        porcentajeIncremento = null
+                    )
+                }
+            }
+    fun compromisosOrdinarios_matricula(idUniversidad: String, year: String): List<Item> =
+        compromisos
+            .getCommitmentOrdinario(year, idUniversidad)
+            .execute()
+            .let { response ->
+                val compromisos = response.body() ?: Compromisos(emptyList(),emptyList(),emptyList(),emptyList())
+                compromisos.matricula.map {
                     Item(
                         descripcion = it.compromiso,
                         cumplimiento = it.cumplimiento,

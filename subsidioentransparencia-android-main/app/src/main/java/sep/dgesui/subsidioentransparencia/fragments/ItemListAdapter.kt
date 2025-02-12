@@ -1,13 +1,12 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.layout_lista_elementos_card.view.*
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.LayoutListaElementosCardBinding
 
 data class Item(
     val descripcion: String = "",
@@ -29,11 +28,10 @@ class ItemListCardRecyclerAdapter(
     ) :
     RecyclerView.Adapter<ItemListCardRecyclerAdapter.ItemViewHolder>() {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder =
-        LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_lista_elementos_card, parent, false)
-            .let { ItemViewHolder(it) }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder{
+        val binding = LayoutListaElementosCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ItemViewHolder(binding)
+    }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(items[position])
@@ -41,12 +39,12 @@ class ItemListCardRecyclerAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    inner class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class ItemViewHolder(val binding: LayoutListaElementosCardBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Item) {
-            view.descripcion.text = item.descripcion
+            binding.descripcion.text = HtmlCompat.fromHtml(item.descripcion, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
             if (targetFactory != null)
-                view.flecha_ir.setOnClickListener(
+                binding.flechaIr.setOnClickListener(
                     loadFragment(
                         targetFactory.invoke(item),
                         activity

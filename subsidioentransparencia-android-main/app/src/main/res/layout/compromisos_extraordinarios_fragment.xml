@@ -106,8 +106,8 @@
                 android:id="@+id/listaCompromisosNota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="150dp"
                 android:fontFamily="@font/montserrat_bold"
+                android:paddingBottom="350dp"
                 android:textColor="@color/gob_dark"
                 android:textSize="15dp"
                 tools:text="Nota compromisos" />

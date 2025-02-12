@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat.getColor
-import androidx.core.graphics.toColor
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_min_federal.*
 import sep.dgesui.subsidioentransparencia.*
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.components.TrimestreComponent
+import sep.dgesui.subsidioentransparencia.databinding.ComponentTrimestreBinding
+import sep.dgesui.subsidioentransparencia.databinding.FragmentMinFederalBinding
+import sep.dgesui.subsidioentransparencia.databinding.LayoutCompromisoCardBinding
 import sep.dgesui.subsidioentransparencia.tablero.MinFederal
 import sep.dgesui.subsidioentransparencia.tablero.federalAMapa
 
@@ -29,36 +29,40 @@ class MinFederalFragment(
     private lateinit var titulReporteRendicionCuentas: String
     private lateinit var titulReporteMatricula: String
 
+    private var _binding: FragmentMinFederalBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_min_federal, container, false)
-
+    ): View {
+        _binding = FragmentMinFederalBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         titulReporteOrdinario = requireContext().getString(R.string.informeSubsidioOrdinario)
         titulReporteRendicionCuentas = requireContext().getString(R.string.informeRendicionCuentas)
         titulReporteMatricula = requireContext().getString(R.string.informeMatricula)
 
 
-        resumenMinistracionHeader.setValues(
+        binding.resumenMinistracionHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        resumenMinistracionTitulo.text = context?.getString(R.string.tablero_sep_estado_universidad)
+        binding.resumenMinistracionTitulo.text = context?.getString(R.string.tablero_sep_estado_universidad)
 
-        resumenMinistracionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        binding.resumenMinistracionBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
-        detalleMinistracionTrimestre1.trimestre = 1
-        detalleMinistracionTrimestre2.trimestre = 2
-        detalleMinistracionTrimestre3.trimestre = 3
-        detalleMinistracionTrimestre4.trimestre = 4
+        binding.detalleMinistracionTrimestre1.trimestre = 1
+        binding.detalleMinistracionTrimestre2.trimestre = 2
+        binding.detalleMinistracionTrimestre3.trimestre = 3
+        binding.detalleMinistracionTrimestre4.trimestre = 4
 
         botonesMinistracionMensual()
 
@@ -66,21 +70,21 @@ class MinFederalFragment(
 
         pintarSemaforos()
 
-        habilitarLinksReportes(detalleMinistracionTrimestre1, 1)
-        habilitarLinksReportes(detalleMinistracionTrimestre2, 2)
-        habilitarLinksReportes(detalleMinistracionTrimestre3, 3)
-        habilitarLinksReportes(detalleMinistracionTrimestre4, 4)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre1, 1,view)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre2, 2,view)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre3, 3,view)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre4, 4,view)
 
         cargarGrafica()
 
         agregarDatosGenerales()
 
-        referenciaMinistracion.text = context?.getString(R.string.referencia_ordinario_federal)
+        binding.referenciaMinistracion.text = context?.getString(R.string.referencia_ordinario_federal)
 
 
     }
 
-    private fun habilitarLinksReportes(trimestreComponent: TrimestreComponent, trimestre: Int) {
+    private fun habilitarLinksReportes(trimestreComponent: TrimestreComponent, trimestre: Int,view: View) {
 
         val informesTrimestrales = when (trimestre) {
             1 -> ministracionFederal.federal.informes.subsidio_ordinario.trimestre1 to ministracionFederal.federal.informes.rendicion_cuentas.trimestre1
@@ -108,74 +112,75 @@ class MinFederalFragment(
         }?.let {
             DetalleReporteFragment(informacion, titulReporteMatricula, it)
         }
-
-        trimestreComponent.setTargets(
-            targetSubsidioOrdinario = informesTrimestrales.first,
-            targetRendicionCuentas = informesTrimestrales.second,
-            targetReporteMatricula = informeMatricula,
-            activity = requireActivity()
-        )
-
+        if(informacion.year <= "2025") {
+            binding.detalleMinistracionTrimestre1
+            trimestreComponent.setTargets(
+                targetSubsidioOrdinario = informesTrimestrales.first,
+                targetRendicionCuentas = informesTrimestrales.second,
+                targetReporteMatricula = informeMatricula,
+                activity = requireActivity()
+            )
+        }
     }
 
     private fun pintarSemaforos() {
 
         val semaforosPrimerTrimestre = obtenerSemaforosMutuos(mesesTrimestre1)
 
-        detalleMinistracionTrimestre1.semaforo(
+        binding.detalleMinistracionTrimestre1.semaforo(
             TrimestreComponent.Mes.PRIMERO,
             semaforosPrimerTrimestre[0]
         )
-        detalleMinistracionTrimestre1.semaforo(
+        binding.detalleMinistracionTrimestre1.semaforo(
             TrimestreComponent.Mes.SEGUNDO,
             semaforosPrimerTrimestre[1]
         )
-        detalleMinistracionTrimestre1.semaforo(
+        binding.detalleMinistracionTrimestre1.semaforo(
             TrimestreComponent.Mes.TERCERO,
             semaforosPrimerTrimestre[2]
         )
 
         val semaforosSegundoTrimestre = obtenerSemaforosMutuos(mesesTrimestre2)
 
-        detalleMinistracionTrimestre2.semaforo(
+        binding.detalleMinistracionTrimestre2.semaforo(
             TrimestreComponent.Mes.PRIMERO,
             semaforosSegundoTrimestre[0]
         )
-        detalleMinistracionTrimestre2.semaforo(
+        binding.detalleMinistracionTrimestre2.semaforo(
             TrimestreComponent.Mes.SEGUNDO,
             semaforosSegundoTrimestre[1]
         )
-        detalleMinistracionTrimestre2.semaforo(
+        binding.detalleMinistracionTrimestre2.semaforo(
             TrimestreComponent.Mes.TERCERO,
             semaforosSegundoTrimestre[2]
         )
 
         val semaforosTercerTrimestre = obtenerSemaforosMutuos(mesesTrimestre3)
 
-        detalleMinistracionTrimestre3.semaforo(
+        binding.detalleMinistracionTrimestre3.semaforo(
             TrimestreComponent.Mes.PRIMERO,
             semaforosTercerTrimestre[0]
         )
-        detalleMinistracionTrimestre3.semaforo(
+        binding.detalleMinistracionTrimestre3.semaforo(
             TrimestreComponent.Mes.SEGUNDO,
             semaforosTercerTrimestre[1]
         )
-        detalleMinistracionTrimestre3.semaforo(
+        binding.detalleMinistracionTrimestre3.semaforo(
             TrimestreComponent.Mes.TERCERO,
             semaforosTercerTrimestre[2]
         )
 
         val semaforosCuartoTrimestre = obtenerSemaforosMutuos(mesesTrimestre4)
 
-        detalleMinistracionTrimestre4.semaforo(
+        binding.detalleMinistracionTrimestre4.semaforo(
             TrimestreComponent.Mes.PRIMERO,
             semaforosCuartoTrimestre[0]
         )
-        detalleMinistracionTrimestre4.semaforo(
+        binding.detalleMinistracionTrimestre4.semaforo(
             TrimestreComponent.Mes.SEGUNDO,
             semaforosCuartoTrimestre[1]
         )
-        detalleMinistracionTrimestre4.semaforo(
+        binding.detalleMinistracionTrimestre4.semaforo(
             TrimestreComponent.Mes.TERCERO,
             semaforosCuartoTrimestre[2]
         )
@@ -187,24 +192,23 @@ class MinFederalFragment(
             .map { it.first }
 
     private fun botonesMinistracionMensual() {
-
-        detalleMinistracionTrimestre1.montos =
+        binding.detalleMinistracionTrimestre1.montos =
             mesesTrimestre1.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
 
 
-        detalleMinistracionTrimestre2.montos =
+        binding.detalleMinistracionTrimestre2.montos =
             mesesTrimestre2.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
 
 
-        detalleMinistracionTrimestre3.montos =
+        binding.detalleMinistracionTrimestre3.montos =
             mesesTrimestre3.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
 
-        detalleMinistracionTrimestre4.montos =
+        binding.detalleMinistracionTrimestre4.montos =
             mesesTrimestre4.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
     }
 
     private fun cargarGrafica() {
@@ -212,19 +216,19 @@ class MinFederalFragment(
             mapOf(*months.map { mapa[it]!!.monto to mapa[it]!!.montoRecibido }
                 .toTypedArray())
 
-        detalleMinistracionBarChart.setData(parMontos.keys.toList(), parMontos.values.toList())
+        binding.detalleMinistracionBarChart.setData(parMontos.keys.toList(), parMontos.values.toList())
     }
 
     private fun agregarDatosGenerales() =
         ministracionFederal.totales_adeudos.apply {
 
-            montoTotal.text = currencyFormatter.format(montoTotalSEP)
+            binding.montoTotal.text = currencyFormatter.format(montoTotalSEP)
 
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            adeudos.setBackgroundColor(Color.parseColor("#D4C19C"))
+            binding.adeudos.setBackgroundColor(Color.parseColor("#D4C19C"))
             val texto = TextView(context)
             texto.text = String.format(
                 requireContext().getString(R.string.adeudo_federal_corte),
@@ -235,7 +239,7 @@ class MinFederalFragment(
             texto.textSize = 15F
             texto.setTextColor(Color.BLACK)
             texto.setPadding(10,40,10,20)
-            adeudos.addView(texto)
+            binding.adeudos.addView(texto)
 
             val adeudoTotal = TextView(context)
             adeudoTotal.text = currencyFormatter.format(adeudoFederal.adeudo)
@@ -244,14 +248,7 @@ class MinFederalFragment(
             adeudoTotal.textSize = 20F
             adeudoTotal.setTextColor(Color.BLACK)
             adeudoTotal.setPadding(10,40,10,20)
-            adeudos.addView(adeudoTotal)
-
-//            labelAdeudoTotalEstatalCorteA.text = String.format(
-//                requireContext().getString(R.string.adeudo_federal_corte),
-//                adeudoFederal.fecha
-//            )
-
-//            adeudoTotalEstatal.text = currencyFormatter.format(adeudoFederal.adeudo)
+            binding.adeudos.addView(adeudoTotal)
         }
 
 
@@ -266,31 +263,34 @@ class MinFederalFragment(
             )
         }
 
-        detalleMinistracionTrimestre1.setMesesTargets(
+        binding.detalleMinistracionTrimestre1.setMesesTargets(
             targetsMeses[0],
             targetsMeses[1],
             targetsMeses[2],
         )
 
-        detalleMinistracionTrimestre2.setMesesTargets(
+        binding.detalleMinistracionTrimestre2.setMesesTargets(
             targetsMeses[3],
             targetsMeses[4],
             targetsMeses[5],
         )
 
-        detalleMinistracionTrimestre3.setMesesTargets(
+        binding.detalleMinistracionTrimestre3.setMesesTargets(
             targetsMeses[6],
             targetsMeses[7],
             targetsMeses[8],
         )
 
-        detalleMinistracionTrimestre4.setMesesTargets(
+        binding.detalleMinistracionTrimestre4.setMesesTargets(
             targetsMeses[9],
             targetsMeses[10],
             targetsMeses[11],
         )
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
 

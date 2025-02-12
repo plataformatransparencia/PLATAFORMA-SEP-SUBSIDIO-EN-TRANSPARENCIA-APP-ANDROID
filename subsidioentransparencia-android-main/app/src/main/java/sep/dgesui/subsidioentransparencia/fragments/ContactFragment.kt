@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_contact.*
 import retrofit2.Call
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentContactBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.model.Contact
 
@@ -21,12 +21,16 @@ class ContactFragment : Fragment() {
     lateinit var response: Call<Contact>
 
 
+    private var _binding: FragmentContactBinding? = null
+    val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?
 
-    ): View? {
-        return inflater.inflate(R.layout.fragment_contact, container, false)
+    ): View {
+        _binding = FragmentContactBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
@@ -44,31 +48,31 @@ class ContactFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         filter.contact = true
         filter.getContacto()
-        filter.contentContacto.observe(this ,{ contacto: Contact ->
-            textEncabezado.text = contacto.encabezado
-            textDepartamento.text = contacto.departamento
-            textDireccion.text = contacto.direccion
-            textTelefono.text = contacto.telefono
-            textTelefono.setOnClickListener {
+        filter.contentContacto.observe(this) { contacto: Contact ->
+
+            binding.textEncabezado.text = contacto.encabezado
+            binding.textDepartamento.text = contacto.departamento
+            binding.textDireccion.text = contacto.direccion
+            binding.textTelefono.text = contacto.telefono
+            binding.textTelefono.setOnClickListener {
                 val callTel = Uri.parse("tel:" + contacto.telefono)
                 val intentTel = Intent(Intent.ACTION_DIAL).setData(callTel)
                 startActivity(intentTel)
             }
-            textExtensiones.text = contacto.extensiones
-            textCorreo.text = contacto.correo
-            textCorreo.setOnClickListener {
+            binding.textExtensiones.text = contacto.extensiones
+            binding.textCorreo.text = contacto.correo
+            binding.textCorreo.setOnClickListener {
                 val intenEmail = Intent(Intent.ACTION_SEND).apply {
                     type = "text/plain"
                     putExtra(Intent.EXTRA_EMAIL, arrayOf(contacto.correo))
                 }
                 startActivity(intenEmail)
             }
-        })
+        }
     }
 
 

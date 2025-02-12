@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_fed_cumplimiento.*
-import kotlinx.android.synthetic.main.fragment_fed_cumplimiento.view.*
-import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentFedCumplimientoBinding
 import sep.dgesui.subsidioentransparencia.getColorCumplimiento
 
 
@@ -18,47 +16,53 @@ class FedCumplimientoFragment(
     val year: String,
     val nombre: String
 ) : Fragment() {
-
+    private var _binding: FragmentFedCumplimientoBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fed_cumplimiento, container, false)
+        _binding = FragmentFedCumplimientoBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        YearMinFedCumpl.text = year.substring(0, 4)
-        titleUni.text = nombre
-        titleMesFed.text = listCompromisos[6]
-        buttonBackTablero.setOnClickListener {
+        binding.YearMinFedCumpl.text = year.substring(0, 4)
+        binding.titleUni.text = nombre
+        binding.titleMesFed.text = listCompromisos[6]
+        binding.buttonBackTablero.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
         val colorSepFed = getColorCumplimiento(listCompromisos[0], view.context)
-        view.cardViewcumplimientoSEPFed.setCardBackgroundColor(colorSepFed)
+
+        binding.cardViewcumplimientoSEPFed.setCardBackgroundColor(colorSepFed)
 
 
 
-        fechaCumplimientoSEPFed.text = listCompromisos[1]
-        visibleObservacionesSEPFed.isVisible = false
-        if (!listCompromisos[2].isEmpty()) {
-            visibleObservacionesSEPFed.isVisible = true
-            textObservacionSEPFed.text = listCompromisos[2]
+        binding.fechaCumplimientoSEPFed.text = listCompromisos[1]
+        binding.visibleObservacionesSEPFed.isVisible = false
+        if (listCompromisos[2].isNotEmpty()) {
+            binding.visibleObservacionesSEPFed.isVisible = true
+            binding.textObservacionSEPFed.text = listCompromisos[2]
         }
 
         val colorCumplimientoEstFed = getColorCumplimiento(listCompromisos[3], view.context)
-        view.cardViewcumplimientoEstFed.setCardBackgroundColor(colorCumplimientoEstFed)
+        binding.cardViewcumplimientoEstFed.setCardBackgroundColor(colorCumplimientoEstFed)
 
-        fechaCumplimientoEstFed.text = listCompromisos[4]
+        binding.fechaCumplimientoEstFed.text = listCompromisos[4]
 
-        visibleObservacionesEstFed.isVisible = false
-        if (!listCompromisos[5].isEmpty()) {
-            visibleObservacionesEstFed.isVisible = true
-            textObservacionEstFed.text = listCompromisos[5]
+        binding.visibleObservacionesEstFed.isVisible = false
+        if (listCompromisos[5].isNotEmpty()) {
+            binding.visibleObservacionesEstFed.isVisible = true
+            binding.textObservacionEstFed.text = listCompromisos[5]
         }
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

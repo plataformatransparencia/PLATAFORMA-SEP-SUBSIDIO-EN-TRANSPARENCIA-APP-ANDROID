@@ -4,28 +4,32 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import kotlinx.android.synthetic.main.component_trimestre_profexce.view.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.ComponentTrimestreProfexceBinding
 
 class ComponenteTrimestreProfexce @JvmOverloads
 constructor(context: Context, attributeSet: AttributeSet? = null, styleSelector: Int = 0) :
     ConstraintLayout(context, attributeSet, styleSelector) {
 
     private var expanded = false
-
+    private var binding: ComponentTrimestreProfexceBinding? = null
     init {
-        LayoutInflater.from(context)
-            .inflate(R.layout.component_trimestre_profexce, this)
-
+        binding = rootView.let {
+            ComponentTrimestreProfexceBinding.inflate(
+                LayoutInflater.from(context),
+                it as ViewGroup
+            )
+        }
         setOnClickListener { toggle() }
     }
+
 
     var trimestre: Int = 0
         set(value) {
             field = value
-
-            trimestreProfexceTitulo.text =
+            binding?.trimestreProfexceTitulo?.text =
                 String.format(context.getString(R.string.trimestreN), value)
         }
 
@@ -34,14 +38,14 @@ constructor(context: Context, attributeSet: AttributeSet? = null, styleSelector:
             field = value
 
             if (value != null) {
-                trimestreProfexceEntregaAcademico.setLabel(value.boton1.first)
-                trimestreProfexceEntregaAcademico.setTarget(value.boton1.second)
+                binding?.trimestreProfexceEntregaAcademico?.setLabel(value.boton1.first)
+                binding?.trimestreProfexceEntregaAcademico?.setTarget(value.boton1.second)
 
-                trimestreProfexceEntregaFinanciero.setLabel(value.boton2.first)
-                trimestreProfexceEntregaFinanciero.setTarget(value.boton2.second)
+                binding?.trimestreProfexceEntregaFinanciero?.setLabel(value.boton2.first)
+                binding?.trimestreProfexceEntregaFinanciero?.setTarget(value.boton2.second)
 
-                trimestreProfexcePublicacionInforme.setLabel(value.boton3.first)
-                trimestreProfexcePublicacionInforme.setTarget(value.boton3.second)
+                binding?.trimestreProfexcePublicacionInforme?.setLabel(value.boton3.first)
+                binding?.trimestreProfexcePublicacionInforme?.setTarget(value.boton3.second)
 
             }
         }
@@ -52,9 +56,9 @@ constructor(context: Context, attributeSet: AttributeSet? = null, styleSelector:
 
         val visibility = if (expanded) View.VISIBLE else View.GONE
 
-        trimestreProfexceEntregaAcademico.visibility = visibility
-        trimestreProfexceEntregaFinanciero.visibility = visibility
-        trimestreProfexcePublicacionInforme.visibility = visibility
+        binding?.trimestreProfexceEntregaAcademico?.visibility = visibility
+        binding?.trimestreProfexceEntregaFinanciero?.visibility = visibility
+        binding?.trimestreProfexcePublicacionInforme?.visibility = visibility
     }
 
 

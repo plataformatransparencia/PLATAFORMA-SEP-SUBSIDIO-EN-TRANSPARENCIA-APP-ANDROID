@@ -5,14 +5,15 @@ import android.content.Intent
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.applyLinks
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_datos_generales_universidad.view.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.LayoutDatosGeneralesUniversidadBinding
 
 class DatosGeneralesUniversidad
 @JvmOverloads constructor(
@@ -20,9 +21,11 @@ class DatosGeneralesUniversidad
     attributes: AttributeSet? = null,
     styleSelector: Int = 0,
 ) : ConstraintLayout(context, attributes, styleSelector) {
-
+    private var binding: LayoutDatosGeneralesUniversidadBinding? = null
     init {
-        LayoutInflater.from(context).inflate(R.layout.layout_datos_generales_universidad, this)
+        binding = rootView.let {
+            LayoutDatosGeneralesUniversidadBinding.inflate(LayoutInflater.from(context), it as ViewGroup, true)
+        }
     }
 
     fun setValues(
@@ -32,17 +35,14 @@ class DatosGeneralesUniversidad
         urlLogo: String,
     ) {
 
-        Picasso.get().load(urlLogo).into(cardUniversidadLogoImagen)
+        Picasso.get().load(urlLogo).into(binding?.cardUniversidadLogoImagen)
 
-        cardSiglasUniversidad.text = siglas
-        cardNombreUniversidad.text = nombreUniversidad
-
-        cardLinkUniversidad.apply {
-            val content = String.format(context.getString(R.string.ir_a), siglas)
-
+        binding?.cardSiglasUniversidad?.text = siglas
+        binding?.cardNombreUniversidad?.text = nombreUniversidad
+        binding?.cardLinkUniversidad?.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_accion_link,0,0,0)
+        binding?.cardLinkUniversidad?.apply {
+            val content =String.format(context.getString(R.string.ir_a), siglas)
             text = content
-
-
             Link(content)
                 .setTextColor(ContextCompat.getColor(context, R.color.gob_gold))
                 .setUnderlined(false)

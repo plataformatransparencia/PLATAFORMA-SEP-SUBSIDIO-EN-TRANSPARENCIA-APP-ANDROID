@@ -4,9 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import kotlinx.android.synthetic.main.component_link.view.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.ComponentLinkBinding
 
 class TransparenciaLinkComponent
 @JvmOverloads constructor(
@@ -14,30 +15,27 @@ class TransparenciaLinkComponent
     attributes: AttributeSet? = null,
     styleSelector: Int = 0
 ) : ConstraintLayout(context, attributes, styleSelector) {
-
+    private var binding: ComponentLinkBinding? = null
     private var target: ((View) -> Unit)? = null
 
     init {
-        LayoutInflater.from(context)
-            .inflate(R.layout.component_link, this)
-
+        binding = rootView.let {
+            ComponentLinkBinding.inflate(LayoutInflater.from(context), it as ViewGroup)
+        }
         context.obtainStyledAttributes(attributes, R.styleable.TransparenciaLinkComponent).apply {
-
             setLabel(getString(R.styleable.TransparenciaLinkComponent_dgesui_linkLabel))
-
             recycle()
         }
-
-
     }
 
     fun setLabel(label: String?) {
-        linkTitle.text = label
+
+        binding?.linkTitle?.text = label
     }
 
     fun setTarget(targetAction: (View) -> Unit) {
         target = targetAction
-        linkButton.setOnClickListener(targetAction)
+        binding?.linkButton?.setOnClickListener(targetAction)
     }
 
     fun hasTarget(): Boolean = target != null

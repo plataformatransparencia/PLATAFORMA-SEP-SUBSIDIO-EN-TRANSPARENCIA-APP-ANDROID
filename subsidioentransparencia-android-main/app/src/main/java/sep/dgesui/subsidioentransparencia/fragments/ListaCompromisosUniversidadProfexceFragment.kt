@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_lista_compromisos_universidad_profexce.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.currencyFormatter
+import sep.dgesui.subsidioentransparencia.databinding.FragmentListaCompromisosUniversidadProfexceBinding
 import sep.dgesui.subsidioentransparencia.tableroext.profexce.compromisos.TablaMontoUniversidad
 
 class ListaCompromisosUniversidadProfexceFragment(
@@ -20,44 +19,55 @@ class ListaCompromisosUniversidadProfexceFragment(
 
     private val targetFactory =
         { item: Item -> DetalleCompromisoEstadoProfexceFragment(informacion, item) }
-
+    private var _binding: FragmentListaCompromisosUniversidadProfexceBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_lista_compromisos_universidad_profexce, container, false)
+    ): View? {
+        _binding = FragmentListaCompromisosUniversidadProfexceBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detalleUniversidadProfexceHeader.setValues(
+        binding.detalleUniversidadProfexceHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        detalleUniversidadProfexceBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        binding.detalleUniversidadProfexceBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
 
-        compromisosUniversidadRecycler.adapter =
+        binding.compromisosUniversidadRecycler.adapter =
             ItemListCardRecyclerAdapter(
                 compromisos,
                 requireActivity(),
                 targetFactory
             )
 
-        val fragmentObservaciones = observaciones
+        val fragmentObservaciones = binding.observaciones
         tablaMonto.apply {
 
-            montoAsignado.text = currencyFormatter.format(monto)
-            ministracionEstado.text = fechaDepEst
-            ministracionUniversidad.text = fechaDepUni
+            binding.montoAsignado.text = currencyFormatter.format(monto)
+            binding.ministracionEstado.text = fechaDepEst
+            binding.ministracionUniversidad.text = fechaDepUni
 
             fragmentObservaciones.text = observaciones
 
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

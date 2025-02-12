@@ -6,22 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
-import kotlinx.android.synthetic.main.fragment_menu.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentMenuBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 
 
 class MenuFragment : Fragment(){
     var filter = Filter.filter
+
+    private var _binding: FragmentMenuBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
 
     ): View? {
-        return inflater.inflate(R.layout.fragment_menu, container, false)
-
+        _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
@@ -37,15 +40,17 @@ class MenuFragment : Fragment(){
             }
         })
 
-
-        buttonProgramas.setOnClickListener {
+        binding.buttonProgramas.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, ProgramsFragment()).addToBackStack(null).commit()
         }
-        buttonPolitica.setOnClickListener {
+        binding.buttonPolitica.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container,PoliticaFragment()).addToBackStack(null).commit()
         }
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

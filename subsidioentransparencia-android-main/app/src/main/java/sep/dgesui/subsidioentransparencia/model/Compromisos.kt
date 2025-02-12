@@ -1,7 +1,11 @@
 package sep.dgesui.subsidioentransparencia.model
 
 data class Compromisos(
-    val compromisos: List<Compromiso>
+    val compromisos: List<Compromiso>,
+    val itso: List<Compromiso>,
+    val pef: List<Compromiso>,
+    val matricula: List<Compromiso>
+
 )
 
 data class Compromiso(
@@ -10,3 +14,4 @@ data class Compromiso(
     val fecha: String,
     val observacion: String
 )
+

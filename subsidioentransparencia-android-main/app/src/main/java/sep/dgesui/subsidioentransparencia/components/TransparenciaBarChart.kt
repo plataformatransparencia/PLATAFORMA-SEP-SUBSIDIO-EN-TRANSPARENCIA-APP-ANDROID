@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.components.Legend
@@ -14,8 +15,8 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.LargeValueFormatter
-import kotlinx.android.synthetic.main.component_bar_chart.view.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.ComponentBarChartBinding
 import sep.dgesui.subsidioentransparencia.months
 
 class TransparenciaBarChart @JvmOverloads constructor(
@@ -27,16 +28,18 @@ class TransparenciaBarChart @JvmOverloads constructor(
     private var green: Int = 0
     private var darkGreen: Int = 0
 
-    private val barEntryMaper =
-        { idx: Int, valor: Double -> BarEntry(idx.toFloat(), valor.toFloat()) }
-
+    private val barEntryMaper = { idx: Int, valor: Double -> BarEntry(idx.toFloat(), valor.toFloat()) }
+    private var binding: ComponentBarChartBinding? = null
     init {
-        LayoutInflater.from(context).inflate(R.layout.component_bar_chart, this)
+        binding = rootView?.let {
+            ComponentBarChartBinding.inflate(LayoutInflater.from(context),
+                it as ViewGroup
+            )
+        }
     }
-
     override fun onFinishInflate() {
         super.onFinishInflate()
-        barChartChart.apply {
+        binding?.barChartChart?.apply {
             setNoDataText("Cargando...")
             setBackgroundColor(Color.TRANSPARENT)
             setDrawValueAboveBar(true)
@@ -94,7 +97,11 @@ class TransparenciaBarChart @JvmOverloads constructor(
     }
 
     fun setData(montos: List<Double>, montosRecibidos: List<Double>) {
-
+        val binding = parent?.let {
+            ComponentBarChartBinding.inflate(LayoutInflater.from(context),
+                it as ViewGroup
+            )
+        }
         val montosBarEntry = montos.mapIndexed(barEntryMaper)
 
         val montosRecibidosBarEntry = montosRecibidos.mapIndexed(barEntryMaper)
@@ -115,15 +122,31 @@ class TransparenciaBarChart @JvmOverloads constructor(
         chartData.barWidth = 0.400f
         chartData.groupBars(0.0f, 0.2f, 0.0f)
 
-        barChartChart.data = chartData
-        barChartChart.description.isEnabled = false
-        barChartChart.notifyDataSetChanged()
-        barChartChart.xAxis.axisMinimum = 0f
-        barChartChart.xAxis.axisMaximum = 12f
+        if (binding != null) {
+            binding.barChartChart.data = chartData
+        }
+        if (binding != null) {
+            binding.barChartChart.description.isEnabled = false
+        }
+        if (binding != null) {
+            binding.barChartChart.notifyDataSetChanged()
+        }
+        if (binding != null) {
+            binding.barChartChart.xAxis.axisMinimum = 0f
+        }
+        if (binding != null) {
+            binding.barChartChart.xAxis.axisMaximum = 12f
+        }
 
-        formatXAxis(barChartChart.xAxis)
-        formatLeftAxis(barChartChart.axisLeft)
-        formatLegend(barChartChart.legend)
+        if (binding != null) {
+            formatXAxis(binding.barChartChart.xAxis)
+        }
+        if (binding != null) {
+            formatLeftAxis(binding.barChartChart.axisLeft)
+        }
+        if (binding != null) {
+            formatLegend(binding.barChartChart.legend)
+        }
     }
 
     private fun configureDataSet(dataSet: BarDataSet, color: Int) {

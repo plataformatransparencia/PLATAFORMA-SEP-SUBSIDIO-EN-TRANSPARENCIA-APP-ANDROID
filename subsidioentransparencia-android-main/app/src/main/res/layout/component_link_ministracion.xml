@@ -39,9 +39,10 @@
 
     <ImageButton
         android:id="@+id/linkMinistracionBoton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@color/trans"
+        android:contentDescription="Ir"
         android:src="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toBottomOf="@id/linkMinistracionMonto"
         app:layout_constraintEnd_toEndOf="parent"

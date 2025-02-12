@@ -5,51 +5,58 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.currencyFormatter
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleMinistracionExtraordinariaBinding
 import sep.dgesui.subsidioentransparencia.tableroext.minfed.Ministracion
 
 class DetalleMinistracionFederalExtraordinaria(
     private val informacion: InformacionGeneralWrapper,
     private val ministracion: Ministracion
 ) : Fragment() {
-
+    private var _binding: FragmentDetalleMinistracionExtraordinariaBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_detalle_ministracion_extraordinaria, container, false)
+    ): View? {
+        _binding = FragmentDetalleMinistracionExtraordinariaBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detalleMinistracionExtraordinariaHeader.setValues(
+        binding.detalleMinistracionExtraordinariaHeader.setValues(
             informacion.nombreUniversidad, informacion.subsidio, informacion.year, requireContext()
         )
 
-        detalleMinistracionExtraordinariaBack.setOnClickListener {
+        binding.detalleMinistracionExtraordinariaBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(ministracion.monto)
+        binding.detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(ministracion.monto)
 
-        detalleMinistracionExtraordinariaTitleSepEstado.visibility = View.VISIBLE
-        detalleMinistracionExtraordinariaSepEstado.visibility = View.VISIBLE
-        detalleMinistracionExtraordinariaTitleSepEstadoFecha.visibility = View.VISIBLE
-        detalleMinistracionExtraordinariaSepEstadoFecha.visibility = View.VISIBLE
+        binding.detalleMinistracionExtraordinariaTitleSepEstado.visibility = View.VISIBLE
+        binding.detalleMinistracionExtraordinariaSepEstado.visibility = View.VISIBLE
+        binding.detalleMinistracionExtraordinariaTitleSepEstadoFecha.visibility = View.VISIBLE
+        binding.detalleMinistracionExtraordinariaSepEstadoFecha.visibility = View.VISIBLE
 
-        detalleMinistracionExtraordinariaSepEstado.text =
+        binding.detalleMinistracionExtraordinariaSepEstado.text =
             currencyFormatter.format(ministracion.sep_estado)
-        detalleMinistracionExtraordinariaSepEstadoFecha.text = ministracion.fechaEjecucionEstado
-        detalleMinistracionExtraordinariaEstadoUniversidad.text =
+        binding.detalleMinistracionExtraordinariaSepEstadoFecha.text = ministracion.fechaEjecucionEstado
+        binding.detalleMinistracionExtraordinariaEstadoUniversidad.text =
             currencyFormatter.format(ministracion.estado_universidad)
-        detalleMinistracionExtraordinariaEstadoUniversidadFecha.text =
+        binding.detalleMinistracionExtraordinariaEstadoUniversidadFecha.text =
             ministracion.fechaEjecucionUniversidad
-        detalleMinistracionExtraordinariaObservacion.text = ministracion.observacion
+        binding.detalleMinistracionExtraordinariaObservacion.text = ministracion.observacion
 
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -13,13 +13,12 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_list.*
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentListBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.engineadapter.UniversityAdapter
 import sep.dgesui.subsidioentransparencia.interfaces.DataList
 import sep.dgesui.subsidioentransparencia.model.Universidade
-import timber.log.Timber
 
 
 class ListFragment : Fragment(), DataList {
@@ -47,18 +46,23 @@ class ListFragment : Fragment(), DataList {
 
     private fun aplicarFiltro(listaRecibida: List<Universidade>) {
         listUni = listaRecibida
-        val query = searchView_university?.query?.toString() ?: ""
+        val query = binding.searchViewUniversity.query?.toString() ?: ""
         setRecyclerList(listUni.find(query))
 
-        formatHeader(filter, cTitleYearList, TitleYearList, requireContext())
+        formatHeader(filter, binding.cTitleYearList, binding.TitleYearList, requireContext())
     }
 
+    private var _binding: FragmentListBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
 
-    ): View {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+    ): View? {
+        _binding = FragmentListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,16 +70,15 @@ class ListFragment : Fragment(), DataList {
 
         aplicarFiltro(filter.content.value ?: emptyList())
 
-        borrarFiltroList.setOnClickListener {
-            Timber.d("BORRAR ${filter.filtered}")
+        binding.borrarFiltroList.setOnClickListener {
             filter.reset()
             filter.filtrar()
-            borrarFiltroList.isVisible = false
+            binding.borrarFiltroList.isVisible = false
             filter.selectDeficitFinanciero = false
-            cTitleYearList.setBackgroundColor(Color.parseColor("#225C4F"))
+            binding.cTitleYearList.setBackgroundColor(Color.parseColor("#225C4F"))
         }
 
-        buttonFilter.setOnClickListener {
+        binding.buttonFilter.setOnClickListener {
             filter.btnFilter = false
             filter.selectState = false
             FilterFragment(requireContext()) { ListFragment() }
@@ -94,7 +97,7 @@ class ListFragment : Fragment(), DataList {
                 }
             })
 
-        searchView_university.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+        binding.searchViewUniversity.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -140,9 +143,14 @@ class ListFragment : Fragment(), DataList {
     override fun onStart() {
         super.onStart()
 
-        borrarFiltroList.isVisible = filter.filtered
+        binding.borrarFiltroList.isVisible = filter.filtered
 
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

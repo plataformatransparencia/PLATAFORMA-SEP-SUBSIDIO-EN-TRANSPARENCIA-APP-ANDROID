@@ -7,15 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria.*
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria.detalleMinistracionExtraordinariaBack
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria.detalleMinistracionExtraordinariaHeader
-import kotlinx.android.synthetic.main.fragment_detalle_ministracion_extraordinaria_transfers.*
-import kotlinx.android.synthetic.main.fragment_programs.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.currencyFormatter
+import sep.dgesui.subsidioentransparencia.databinding.FragmentDetalleMinistracionExtraordinariaBinding
 import sep.dgesui.subsidioentransparencia.tableroext.minest.Ministracion
 
 
@@ -24,40 +18,43 @@ class DetalleMinistracionExtraordinariaEstatalTransfer(
     private val informacin: InformacionGeneralWrapper,
     private val ministracion: Ministracion
 ) : Fragment() {
-
+    private var _binding: FragmentDetalleMinistracionExtraordinariaBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_detalle_ministracion_extraordinaria, container, false)
+    ): View? {
+        _binding = FragmentDetalleMinistracionExtraordinariaBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detalleMinistracionExtraordinariaHeader.setValues(
+        binding.detalleMinistracionExtraordinariaHeader.setValues(
             informacin.nombreUniversidad,
             informacin.subsidio,
             informacin.year,
             requireContext()
         )
 
-        detalleMinistracionExtraordinariaBack.setOnClickListener {
-            //requireActivity().onBackPressed()
+        binding.detalleMinistracionExtraordinariaBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(ministracion.monto)
+        binding.detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(ministracion.monto)
          ministracion.apply {
 
-            detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(monto)
+             binding.detalleMinistracionExtraordinariaTitle.text = currencyFormatter.format(monto)
 
-            detalleMinistracionExtraordinariaEstadoUniversidad.text =
+             binding.detalleMinistracionExtraordinariaEstadoUniversidad.text =
                 currencyFormatter.format(estado_universidad)
 
-            detalleMinistracionExtraordinariaEstadoUniversidadFecha.text = fechaEjecucionEstado
+             binding.detalleMinistracionExtraordinariaEstadoUniversidadFecha.text = fechaEjecucionEstado
 
-            detalleMinistracionExtraordinariaObservacion.text = observacion
+             binding.detalleMinistracionExtraordinariaObservacion.text = observacion
         }
 
 

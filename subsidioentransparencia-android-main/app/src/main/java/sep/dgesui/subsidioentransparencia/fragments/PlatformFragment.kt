@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_platform.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,6 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import sep.dgesui.subsidioentransparencia.R
+import sep.dgesui.subsidioentransparencia.databinding.FragmentPlatformBinding
 import sep.dgesui.subsidioentransparencia.engineadapter.Filter
 import sep.dgesui.subsidioentransparencia.engineadapter.TransparenciaRetrofit
 import sep.dgesui.subsidioentransparencia.modelplataforma.Plataforma
@@ -32,12 +32,15 @@ class PlatformFragment : Fragment() {
         launch()
     }
 
+    private var _binding: FragmentPlatformBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        return inflater.inflate(R.layout.fragment_platform, container, false)
+    ): View {
+        _binding = FragmentPlatformBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
@@ -45,7 +48,7 @@ class PlatformFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        buttonBackPlataforma.setOnClickListener {
+        binding.buttonBackPlataforma.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
     }
@@ -60,73 +63,73 @@ class PlatformFragment : Fragment() {
                     ) {
                         val plataforma = response.body()!!
 
-                        titlePlataforma.text = plataforma.Informacion_plataforma.titulo
-                        listaPlataforma0.text = plataforma.Informacion_plataforma.descripcion[0]
-                        listaPlataforma1.text =
+                        binding.titlePlataforma.text = plataforma.Informacion_plataforma.titulo
+                        binding.listaPlataforma0.text = plataforma.Informacion_plataforma.descripcion[0]
+                        binding.listaPlataforma1.text =
                             plataforma.Informacion_plataforma.ley_universitaria.titulo
-                        numArt62.text =
+                        binding.numArt62.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo62.titulo
-                        textArt62.text =
+                        binding.textArt62.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo62.descripcion
-                        numArt67.text =
+                        binding.numArt67.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.titulo
-                        textArt67.text =
+                        binding.textArt67.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.descripcion
-                        numI.text =
+                        binding.numI.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[0].indice
-                        textI.text =
+                        binding.textI.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[0].descripcion
-                        numII.text =
+                        binding.numII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[1].indice
-                        textII.text =
+                        binding.textII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[1].descripcion
-                        numIII.text =
+                        binding.numIII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[2].indice
-                        textIII.text =
+                        binding.textIII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[2].descripcion
-                        numIV.text =
+                        binding.numIV.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[3].indice
-                        textIV.text =
+                        binding.textIV.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[3].descripcion
-                        numV.text =
+                        binding.numV.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[4].indice
-                        textV.text =
+                        binding.textV.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[4].descripcion
-                        numVI.text =
+                        binding.numVI.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[5].indice
-                        textVI.text =
+                        binding.textVI.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[5].descripcion
-                        numVII.text =
+                        binding.numVII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[6].indice
-                        textVII.text =
+                        binding.textVII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[6].descripcion
-                        numVIII.text =
+                        binding.numVIII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[7].indice
-                        textVIII.text =
+                        binding.textVIII.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[7].descripcion
-                        numIX.text =
+                        binding.numIX.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[8].indice
-                        textIX.text =
+                        binding.textIX.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[8].descripcion
-                        numX.text =
+                        binding.numX.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[9].indice
-                        textX.text =
+                        binding.textX.text =
                             plataforma.Informacion_plataforma.ley_universitaria.articulo67.numerales[9].descripcion
-                        textComplemento.text = plataforma.Informacion_plataforma.complemento[0]
-                        textComplemento1.text = plataforma.Informacion_plataforma.complemento[1]
-                        textComplemento2.text = plataforma.Informacion_plataforma.complemento[2]
-                        titleUI.text = plataforma.Informacion_plataforma.UI.titulo
-                        textUI.text = plataforma.Informacion_plataforma.UI.descripcion
-                        titleUPE.text = plataforma.Informacion_plataforma.UPE.titulo
-                        textUPE.text = plataforma.Informacion_plataforma.UPE.descripcion
-                        titleUPEAS.text = plataforma.Informacion_plataforma.UPEAS.titulo
-                        textUPEAS.text = plataforma.Informacion_plataforma.UPEAS.descripcion
-                        videoPlatform.setVideoURI(Uri.parse(plataforma.Informacion_plataforma.video))
-                        MediaController(context).setAnchorView(videoPlatform.findViewById(R.id.layoutVideoPlatform))
-                        videoPlatform.setMediaController(MediaController(context))
-                        butonPlay.isVisible = true
-                        butonPlay.setOnClickListener {
-                            butonPlay.isVisible = false
+                        binding.textComplemento.text = plataforma.Informacion_plataforma.complemento[0]
+                        binding.textComplemento1.text = plataforma.Informacion_plataforma.complemento[1]
+                        binding.textComplemento2.text = plataforma.Informacion_plataforma.complemento[2]
+                        binding.titleUI.text = plataforma.Informacion_plataforma.UI.titulo
+                        binding.textUI.text = plataforma.Informacion_plataforma.UI.descripcion
+                        binding.titleUPE.text = plataforma.Informacion_plataforma.UPE.titulo
+                        binding.textUPE.text = plataforma.Informacion_plataforma.UPE.descripcion
+                        binding.titleUPEAS.text = plataforma.Informacion_plataforma.UPEAS.titulo
+                        binding.textUPEAS.text = plataforma.Informacion_plataforma.UPEAS.descripcion
+                        binding.videoPlatform.setVideoURI(Uri.parse(plataforma.Informacion_plataforma.video))
+                        MediaController(context).setAnchorView(binding.videoPlatform.findViewById(R.id.layoutVideoPlatform))
+                        binding.videoPlatform.setMediaController(MediaController(context))
+                        binding.butonPlay.isVisible = true
+                        binding.butonPlay.setOnClickListener {
+                            binding.butonPlay.isVisible = false
                         }
                     }
 
@@ -137,6 +140,11 @@ class PlatformFragment : Fragment() {
 
                 })
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

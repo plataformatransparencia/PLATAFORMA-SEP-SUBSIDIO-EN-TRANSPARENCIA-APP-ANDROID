@@ -5,21 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_item_list.*
-import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
+import sep.dgesui.subsidioentransparencia.databinding.FragmentItemListBinding
 
 class ListaAccionesUADECExtraordinario2019(
     private val tituloLista: String,
     private val informacion: InformacionGeneralWrapper,
     private val acciones: List<Item>
 ) : Fragment() {
-
+    private var _binding: FragmentItemListBinding? = null
+    val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_item_list, container, false)
+    ): View? {
+        _binding = FragmentItemListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
     private val targetFactory = { item: Item ->
         DetalleAccionUniversidadFragment(informacion, item)
@@ -29,18 +33,22 @@ class ListaAccionesUADECExtraordinario2019(
         super.onViewCreated(view, savedInstanceState)
 
 
-        listHeader.setValues(
+        binding.listHeader.setValues(
             informacion.nombreUniversidad,
             informacion.subsidio,
             informacion.year,
             requireContext()
         )
 
-        listTitle.text = tituloLista
+        binding.listTitle.text = tituloLista
 
-        listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        binding.listBackButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
-        listItemsRecycler.adapter =
+        binding.listItemsRecycler.adapter =
             ItemListCardRecyclerAdapter(acciones, requireActivity(), targetFactory)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,5 +1,6 @@
 package sep.dgesui.subsidioentransparencia.engineadapter
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -71,16 +72,12 @@ class Filter private constructor() {
         this.subsidio = subsidio
 
         val uniService: ListService = TransparenciaRetrofit.serviceFactory(ListService::class.java)
-
         response = uniService.getUniversity(year, category, state, subsidio)
         response.enqueue(object : Callback<Universidad> {
+
             override fun onResponse(call: Call<Universidad>, response: Response<Universidad>) {
-                val newContent = response.body()?.universidades?.sortedBy { it.siglas }
+                content.value = response.body()?.universidades?.sortedBy { it.siglas }
                     ?: emptyList()
-
-                content.postValue(newContent)
-
-
             }
 
             override fun onFailure(call: Call<Universidad>, t: Throwable) = errorHandler(call, t)
