@@ -37,7 +37,7 @@ class PlatformFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPlatformBinding.inflate(inflater, container, false)
         val view = binding.root
         return view

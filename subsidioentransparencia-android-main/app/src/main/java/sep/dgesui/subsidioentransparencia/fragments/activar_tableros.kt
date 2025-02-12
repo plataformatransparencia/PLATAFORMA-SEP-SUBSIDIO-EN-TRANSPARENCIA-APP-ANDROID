@@ -1,5 +1,4 @@
 package sep.dgesui.subsidioentransparencia.fragments
-
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -11,7 +10,7 @@ import sep.dgesui.subsidioentransparencia.engineadapter.CumplimientoRepository
 import sep.dgesui.subsidioentransparencia.engineadapter.ItemSources
 import sep.dgesui.subsidioentransparencia.engineadapter.MinistracionRepository
 
-private val itemSources = ItemSources()
+val itemSources = ItemSources()
 private val ministracionesRepository = MinistracionRepository()
 private val repositoryCumplimiento = CumplimientoRepository()
 
@@ -21,7 +20,6 @@ fun activarTableros(
     informacion: InformacionGeneralWrapper,
     activity: FragmentActivity
 ) = runBlocking {
-
     launch {
         when (informacion.subsidio) {
             "subsidio_ordinario" -> activarSubsidioOrdinario(informacion, detalle, activity)
@@ -535,17 +533,28 @@ private fun activarSubsidioOrdinario(
 ) = runBlocking {
 
     launch {
-
         val compromisos = withContext(dispatcher) {
             itemSources.compromisosOrdinarios(informacion.id, informacion.year)
         }
 
         detalle.binding.linkCompromisosUniversidad.isVisible = true
-        detalle.binding.linkCompromisosUniversidad.setOnClickListener(
-            loadFragment(
-                ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos), activity
+        if (informacion.year == "2025"){
+            detalle.binding.linkCompromisosUniversidad.setOnClickListener {
+                activity.supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, CompromisosFragment(
+                    informacion.id,
+                    informacion.year,
+                    informacion.nombreUniversidad,
+                    informacion.subsidio
+                )).addToBackStack(null).commit()
+            }
+        }else {
+            detalle.binding.linkCompromisosUniversidad.setOnClickListener(
+                loadFragment(
+                    ListaCompromisosUniversidadSimplifiedFragment(informacion, compromisos),
+                    activity
+                )
             )
-        )
+        }
     }
 
     launch {

@@ -3,6 +3,7 @@ package sep.dgesui.subsidioentransparencia.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import sep.dgesui.subsidioentransparencia.databinding.LayoutCompromisoCardBinding
@@ -25,9 +26,8 @@ class CardComponent @JvmOverloads constructor(
     fun setValues(cumplimiento: String, fecha: String, titleFecha: String = "") {
         binding?.circuloCumplimiento?.setCardBackgroundColor(getColorCumplimiento(cumplimiento, context))
         binding?.fechaEjecucion?.text = fecha
-
         if (titleFecha.isNotBlank()){
-            var binding2 = LayoutCompromisoCardBinding.bind(rootView)
+            val binding2 = LayoutCompromisoCardBinding.bind(rootView)
             binding2.fechaEstipulada.text = titleFecha
         }
 
@@ -35,8 +35,8 @@ class CardComponent @JvmOverloads constructor(
     }
 
     fun showExtra() {
-        //cardKeysExtra.visibility = View.VISIBLE
-        //cardKeysExtra2.visibility = View.VISIBLE
+        binding?.cardKeysExtra?.visibility = View.VISIBLE
+        binding?.cardKeysExtra2?.visibility = View.VISIBLE
     }
 
 

@@ -12,7 +12,9 @@ import androidx.fragment.app.Fragment
 import sep.dgesui.subsidioentransparencia.*
 import sep.dgesui.subsidioentransparencia.components.InformacionGeneralWrapper
 import sep.dgesui.subsidioentransparencia.components.TrimestreComponent
+import sep.dgesui.subsidioentransparencia.databinding.ComponentTrimestreBinding
 import sep.dgesui.subsidioentransparencia.databinding.FragmentMinFederalBinding
+import sep.dgesui.subsidioentransparencia.databinding.LayoutCompromisoCardBinding
 import sep.dgesui.subsidioentransparencia.tablero.MinFederal
 import sep.dgesui.subsidioentransparencia.tablero.federalAMapa
 
@@ -33,7 +35,7 @@ class MinFederalFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMinFederalBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -68,10 +70,10 @@ class MinFederalFragment(
 
         pintarSemaforos()
 
-        habilitarLinksReportes(binding.detalleMinistracionTrimestre1, 1)
-        habilitarLinksReportes(binding.detalleMinistracionTrimestre2, 2)
-        habilitarLinksReportes(binding.detalleMinistracionTrimestre3, 3)
-        habilitarLinksReportes(binding.detalleMinistracionTrimestre4, 4)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre1, 1,view)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre2, 2,view)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre3, 3,view)
+        habilitarLinksReportes(binding.detalleMinistracionTrimestre4, 4,view)
 
         cargarGrafica()
 
@@ -82,7 +84,7 @@ class MinFederalFragment(
 
     }
 
-    private fun habilitarLinksReportes(trimestreComponent: TrimestreComponent, trimestre: Int) {
+    private fun habilitarLinksReportes(trimestreComponent: TrimestreComponent, trimestre: Int,view: View) {
 
         val informesTrimestrales = when (trimestre) {
             1 -> ministracionFederal.federal.informes.subsidio_ordinario.trimestre1 to ministracionFederal.federal.informes.rendicion_cuentas.trimestre1
@@ -110,14 +112,15 @@ class MinFederalFragment(
         }?.let {
             DetalleReporteFragment(informacion, titulReporteMatricula, it)
         }
-
-        trimestreComponent.setTargets(
-            targetSubsidioOrdinario = informesTrimestrales.first,
-            targetRendicionCuentas = informesTrimestrales.second,
-            targetReporteMatricula = informeMatricula,
-            activity = requireActivity()
-        )
-
+        if(informacion.year <= "2025") {
+            binding.detalleMinistracionTrimestre1
+            trimestreComponent.setTargets(
+                targetSubsidioOrdinario = informesTrimestrales.first,
+                targetRendicionCuentas = informesTrimestrales.second,
+                targetReporteMatricula = informeMatricula,
+                activity = requireActivity()
+            )
+        }
     }
 
     private fun pintarSemaforos() {
@@ -191,21 +194,21 @@ class MinFederalFragment(
     private fun botonesMinistracionMensual() {
         binding.detalleMinistracionTrimestre1.montos =
             mesesTrimestre1.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
 
 
         binding.detalleMinistracionTrimestre2.montos =
             mesesTrimestre2.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
 
 
         binding.detalleMinistracionTrimestre3.montos =
             mesesTrimestre3.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
 
         binding.detalleMinistracionTrimestre4.montos =
             mesesTrimestre4.map { it to currencyFormatter.format(mapa[it]?.monto) }
-                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2]) }
+                .let { TrimestreComponent.TrimestreInfo(it[0], it[1], it[2],informacion.year) }
     }
 
     private fun cargarGrafica() {

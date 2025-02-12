@@ -1,9 +1,11 @@
 package sep.dgesui.subsidioentransparencia.fragments
 
 import android.os.Bundle
+import android.text.Html.FROM_HTML_MODE_COMPACT
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ import sep.dgesui.subsidioentransparencia.databinding.LayoutCumplimientoCardBind
 open class DetalleCompromisoUniversidadFragment(
     private val informacion: InformacionGeneralWrapper,
     private val item: Item,
+    private val titulo: String = ""
 ) : Fragment() {
 
     private var _binding: FragmentDetalleCompromisoUniversidadBinding? = null
@@ -33,6 +36,13 @@ open class DetalleCompromisoUniversidadFragment(
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.detalleTitle.text = titulo
+        if (titulo == "Compromisos"){
+            binding.subtituloDetalle.text = titulo
+        }else{
+            binding.subtituloDetalle.text = "Informe"
+            binding.compromisoCard.showExtra()
+        }
 
         binding.detalleHeader.setValues(
             informacion.nombreUniversidad,
@@ -45,7 +55,7 @@ open class DetalleCompromisoUniversidadFragment(
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.detalleDescripcion.text = item.descripcion
+        binding.detalleDescripcion.text = HtmlCompat.fromHtml(item.descripcion, HtmlCompat.FROM_HTML_MODE_COMPACT)
         binding.compromisoCard.setValues(item.cumplimiento, item.fechaCompromiso)
         binding.detalleObservaciones.text = item.observacion
         /*Se agrega condicion para cambiar el "Cumplió por Cumple" y "No cumplió por No cumple"

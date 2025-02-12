@@ -132,7 +132,7 @@ class FilterFragment(
         return view
     }
 
-    private fun listenerFactory(target: MutableLiveData<*>): AdapterView.OnItemSelectedListener =
+    private fun listenerFactory(target: MutableLiveData<String>): AdapterView.OnItemSelectedListener =
         object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -140,8 +140,14 @@ class FilterFragment(
                 position: Int,
                 id: Long
             ) {
-               if (parent?.getItemAtPosition(position) != "Todos")
-                    target.value = (parent?.getItemAtPosition(position) as String)
+
+               if (parent?.getItemAtPosition(position) != "Todos") {
+                   val item = parent?.getItemAtPosition(position)
+                   val valor = item.toString()
+
+                  target.value = valor
+               }
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -149,7 +155,7 @@ class FilterFragment(
             }
         }
 
-    private fun listenerFactoryTwo(target: MutableLiveData<*>): AdapterView.OnItemSelectedListener =
+    private fun listenerFactoryTwo(target: MutableLiveData<String>): AdapterView.OnItemSelectedListener =
         object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -158,7 +164,7 @@ class FilterFragment(
                 id: Long
             ) {
                 if (parent?.getItemAtPosition(position) != "Todos")
-                    target.value = (parent?.getItemAtPosition(position) as String)
+                    target.value = parent?.getItemAtPosition(position) as String
                 else{
                     target.value = "Todos"
                 }

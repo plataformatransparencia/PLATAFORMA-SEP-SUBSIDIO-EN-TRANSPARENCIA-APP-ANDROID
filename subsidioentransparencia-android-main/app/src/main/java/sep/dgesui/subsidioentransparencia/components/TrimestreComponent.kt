@@ -2,6 +2,7 @@ package sep.dgesui.subsidioentransparencia.components
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import sep.dgesui.subsidioentransparencia.R
 import sep.dgesui.subsidioentransparencia.databinding.ComponentTrimestreBinding
 import sep.dgesui.subsidioentransparencia.fragments.loadFragment
 import sep.dgesui.subsidioentransparencia.getColorCumplimiento
+import sep.dgesui.subsidioentransparencia.mesesTrimestre1
+import kotlin.math.absoluteValue
 
 class TrimestreComponent @JvmOverloads constructor(
     context: Context, attributeSet: AttributeSet? = null, styleSelector: Int = 0
@@ -26,6 +29,7 @@ class TrimestreComponent @JvmOverloads constructor(
                 it as ViewGroup
             )
         }
+
         binding?.trimestreTitulo?.setOnClickListener { toggle() }
     }
 
@@ -34,11 +38,10 @@ class TrimestreComponent @JvmOverloads constructor(
             field = value
             binding?.trimestreTitulo?.text = String.format(context.getString(R.string.trimestreN), value)
         }
+
     var montos: TrimestreInfo? = null
         set(value) {
             field = value
-
-
             if (value != null) {
                binding?.trimestreMes1?.setup(value.mes1.first, value.mes1.second)
                 binding?.trimestreMes2?.setup(value.mes2.first, value.mes2.second)
@@ -55,12 +58,12 @@ class TrimestreComponent @JvmOverloads constructor(
     }
 
     private fun toggle() {
+
         expanded = !expanded
         val visibility = if (expanded) View.VISIBLE else View.GONE
         binding?.trimestreMes1?.visibility = visibility
         binding?.trimestreMes2?.visibility = visibility
         binding?.trimestreMes3?.visibility = visibility
-
         if (showReportLinks) {
             binding?.linkReporteSubsidioOrdinario?.visibility = visibility
             binding?.linkReporteRendicionCuentas?.visibility = visibility
@@ -71,6 +74,11 @@ class TrimestreComponent @JvmOverloads constructor(
             else if (visibility == View.VISIBLE && binding?.linkReporteMatricula!!.hasTarget())
                 binding?.linkReporteMatricula?.visibility = visibility
         } else {
+            binding?.linkReporteSubsidioOrdinario?.visibility = View.GONE
+            binding?.linkReporteRendicionCuentas?.visibility = View.GONE
+            binding?.linkReporteMatricula?.visibility = View.GONE
+        }
+        if (montos?.year!! >= "2025"){
             binding?.linkReporteSubsidioOrdinario?.visibility = View.GONE
             binding?.linkReporteRendicionCuentas?.visibility = View.GONE
             binding?.linkReporteMatricula?.visibility = View.GONE
@@ -113,6 +121,7 @@ class TrimestreComponent @JvmOverloads constructor(
     data class TrimestreInfo(
         val mes1: Pair<String, String> = "" to "",
         val mes2: Pair<String, String> = "" to "",
-        val mes3: Pair<String, String> = "" to ""
+        val mes3: Pair<String, String> = "" to "",
+        val year: String = ""
     )
 }

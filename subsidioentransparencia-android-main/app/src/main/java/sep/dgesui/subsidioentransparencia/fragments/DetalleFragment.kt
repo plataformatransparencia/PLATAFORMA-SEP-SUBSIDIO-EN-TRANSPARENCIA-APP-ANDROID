@@ -85,7 +85,7 @@ class DetalleFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetalleBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -145,10 +145,21 @@ class DetalleFragment(
 
     private fun loadReferencias() = runBlocking {
 
+        if(year >= "2025"){
+            binding.titlereferenciaAnexoDetalle2025plus.visibility = View.VISIBLE
+            binding.referenciasAnexo2025plus.visibility = View.VISIBLE
+            binding.titleReferenciasDetalle.visibility = View.GONE
+            binding.referenciasNumeralia.visibility = View.GONE
+            binding.titleOtrasReferencias.visibility = View.GONE
+        }
+
         val referencias = async(dispatcher) { fichaRepository.referencias(year) }.await()
 
 
         binding.referenciasNumeralia.adapter =
+            ReferenciasAdapter(referencias?.numeralia ?: emptyMap())
+
+        binding.referenciasAnexo2025plus.adapter =
             ReferenciasAdapter(referencias?.numeralia ?: emptyMap())
 
         when (subsidio) {
@@ -303,13 +314,21 @@ class DetalleFragment(
     }
 
     private fun cargarDocumentos(detalle: Detalle) {
-        if (detalle.planAusteridad.isNotBlank())
+        if (detalle.planAusteridad.isNotBlank()) {
+            if(year >= "2025"){
+                binding.buttonPlanAusteridad.visibility = View.GONE
+                binding.buttonPlanAusteridad2025plus.apply {
+                    visibility = View.VISIBLE
+                    setOnClickListener(externalLink(detalle.planAusteridad))
+                }
+            }
             binding.buttonPlanAusteridad.apply {
 
                 visibility = View.VISIBLE
 
                 setOnClickListener(externalLink(detalle.planAusteridad))
             }
+        }
 
         if (!detalle.anexoEjecucion.isNullOrEmpty()) {
             binding.titleNumeraliaDetalleProceso.text = "(Institución en proceso de consolidación)"
@@ -443,9 +462,10 @@ class DetalleFragment(
 
             binding.numProfesoresSistemaNacionalIVDetalle.text =
                 integerFormatter.format(nationalSystemResearchersProfessor)
-
-            binding.numSubsidioAlumnoFEDetalle.text =
-                currencyFormatter.format(studentAllowance)
+            if (year < "2025"){
+                binding.numSubsidioAlumnoFEDetalle.text =
+                    currencyFormatter.format(studentAllowance)
+            }
 
 
             binding.numPorcentajeParticipacionFDetalle.text = String.format(

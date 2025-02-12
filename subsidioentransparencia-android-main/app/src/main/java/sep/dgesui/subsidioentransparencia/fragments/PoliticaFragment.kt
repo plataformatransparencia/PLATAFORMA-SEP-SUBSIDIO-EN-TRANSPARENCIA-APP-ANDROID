@@ -17,7 +17,7 @@ class PoliticaFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPoliticasBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
