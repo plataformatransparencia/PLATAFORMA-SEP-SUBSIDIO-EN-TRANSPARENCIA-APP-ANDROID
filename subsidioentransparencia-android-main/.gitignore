@@ -9,3 +9,4 @@
 .cxx
 *.aab
 local.properties
+secrets.properties

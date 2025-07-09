@@ -5,6 +5,8 @@ plugins {
     id 'com.android.application'
     id "kotlin-android"
     id "org.sonarqube" version "3.0"
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
 }
 
 sonarqube
@@ -28,23 +30,27 @@ android {
     buildToolsVersion = '35.0.0'
     namespace = "sep.dgesui.subsidioentransparencia"
     defaultConfig {
-        //Clave API de MAPS
 
-        def localProperties = new Properties()
-        def localPropertiesFile = rootProject.file("local.properties") //Accede desde el proyecto raíz
-        if(localPropertiesFile.exists()){
-            localProperties.load(new FileInputStream( localPropertiesFile ))
+
+        secrets {
+            // To add your Maps API key to this project:
+            // 1. If the secrets.properties file does not exist, create it in the same folder as the local.properties file.
+            // 2. Add this line, where YOUR_API_KEY is your API key:
+            //        MAPS_API_KEY=YOUR_API_KEY
+            propertiesFileName = "secrets.properties"
+
+            // A properties file containing default secret values. This file can be
+            // checked in version control.
+            defaultPropertiesFileName = "local.defaults.properties"
         }
 
-        manifestPlaceholders = [
-                MAPS_API_KEY: localProperties.getProperty("MASP_API_KEY") ?: ""
-        ]
+
 
         applicationId "sep.dgesui.subsidioentransparencia"
         minSdkVersion 29
         targetSdkVersion 35
-        versionCode 128
-        versionName "1.2.23"
+        versionCode 129
+        versionName "1.2.24"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -94,6 +100,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
 
 
     //Google MAPS-MATERIAL
