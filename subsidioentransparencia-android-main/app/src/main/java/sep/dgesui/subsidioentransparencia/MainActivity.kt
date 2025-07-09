@@ -17,10 +17,10 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
-    val mapsFragment = MapsFragment()
-    val listFragment = ListFragment()
-    val contacFragment = ContactFragment()
-    val menuFragment = MenuFragment()
+   private val mapsFragment = MapsFragment()
+   private val listFragment = ListFragment()
+   private val contacFragment = ContactFragment()
+   private val menuFragment = MenuFragment()
     var filter = Filter.filter
     private lateinit var binding: ActivityMainBinding
     @SuppressLint("MissingInflatedId", "WrongViewCast")
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         if (BuildConfig.DEBUG)
             Timber.plant(Timber.DebugTree())
 
-        var lastYearInfo = FilterValuesCache.getFilterValuesIni()
+        val lastYearInfo = FilterValuesCache.getFilterValuesIni()
         lastYearInfo.observe(this) {
             if (lastYearInfo.value != null) {
                 if (filter.year != lastYearInfo.value ){
